@@ -3,6 +3,7 @@
 #include <QDebug>
 
 #include "../systemController.h"
+#include "core/utils/qrCodeUtils.h"
 
 ExportUiController::ExportUiController(ExportController* exportController, QObject *parent)
     : QObject(parent),
@@ -51,6 +52,14 @@ void ExportUiController::generateXrayConfig(const QString &serverId, const QStri
     clearPreviousConfig();
     auto result = m_exportController->generateXrayConfig(serverId, clientName);
     applyExportResult(result);
+}
+
+void ExportUiController::generateQrFromString(const QString &text)
+{
+    clearPreviousConfig();
+    m_config = text;
+    m_qrCodes = qrCodeUtils::generateQrCodeImageSeries(text.toUtf8());
+    emit exportConfigChanged();
 }
 
 QString ExportUiController::getConfig()

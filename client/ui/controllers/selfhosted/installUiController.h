@@ -28,6 +28,7 @@
 #include "ui/models/services/torConfigModel.h"
 #include "core/models/protocols/sftpProtocolConfig.h"
 #include "core/models/protocols/socks5ProxyProtocolConfig.h"
+#include "ui/models/services/mtProxyConfigModel.h"
 
 class InstallUiController : public QObject
 {
@@ -48,6 +49,7 @@ public:
 #endif
                                SftpConfigModel* sftpConfigModel,
                                Socks5ProxyConfigModel* socks5ConfigModel,
+                               MtProxyConfigModel* mtConfigModel,
                                QObject *parent = nullptr);
     ~InstallUiController();
 
@@ -58,12 +60,16 @@ public slots:
 
     void scanServerForInstalledContainers(const QString &serverId);
 
-    void updateContainer(const QString &serverId, int containerIndex, int protocolIndex);
+    void updateContainer(const QString &serverId, int containerIndex, int protocolIndex, bool closePage = true);
 
     void removeServer(const QString &serverId);
     void rebootServer(const QString &serverId);
     void removeAllContainers(const QString &serverId);
     void removeContainer(const QString &serverId, int containerIndex);
+    void setContainerEnabled(const QString &serverId, int containerIndex, bool enabled);
+    void refreshContainerStatus(const QString &serverId, int containerIndex);
+    void refreshContainerDiagnostics(const QString &serverId, int containerIndex, int port);
+    void fetchContainerSecret(const QString &serverId, int containerIndex);
 
     void clearCachedProfile(const QString &serverId, int containerIndex);
 
@@ -94,7 +100,7 @@ signals:
     void installContainerFinished(const QString &finishMessage, bool isServiceInstall);
     void installServerFinished(const QString &finishMessage);
 
-    void updateContainerFinished(const QString &message);
+    void updateContainerFinished(const QString &message, bool closePage);
 
     void scanServerFinished(bool isInstalledContainerFound);
 
@@ -102,6 +108,11 @@ signals:
     void removeServerFinished(const QString &finishedMessage);
     void removeAllContainersFinished(const QString &finishedMessage);
     void removeContainerFinished(const QString &finishedMessage);
+    void setContainerEnabledFinished(bool enabled);
+    void containerStatusRefreshed(int status);
+    void containerDiagnosticsRefreshed(bool portReachable, bool upstreamReachable, int clientsConnected,
+                                       const QString &lastConfigRefresh, const QString &statsEndpoint);
+    void containerSecretFetched(const QString &secret);
 
     void installationErrorOccurred(ErrorCode errorCode);
     void wrongInstallationUser(const QString &message);
@@ -113,6 +124,8 @@ signals:
 
     void serverIsBusy(const bool isBusy);
     void cancelInstallation();
+
+    void currentContainerUpdated();
 
     void cachedProfileCleared(const QString &message);
     void apiConfigRemoved(const QString &message);
@@ -138,6 +151,7 @@ private:
 #endif
     SftpConfigModel* m_sftpConfigModel;
     Socks5ProxyConfigModel* m_socks5ConfigModel;
+    MtProxyConfigModel* m_mtProxyConfigModel;
 
     ServerCredentials m_processedServerCredentials;
 

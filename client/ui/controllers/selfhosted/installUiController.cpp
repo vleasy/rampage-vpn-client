@@ -5,11 +5,13 @@
 #include <QEventLoop>
 #include <QJsonObject>
 #include <QRandomGenerator>
+#include <QRegularExpression>
 #include <QStandardPaths>
+#include <QFutureWatcher>
+#include <QtConcurrent>
 
 #include "core/utils/api/apiUtils.h"
 #include "core/controllers/selfhosted/installController.h"
-#include "core/utils/selfhosted/sshSession.h"
 #include "core/utils/networkUtilities.h"
 #include "core/utils/protocolEnum.h"
 #include "core/protocols/protocolUtils.h"
@@ -47,6 +49,7 @@ InstallUiController::InstallUiController(InstallController *installController,
 #endif
                                          SftpConfigModel *sftpConfigModel,
                                          Socks5ProxyConfigModel *socks5ConfigModel,
+                                         MtProxyConfigModel* mtConfigModel,
                                          QObject *parent)
     : QObject(parent),
       m_installController(installController),
@@ -63,7 +66,8 @@ InstallUiController::InstallUiController(InstallController *installController,
       m_ikev2ConfigModel(ikev2ConfigModel),
 #endif
       m_sftpConfigModel(sftpConfigModel),
-      m_socks5ConfigModel(socks5ConfigModel)
+      m_socks5ConfigModel(socks5ConfigModel),
+      m_mtProxyConfigModel(mtConfigModel)
 {
     connect(m_installController, &InstallController::configValidated, this, &InstallUiController::configValidated);
     connect(m_installController, &InstallController::validationErrorOccurred, this, [this](ErrorCode errorCode) {
@@ -199,7 +203,7 @@ void InstallUiController::scanServerForInstalledContainers(const QString &server
     emit installationErrorOccurred(errorCode);
 }
 
-void InstallUiController::updateContainer(const QString &serverId, int containerIndex, int protocolIndex)
+void InstallUiController::updateContainer(const QString &serverId, int containerIndex, int protocolIndex, bool closePage)
 {
     DockerContainer container = static_cast<DockerContainer>(containerIndex);
     
@@ -238,6 +242,10 @@ void InstallUiController::updateContainer(const QString &serverId, int container
         containerConfig.protocolConfig = m_socks5ConfigModel->getProtocolConfig();
         break;
     }
+    case Proto::MtProxy: {
+        containerConfig.protocolConfig = m_mtProxyConfigModel->getProtocolConfig();
+        break;
+    }
 #ifdef Q_OS_WINDOWS
     case Proto::Ikev2: {
         containerConfig.protocolConfig = m_ikev2ConfigModel->getProtocolConfig();
@@ -249,17 +257,111 @@ void InstallUiController::updateContainer(const QString &serverId, int container
     }
     ContainerConfig oldContainerConfig = m_serversController->getContainerConfig(serverId, container);
 
+    if (container == DockerContainer::MtProxy) {
+        emit serverIsBusy(true);
+        auto *watcher = new QFutureWatcher<ErrorCode>(this);
+        QObject::connect(watcher, &QFutureWatcher<ErrorCode>::finished, this,
+                         [this, watcher, serverId, container, closePage]() {
+                             const ErrorCode errorCode = watcher->result();
+                             watcher->deleteLater();
+                             emit serverIsBusy(false);
+
+                             if (errorCode == ErrorCode::NoError) {
+                                 const ContainerConfig updatedConfig =
+                                         m_serversController->getContainerConfig(serverId, container);
+                                 m_protocolModel->updateModel(updatedConfig);
+
+                                 const auto defaultContainer =
+                                         m_serversController->getDefaultContainer(serverId);
+                                 if ((serverId == m_serversController->getDefaultServerId())
+                                     && (container == defaultContainer)) {
+                                     emit currentContainerUpdated();
+                                 } else {
+                                     emit updateContainerFinished(tr("Settings updated successfully"), closePage);
+                                 }
+                             } else {
+                                 emit installationErrorOccurred(errorCode);
+                             }
+                         });
+
+        ContainerConfig newConfigCopy = containerConfig;
+        ContainerConfig oldConfigCopy = oldContainerConfig;
+        InstallController *installController = m_installController;
+        QFuture<ErrorCode> future =
+                QtConcurrent::run([installController, serverId, container, oldConfigCopy,
+                                          newConfigCopy]() mutable -> ErrorCode {
+                    return installController->updateContainer(serverId, container, oldConfigCopy, newConfigCopy);
+                });
+        watcher->setFuture(future);
+        return;
+    }
+
     ErrorCode errorCode = m_installController->updateContainer(serverId, container, oldContainerConfig, containerConfig);
 
     if (errorCode == ErrorCode::NoError) {
         ContainerConfig updatedConfig = m_serversController->getContainerConfig(serverId, container);
         m_protocolModel->updateModel(updatedConfig);
 
-        emit updateContainerFinished(tr("Settings updated successfully"));
+        const auto defaultContainer = m_serversController->getDefaultContainer(serverId);
+        if ((serverId == m_serversController->getDefaultServerId()) && (container == defaultContainer)) {
+            emit currentContainerUpdated();
+        } else {
+            emit updateContainerFinished(tr("Settings updated successfully"), closePage);
+        }
         return;
     }
 
     emit installationErrorOccurred(errorCode);
+}
+
+void InstallUiController::setContainerEnabled(const QString &serverId, int containerIndex, bool enabled)
+{
+    const DockerContainer container = static_cast<DockerContainer>(containerIndex);
+
+    emit serverIsBusy(true);
+    const ErrorCode errorCode = m_installController->setDockerContainerEnabledState(serverId, container, enabled);
+    emit serverIsBusy(false);
+
+    if (errorCode == ErrorCode::NoError) {
+        const ContainerConfig currentConfig = m_serversController->getContainerConfig(serverId, container);
+        m_protocolModel->updateModel(currentConfig);
+        emit setContainerEnabledFinished(enabled);
+        return;
+    }
+
+    emit installationErrorOccurred(errorCode);
+}
+
+void InstallUiController::refreshContainerStatus(const QString &serverId, int containerIndex)
+{
+    const DockerContainer container = static_cast<DockerContainer>(containerIndex);
+    int status = 3;
+    const ErrorCode errorCode = m_installController->queryDockerContainerStatus(serverId, container, status);
+    if (errorCode != ErrorCode::NoError) {
+        emit containerStatusRefreshed(3);
+        return;
+    }
+    emit containerStatusRefreshed(status);
+}
+
+void InstallUiController::refreshContainerDiagnostics(const QString &serverId, int containerIndex, int port)
+{
+    const DockerContainer container = static_cast<DockerContainer>(containerIndex);
+    MtProxyContainerDiagnostics diag;
+    const ErrorCode errorCode = m_installController->queryMtProxyDiagnostics(serverId, container, port, diag);
+    if (errorCode != ErrorCode::NoError) {
+        emit containerDiagnosticsRefreshed(false, false, -1, QString(), QString());
+        return;
+    }
+    emit containerDiagnosticsRefreshed(diag.portReachable, diag.upstreamReachable, diag.clientsConnected,
+                                       diag.lastConfigRefresh, diag.statsEndpoint);
+}
+
+void InstallUiController::fetchContainerSecret(const QString &serverId, int containerIndex)
+{
+    const DockerContainer container = static_cast<DockerContainer>(containerIndex);
+    const QString secret = m_installController->fetchDockerContainerSecret(serverId, container);
+    emit containerSecretFetched(secret);
 }
 
 void InstallUiController::rebootServer(const QString &serverId)
@@ -473,6 +575,7 @@ void InstallUiController::updateProtocolConfigModel(const QString &serverId, int
     case Proto::TorWebSite: updateIfPresent(m_torConfigModel, containerConfig.getTorProtocolConfig()); break;
     case Proto::Sftp: updateIfPresent(m_sftpConfigModel, containerConfig.getSftpProtocolConfig()); break;
     case Proto::Socks5Proxy: updateIfPresent(m_socks5ConfigModel, containerConfig.getSocks5ProxyProtocolConfig()); break;
+    case Proto::MtProxy: updateIfPresent(m_mtProxyConfigModel, containerConfig.getMtProxyProtocolConfig()); break;
 #ifdef Q_OS_WINDOWS
     case Proto::Ikev2: updateIfPresent(m_ikev2ConfigModel, containerConfig.getIkev2ProtocolConfig()); break;
 #endif

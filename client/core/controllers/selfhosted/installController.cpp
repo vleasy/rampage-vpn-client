@@ -19,6 +19,7 @@
 #include "core/installers/openvpnInstaller.h"
 #include "core/installers/sftpInstaller.h"
 #include "core/installers/socks5Installer.h"
+#include "core/installers/mtProxyInstaller.h"
 #include "core/installers/torInstaller.h"
 #include "core/installers/wireguardInstaller.h"
 #include "core/installers/xrayInstaller.h"
@@ -34,6 +35,7 @@
 #include "core/utils/constants/configKeys.h"
 #include "core/utils/constants/protocolConstants.h"
 #include "core/models/containerConfig.h"
+#include "core/models/protocols/mtProxyProtocolConfig.h"
 #include "core/models/protocols/awgProtocolConfig.h"
 #include "ui/models/protocols/wireguardConfigModel.h"
 #include "core/utils/utilities.h"
@@ -53,6 +55,21 @@ using namespace ProtocolUtils;
 namespace
 {
     Logger logger("InstallController");
+
+    bool dockerDaemonContainerMissing(const QString &out, const QString &containerDockerName)
+    {
+        if (!out.contains(QLatin1String("Error response from daemon"), Qt::CaseInsensitive)) {
+            return false;
+        }
+        if (out.contains(QLatin1String("No such container"), Qt::CaseInsensitive)
+            && out.contains(containerDockerName, Qt::CaseInsensitive)) {
+            return true;
+        }
+        if (out.size() < 700 && out.contains(QLatin1String("is not running"), Qt::CaseInsensitive)) {
+            return true;
+        }
+        return false;
+    }
 }
 
 InstallController::InstallController(SecureServersRepository *serversRepository,
@@ -136,6 +153,11 @@ ErrorCode InstallController::updateContainer(const QString &serverId, DockerCont
         if (!adminConfig.has_value()) {
             return ErrorCode::InternalError;
         }
+        if (container == DockerContainer::MtProxy) {
+            ServerCredentials credentials = adminConfig->credentials();
+            SshSession sshSession(this);
+            MtProxyInstaller::uploadClientSettingsSnapshot(sshSession, credentials, container, newConfig);
+        }
         adminConfig->updateContainerConfig(container, newConfig);
         m_serversRepository->editServer(serverId, adminConfig->toJson(), serverConfigUtils::ConfigType::SelfHostedAdmin);
         return ErrorCode::NoError;
@@ -165,6 +187,9 @@ ErrorCode InstallController::updateContainer(const QString &serverId, DockerCont
     }
 
     if (errorCode == ErrorCode::NoError) {
+        if (container == DockerContainer::MtProxy) {
+            MtProxyInstaller::uploadClientSettingsSnapshot(sshSession, credentials, container, newConfig);
+        }
         clearCachedProfile(serverId, container);
         adminConfig->updateContainerConfig(container, newConfig);
         m_serversRepository->editServer(serverId, adminConfig->toJson(), serverConfigUtils::ConfigType::SelfHostedAdmin);
@@ -408,9 +433,22 @@ ErrorCode InstallController::configureContainerWorker(const ServerCredentials &c
             sshSession.replaceVars(amnezia::scriptData(ProtocolScriptType::configure_container, container), baseVars),
             cbReadStdOut, cbReadStdErr);
 
+    if (e != ErrorCode::NoError) {
+        return e;
+    }
+
+    if (dockerDaemonContainerMissing(stdOut, ContainerUtils::containerToString(container))) {
+        qDebug() << "configureContainerWorker: Docker daemon reports container missing/stopped, output:" << stdOut;
+        return ErrorCode::ServerContainerMissingError;
+    }
+
     updateContainerConfigAfterInstallation(container, config, stdOut);
 
-    return e;
+    if (container == DockerContainer::MtProxy) {
+        MtProxyInstaller::uploadClientSettingsSnapshot(sshSession, credentials, container, config);
+    }
+
+    return ErrorCode::NoError;
 }
 
 ErrorCode InstallController::startupContainerWorker(const ServerCredentials &credentials, DockerContainer container, const ContainerConfig &config, SshSession &sshSession)
@@ -560,6 +598,32 @@ bool InstallController::isReinstallContainerRequired(DockerContainer container, 
         if (oldXrayConfig && newXrayConfig) {
             if (oldXrayConfig->serverConfig.port != newXrayConfig->serverConfig.port)
                 return true;
+        }
+    }
+
+    if (container == DockerContainer::MtProxy) {
+        const auto *oldMt = oldConfig.getMtProxyProtocolConfig();
+        const auto *newMt = newConfig.getMtProxyProtocolConfig();
+        if (oldMt && newMt) {
+            const QString oldPort =
+                    oldMt->port.isEmpty() ? QString(protocols::mtProxy::defaultPort) : oldMt->port;
+            const QString newPort =
+                    newMt->port.isEmpty() ? QString(protocols::mtProxy::defaultPort) : newMt->port;
+            if (oldPort != newPort) {
+                return true;
+            }
+            const QString oldTransport = oldMt->transportMode.isEmpty() ? QString(
+                    protocols::mtProxy::transportModeStandard)
+                                                                        : oldMt->transportMode;
+            const QString newTransport = newMt->transportMode.isEmpty() ? QString(
+                    protocols::mtProxy::transportModeStandard)
+                                                                        : newMt->transportMode;
+            if (oldTransport != newTransport) {
+                return true;
+            }
+            if (oldMt->tlsDomain != newMt->tlsDomain) {
+                return true;
+            }
         }
     }
 
@@ -823,6 +887,7 @@ QScopedPointer<InstallerBase> InstallController::createInstaller(DockerContainer
     case DockerContainer::TorWebSite: return QScopedPointer<InstallerBase>(new TorInstaller(this));
     case DockerContainer::Sftp: return QScopedPointer<InstallerBase>(new SftpInstaller(this));
     case DockerContainer::Socks5Proxy: return QScopedPointer<InstallerBase>(new Socks5Installer(this));
+    case DockerContainer::MtProxy: return QScopedPointer<InstallerBase>(new MtProxyInstaller(this));
     default: return QScopedPointer<InstallerBase>(new InstallerBase(this));
     }
 }
@@ -861,6 +926,13 @@ bool InstallController::isUpdateDockerContainerRequired(DockerContainer containe
                 return false;
             }
         }
+    } else if (container == DockerContainer::MtProxy) {
+        const auto *oldMt = oldConfig.getMtProxyProtocolConfig();
+        const auto *newMt = newConfig.getMtProxyProtocolConfig();
+        if (!oldMt || !newMt) {
+            return true;
+        }
+        return !oldMt->equalsDockerDeploymentSettings(*newMt);
     }
 
     return true;
@@ -1164,6 +1236,31 @@ void InstallController::updateContainerConfigAfterInstallation(DockerContainer c
             onion.replace("\n", "");
             torProtocolConfig->serverConfig.site = onion;
         }
+    } else if (container == DockerContainer::MtProxy) {
+        if (auto* mtProxyConfig = containerConfig.getMtProxyProtocolConfig()) {
+            qDebug() << "amnezia mtproxy" << stdOut;
+
+            static const QRegularExpression reSecret(
+                    QStringLiteral(R"(\[\*\]\s+Secret:\s+([0-9a-fA-F]{32}))"),
+                    QRegularExpression::CaseInsensitiveOption);
+            static const QRegularExpression reTgLink(QStringLiteral(R"(\[\*\]\s+tg://\s+link:\s+(tg://proxy\?[^\s]+))"));
+            static const QRegularExpression reTmeLink(
+                    QStringLiteral(R"(\[\*\]\s+t\.me\s+link:\s+(https://t\.me/proxy\?[^\s]+))"));
+
+            const QRegularExpressionMatch mSecret = reSecret.match(stdOut);
+            const QRegularExpressionMatch mTgLink = reTgLink.match(stdOut);
+            const QRegularExpressionMatch mTmeLink = reTmeLink.match(stdOut);
+
+            if (mSecret.hasMatch()) {
+                mtProxyConfig->secret = mSecret.captured(1);
+            }
+            if (mTgLink.hasMatch()) {
+                mtProxyConfig->tgLink = mTgLink.captured(1);
+            }
+            if (mTmeLink.hasMatch()) {
+                mtProxyConfig->tmeLink = mTmeLink.captured(1);
+            }
+        }
     }
 }
 
@@ -1247,4 +1344,114 @@ ErrorCode InstallController::getAlreadyInstalledContainers(const ServerCredentia
     }
 
     return ErrorCode::NoError;
+}
+
+ErrorCode InstallController::setDockerContainerEnabledState(const QString &serverId, DockerContainer container, bool enabled)
+{
+    auto adminConfig = m_serversRepository->selfHostedAdminConfig(serverId);
+    if (!adminConfig.has_value()) {
+        return ErrorCode::InternalError;
+    }
+    ServerCredentials credentials = adminConfig->credentials();
+    if (!credentials.isValid()) {
+        return ErrorCode::InternalError;
+    }
+    const QString containerName = ContainerUtils::containerToString(container);
+    SshSession sshSession(this);
+    const QString script = enabled ? QStringLiteral("sudo docker start %1").arg(containerName)
+                                   : QStringLiteral("sudo docker stop %1").arg(containerName);
+    const ErrorCode runError = sshSession.runScript(credentials, script);
+    if (runError != ErrorCode::NoError) {
+        return runError;
+    }
+    ContainerConfig currentConfig = adminConfig->containerConfig(container);
+    if (auto *mtConfig = currentConfig.getMtProxyProtocolConfig()) {
+        mtConfig->isEnabled = enabled;
+        adminConfig->updateContainerConfig(container, currentConfig);
+        m_serversRepository->editServer(serverId, adminConfig->toJson(), serverConfigUtils::ConfigType::SelfHostedAdmin);
+    }
+    return ErrorCode::NoError;
+}
+
+ErrorCode InstallController::queryDockerContainerStatus(const QString &serverId, DockerContainer container, int &statusOut)
+{
+    statusOut = 3;
+    auto adminConfig = m_serversRepository->selfHostedAdminConfig(serverId);
+    if (!adminConfig.has_value()) {
+        return ErrorCode::InternalError;
+    }
+    ServerCredentials credentials = adminConfig->credentials();
+    if (!credentials.isValid()) {
+        return ErrorCode::InternalError;
+    }
+    const QString containerName = ContainerUtils::containerToString(container);
+    QString stdOut;
+    auto cbReadStdOut = [&](const QString &data, libssh::Client &) {
+        stdOut += data;
+        return ErrorCode::NoError;
+    };
+    SshSession sshSession(this);
+    const QString script = QStringLiteral(
+            "sudo docker inspect --format '{{.State.Status}}' %1 2>/dev/null || echo 'not_found'")
+            .arg(containerName);
+    const ErrorCode errorCode = sshSession.runScript(credentials, script, cbReadStdOut);
+    if (errorCode != ErrorCode::NoError) {
+        return errorCode;
+    }
+    const QString status = stdOut.trimmed();
+    if (status == QLatin1String("running")) {
+        statusOut = 1;
+    } else if (status == QLatin1String("not_found") || status.isEmpty()) {
+        statusOut = 0;
+    } else if (status == QLatin1String("exited") || status == QLatin1String("created")
+               || status == QLatin1String("paused")) {
+        statusOut = 2;
+    } else {
+        statusOut = 3;
+    }
+    return ErrorCode::NoError;
+}
+
+ErrorCode InstallController::queryMtProxyDiagnostics(const QString &serverId, DockerContainer container, int listenPort,
+                                                     MtProxyContainerDiagnostics &out)
+{
+    out = {};
+    auto adminConfig = m_serversRepository->selfHostedAdminConfig(serverId);
+    if (!adminConfig.has_value()) {
+        return ErrorCode::InternalError;
+    }
+    ServerCredentials credentials = adminConfig->credentials();
+    if (!credentials.isValid()) {
+        return ErrorCode::InternalError;
+    }
+    SshSession sshSession(this);
+    return MtProxyInstaller::queryDiagnostics(sshSession, credentials, container, listenPort, out);
+}
+
+QString InstallController::fetchDockerContainerSecret(const QString &serverId, DockerContainer container)
+{
+    auto adminConfig = m_serversRepository->selfHostedAdminConfig(serverId);
+    if (!adminConfig.has_value()) {
+        return {};
+    }
+    ServerCredentials credentials = adminConfig->credentials();
+    if (!credentials.isValid()) {
+        return {};
+    }
+    const QString containerName = ContainerUtils::containerToString(container);
+    QString stdOut;
+    auto cbReadStdOut = [&](const QString &data, libssh::Client &) {
+        stdOut += data;
+        return ErrorCode::NoError;
+    };
+    SshSession sshSession(this);
+    const QString path = QStringLiteral("/data/secret");
+    const QString cmd = QStringLiteral("sudo docker exec %1 cat %2").arg(containerName, path);
+    const ErrorCode errorCode = sshSession.runScript(credentials, cmd, cbReadStdOut);
+    if (errorCode != ErrorCode::NoError) {
+        return {};
+    }
+    const QString secret = stdOut.trimmed();
+    static const QRegularExpression hex32(QStringLiteral("^[0-9a-fA-F]{32}$"));
+    return hex32.match(secret).hasMatch() ? secret : QString();
 }
