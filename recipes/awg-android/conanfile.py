@@ -29,7 +29,7 @@ class AwgAndroid(ConanFile):
     def source(self):
         git = Git(self)
         git.clone(
-            url="https://github.com/Rampage-vpn/Rampagewg-android.git",
+            url="https://github.com/amnezia-vpn/amneziawg-android.git",
             target=".",
             args=["--recurse-submodules", "--branch", f"v{self.version}"]
         )

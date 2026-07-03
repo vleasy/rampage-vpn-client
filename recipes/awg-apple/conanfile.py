@@ -38,7 +38,7 @@ class AwgApple(ConanFile):
             )
 
     def source(self):
-        get(self, f"https://github.com/Rampage-vpn/Rampagewg-apple/archive/refs/tags/v{self.version}.zip",
+        get(self, f"https://github.com/amnezia-vpn/amneziawg-apple/archive/refs/tags/v{self.version}.zip",
             sha256="a04f49eac9f82bbf5dd9031bab188d44de2b3482efde1b6e970821de1d5a3c5d", strip_root=True
         )
 

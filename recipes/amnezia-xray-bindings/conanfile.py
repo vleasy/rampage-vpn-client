@@ -60,7 +60,7 @@ class RampageXrayBindings(ConanFile):
             )
 
     def source(self):
-        get(self, "https://github.com/Rampage-vpn/Rampage-xray-bindings/archive/v1.1.0.zip",
+        get(self, "https://github.com/amnezia-vpn/amnezia-xray-bindings/archive/v1.1.0.zip",
             sha256="6ea768ec7002cedd422a39aea17704b888acaf794432aa5937cfc92fb6d80eb5", strip_root=True)
 
     def generate(self):
