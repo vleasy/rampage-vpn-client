@@ -7,7 +7,7 @@
 #include <QDebug>
 #include <QQmlEngine>
 
-namespace amnezia {
+namespace rampage {
 
 using namespace rampage::ProtocolEnumNS;
 

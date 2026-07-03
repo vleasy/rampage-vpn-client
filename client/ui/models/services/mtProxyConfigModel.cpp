@@ -16,7 +16,7 @@
 #include <QtGlobal>
 #include <qqml.h>
 
-using namespace amnezia;
+using namespace rampage;
 
 MtProxyConfigModel::MtProxyConfigModel(QObject *parent) : QAbstractListModel(parent) {
     qmlRegisterType<PublicHostInputValidator>("MtProxyConfig", 1, 0, "PublicHostInputValidator");

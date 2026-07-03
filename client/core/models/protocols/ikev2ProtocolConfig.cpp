@@ -7,7 +7,7 @@
 #include "../../../core/utils/constants/configKeys.h"
 #include "../../../core/utils/constants/protocolConstants.h"
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 namespace amnezia
 {

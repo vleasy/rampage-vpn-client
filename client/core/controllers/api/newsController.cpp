@@ -11,7 +11,7 @@
 #include <QSet>
 #include <QSharedPointer>
 
-using namespace amnezia;
+using namespace rampage;
 
 NewsController::NewsController(SecureAppSettingsRepository *appSettingsRepository,
                                SecureServersRepository *serversRepository)

@@ -17,7 +17,7 @@
 #include "core/utils/serverConfigUtils.h"
 #include "secureQSettings.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 class SecureServersRepository : public QObject
 {

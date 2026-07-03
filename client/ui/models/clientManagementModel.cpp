@@ -4,7 +4,7 @@
 
 #include "core/utils/constants/configKeys.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 ClientManagementModel::ClientManagementModel(QObject *parent)
     : QAbstractListModel(parent)

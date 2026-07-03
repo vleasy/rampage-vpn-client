@@ -8,9 +8,9 @@
 
 #include <algorithm>
 
-using namespace amnezia;
+using namespace rampage;
 
-namespace amnezia {
+namespace rampage {
 
     QJsonObject MtProxyProtocolConfig::toJson() const {
         QJsonObject obj;

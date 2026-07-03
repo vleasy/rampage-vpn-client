@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  QT_MIRROR: https://mirrors.ocf.berkeley.edu/qt/
+  QT_MIRROR: https://download.qt.io/static/mirrorlist/qt/
   PROD_AGW_PUBLIC_KEY: ""
   PROD_S3_ENDPOINT: ""
   FALLBACK_S3_ENDPOINT: ""

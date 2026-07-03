@@ -19,7 +19,7 @@
 #include "core/models/protocols/ikev2ProtocolConfig.h"
 #include "core/models/protocols/torProtocolConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 InstallerBase::InstallerBase(QObject *parent)

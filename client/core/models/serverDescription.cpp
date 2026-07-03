@@ -11,7 +11,7 @@
 #include "core/protocols/protocolUtils.h"
 #include "core/models/protocols/awgProtocolConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace
 {

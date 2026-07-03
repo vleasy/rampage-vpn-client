@@ -10,7 +10,7 @@
 #include "core/utils/constants/apiKeys.h"
 #include "core/utils/constants/configKeys.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace {
 

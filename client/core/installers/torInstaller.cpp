@@ -10,7 +10,7 @@
 #include "core/utils/selfhosted/sshSession.h"
 #include "core/models/protocols/torProtocolConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 TorInstaller::TorInstaller(QObject *parent)

@@ -23,7 +23,7 @@
 class SshSession;
 class InstallController;
 
-using namespace amnezia;
+using namespace rampage;
 
 class ServersController : public QObject
 {

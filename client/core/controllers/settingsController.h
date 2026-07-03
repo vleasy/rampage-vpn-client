@@ -12,7 +12,7 @@
 #include "core/repositories/secureServersRepository.h"
 #include "core/repositories/secureAppSettingsRepository.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 class SettingsController : public QObject
 {

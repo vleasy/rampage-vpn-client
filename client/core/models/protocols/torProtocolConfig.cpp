@@ -2,7 +2,7 @@
 
 #include "core/utils/constants/configKeys.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace amnezia
 {

@@ -18,7 +18,7 @@
 
 #include "core/utils/api/apiUtils.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace {
 int rowForServerId(const QVector<ServerDescription> &descriptions, const QString &serverId)

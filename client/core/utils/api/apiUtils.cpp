@@ -7,7 +7,7 @@
 #include <QJsonObject>
 #include <QJsonValue>
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace
 {

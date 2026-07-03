@@ -28,7 +28,7 @@
 #include "core/utils/constants/protocolConstants.h"
 #include "core/utils/qrCodeUtils.h"
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 namespace

@@ -22,7 +22,7 @@
 #include "core/models/protocols/mtProxyProtocolConfig.h"
 #include "core/models/protocols/telemtProtocolConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 QString rampage::scriptFolder(rampage::DockerContainer container)

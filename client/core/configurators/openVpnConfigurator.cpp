@@ -26,7 +26,7 @@
 #include "core/utils/utilities.h"
 #include "core/models/protocols/openVpnProtocolConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 #include <openssl/pem.h>
 #include <openssl/rsa.h>

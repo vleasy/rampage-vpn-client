@@ -21,7 +21,7 @@
 class SshSession;
 class InstallerBase;
 
-using namespace amnezia;
+using namespace rampage;
 
 class InstallController : public QObject
 {

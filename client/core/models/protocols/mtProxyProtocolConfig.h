@@ -5,7 +5,7 @@
 #include <QString>
 #include <QStringList>
 
-namespace amnezia {
+namespace rampage {
 
     struct MtProxyProtocolConfig {
         QString port;

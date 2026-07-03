@@ -15,7 +15,7 @@
 #include "core/models/containerConfig.h"
 #include "core/models/protocolConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 ConnectionController::ConnectionController(SecureServersRepository* serversRepository,

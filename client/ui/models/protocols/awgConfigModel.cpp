@@ -8,7 +8,7 @@
 #include "core/utils/constants/protocolConstants.h"
 #include "core/models/protocols/awgProtocolConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 AwgConfigModel::AwgConfigModel(QObject *parent) : QAbstractListModel(parent)

@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QJsonDocument>
 
-using namespace amnezia;
+using namespace rampage;
 
 DockerContainer ContainerUtils::containerFromString(const QString &container)
 {

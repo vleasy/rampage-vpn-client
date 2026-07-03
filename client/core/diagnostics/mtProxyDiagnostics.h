@@ -5,7 +5,7 @@
 
 #include <QString>
 
-namespace amnezia {
+namespace rampage {
     struct MtProxyDiagnostics : ContainerDiagnostics {
         bool upstreamReachable = false;
         int clientsConnected = -1;

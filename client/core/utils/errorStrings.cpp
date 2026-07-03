@@ -1,6 +1,6 @@
 #include "errorStrings.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 QString errorString(ErrorCode code) {
     QString errorMessage;

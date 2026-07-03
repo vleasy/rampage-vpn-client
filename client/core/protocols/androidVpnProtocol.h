@@ -3,7 +3,7 @@
 
 #include "vpnProtocol.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 class AndroidVpnProtocol : public VpnProtocol
 {

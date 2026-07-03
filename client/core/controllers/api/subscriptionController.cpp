@@ -35,7 +35,7 @@
     #include <RampageVPN-Swift.h>
 #endif
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace
 {

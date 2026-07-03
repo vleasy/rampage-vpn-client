@@ -5,7 +5,7 @@
 
 #include "core/utils/errorCodes.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 QString errorString(ErrorCode code);
 

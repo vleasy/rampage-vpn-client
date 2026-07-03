@@ -6,7 +6,7 @@
 
 #include "core/protocols/vpnProtocol.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 class AndroidController : public QObject
 {

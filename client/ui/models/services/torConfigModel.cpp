@@ -7,7 +7,7 @@
 #include "core/models/containerConfig.h"
 #include "core/models/protocols/torProtocolConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 TorConfigModel::TorConfigModel(QObject *parent) : QAbstractListModel(parent)

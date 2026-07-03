@@ -28,7 +28,7 @@ namespace
     }
 }
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 XrayInstaller::XrayInstaller(QObject *parent)

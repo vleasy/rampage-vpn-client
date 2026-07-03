@@ -6,7 +6,7 @@
 #include "core/utils/constants/protocolConstants.h"
 #include "core/models/protocols/ikev2ProtocolConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 Ikev2ConfigModel::Ikev2ConfigModel(QObject *parent) : QAbstractListModel(parent)
 {

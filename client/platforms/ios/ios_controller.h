@@ -15,7 +15,7 @@
 @class NETunnelProviderManager;
 #endif
 
-using namespace amnezia;
+using namespace rampage;
 
 struct Action
 {

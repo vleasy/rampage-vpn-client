@@ -4,7 +4,7 @@
 #include <QJsonObject>
 #include <QObject>
 
-using namespace amnezia;
+using namespace rampage;
 
 QList<Proto> ProtocolUtils::allProtocols()
 {

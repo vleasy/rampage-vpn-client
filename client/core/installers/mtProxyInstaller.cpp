@@ -14,7 +14,7 @@
 
 #include <QtGlobal>
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace {
     constexpr QLatin1String kMtProxyClientJsonPath("/data/amnezia-mtproxy-client.json");

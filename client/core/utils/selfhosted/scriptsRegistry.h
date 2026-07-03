@@ -13,7 +13,7 @@
 #include "core/utils/protocolEnum.h"
 #include "core/models/containerConfig.h"
 
-namespace amnezia {
+namespace rampage {
 
 typedef QList<QPair<QString, QString>> ScriptVars;
 

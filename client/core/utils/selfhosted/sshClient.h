@@ -12,7 +12,7 @@
 #include "core/utils/routeModes.h"
 #include "core/utils/commonStructs.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace libssh {
     enum ScpOverwriteMode {

@@ -13,7 +13,7 @@
 #include "core/utils/containers/containerUtils.h"
 #include "core/utils/protocolEnum.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 class QTimer;
 

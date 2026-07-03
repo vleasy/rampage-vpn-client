@@ -15,7 +15,7 @@
 #include "core/utils/commonStructs.h"
 #include "secureQSettings.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 class SecureAppSettingsRepository : public QObject
 {

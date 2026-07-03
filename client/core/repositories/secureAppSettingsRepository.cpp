@@ -14,7 +14,7 @@
 #include "core/utils/constants/configKeys.h"
 #include "core/utils/networkUtilities.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace {
     constexpr char gatewayEndpoint[] = "http://gw.amnezia.org:80/";

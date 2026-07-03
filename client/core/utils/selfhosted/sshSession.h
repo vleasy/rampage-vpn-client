@@ -12,7 +12,7 @@
 #include "core/utils/commonStructs.h"
 #include "core/utils/selfhosted/sshClient.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 class SshSession : public QObject
 {

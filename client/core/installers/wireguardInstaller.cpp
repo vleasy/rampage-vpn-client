@@ -9,7 +9,7 @@
 #include "core/utils/constants/protocolConstants.h"
 #include "core/utils/selfhosted/sshSession.h"
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 WireguardInstaller::WireguardInstaller(QObject *parent)

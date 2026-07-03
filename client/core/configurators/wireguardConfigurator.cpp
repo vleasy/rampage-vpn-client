@@ -28,7 +28,7 @@
 #include "core/models/protocols/awgProtocolConfig.h"
 #include <QJsonArray>
 
-using namespace amnezia;
+using namespace rampage;
 
 WireguardConfigurator::WireguardConfigurator(SshSession* sshSession, bool isAwg,
                                              QObject *parent)

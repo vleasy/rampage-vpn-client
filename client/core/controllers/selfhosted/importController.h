@@ -26,7 +26,7 @@ namespace
     };
 }
 
-using namespace amnezia;
+using namespace rampage;
 
 class ImportController : public QObject
 {

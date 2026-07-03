@@ -16,7 +16,7 @@
 #include "core/utils/constants/protocolConstants.h"
 #include "core/models/containerConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace
 {

@@ -15,7 +15,7 @@
 #include "core/models/containerConfig.h"
 #include "core/models/protocolConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 ExportController::ExportController(SecureServersRepository* serversRepository,
                                    SecureAppSettingsRepository* appSettingsRepository,

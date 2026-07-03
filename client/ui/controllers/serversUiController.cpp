@@ -6,7 +6,7 @@
 #include "core/models/protocolConfig.h"
 #include "core/models/containerConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace {
 int rowForServerId(const QVector<ServerDescription> &list, const QString &serverId)

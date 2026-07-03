@@ -51,7 +51,7 @@
     #include <windows.h>
 #endif
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 namespace

@@ -9,7 +9,7 @@
 #include <QHostAddress>
 #include <QRegularExpression>
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 XrayConfigModel::XrayConfigModel(QObject* parent) : QAbstractListModel(parent)

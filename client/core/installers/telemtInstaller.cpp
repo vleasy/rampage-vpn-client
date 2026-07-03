@@ -13,7 +13,7 @@
 
 #include <QtGlobal>
 
-using namespace amnezia;
+using namespace rampage;
 
 namespace {
     constexpr QLatin1String kTelemtClientJsonPath("/data/amnezia-telemt-client.json");

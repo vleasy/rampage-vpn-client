@@ -23,7 +23,7 @@
 #include "core/protocols/androidVpnProtocol.h"
 #endif
 
-using namespace Rampage;
+using namespace rampage;
 
 class VpnConnection : public QObject
 {

@@ -17,7 +17,7 @@
 #include "core/utils/utilities.h"
 #include "core/models/protocols/awgProtocolConfig.h"
 
-using namespace amnezia;
+using namespace rampage;
 using namespace ProtocolUtils;
 
 AwgInstaller::AwgInstaller(QObject *parent)
