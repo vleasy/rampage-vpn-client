@@ -68,8 +68,8 @@ jobs:
       run: conan remote remove Rampage 2>$null; conan remote list
 
     - name: Configure CMake
-      shell: cmd
-      run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+      shell: pwsh
+      run: cmake -S . -B build
 
     - name: Build
       shell: cmd
