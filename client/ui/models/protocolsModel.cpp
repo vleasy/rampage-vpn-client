@@ -84,7 +84,7 @@ QVariant ProtocolsModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void ProtocolsModel::updateModel(const amnezia::ContainerConfig &containerConfig)
+void ProtocolsModel::updateModel(const rampage::ContainerConfig &containerConfig)
 {
     beginResetModel();
     m_containerConfig = containerConfig;

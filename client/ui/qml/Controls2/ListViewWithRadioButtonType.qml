@@ -81,8 +81,8 @@ ListViewType {
             indicator: Rectangle {
                 width: parent.width - 1
                 height: parent.height
-                color: radioButton.hovered ? AmneziaStyle.color.slateGray : AmneziaStyle.color.onyxBlack
-                border.color: radioButton.focus ? AmneziaStyle.color.paleGray : AmneziaStyle.color.transparent
+                color: radioButton.hovered ? RampageStyle.color.slateGray : RampageStyle.color.onyxBlack
+                border.color: radioButton.focus ? RampageStyle.color.paleGray : RampageStyle.color.transparent
                 border.width: radioButton.focus ? 1 : 0
 
                 Behavior on color {

@@ -98,8 +98,8 @@ Vpn::ConnectionState iosStatusToState(NEVPNStatus status) {
 namespace {
 constexpr int kHandshakeTimeoutMs = 12000;
 constexpr uint64_t kHandshakeRxThreshold = 4096;
-bool isWireGuardBasedProto(amnezia::Proto proto) {
-    return proto == amnezia::Proto::WireGuard || proto == amnezia::Proto::Awg;
+bool isWireGuardBasedProto(rampage::Proto proto) {
+    return proto == rampage::Proto::WireGuard || proto == rampage::Proto::Awg;
 }
 
 uint64_t uint64FromResponse(NSDictionary *response, NSString *key, uint64_t fallback = 0) {
@@ -214,7 +214,7 @@ bool IosController::initialize()
     return ok;
 }
 
-bool IosController::connectVpn(amnezia::Proto proto, const QJsonObject& configuration)
+bool IosController::connectVpn(rampage::Proto proto, const QJsonObject& configuration)
 {
     m_proto = proto;
     m_rawConfig = configuration;
@@ -295,19 +295,19 @@ bool IosController::connectVpn(amnezia::Proto proto, const QJsonObject& configur
             object:m_currentTunnel.connection];
 
 
-    if (proto == amnezia::Proto::OpenVpn) {
+    if (proto == rampage::Proto::OpenVpn) {
         return setupOpenVPN();
     }
-    if (proto == amnezia::Proto::WireGuard) {
+    if (proto == rampage::Proto::WireGuard) {
         return setupWireGuard();
     }
-    if (proto == amnezia::Proto::Awg) {
+    if (proto == rampage::Proto::Awg) {
         return setupAwg();
     }
-    if (proto == amnezia::Proto::Xray) {
+    if (proto == rampage::Proto::Xray) {
         return setupXray();
     }
-    if (proto == amnezia::Proto::SSXray) {
+    if (proto == rampage::Proto::SSXray) {
         return setupSSXray();
     }
 
@@ -524,7 +524,7 @@ void IosController::vpnConfigurationDidChange(void *pNotification)
 
 bool IosController::setupOpenVPN()
 {
-    QJsonObject ovpn = m_rawConfig[ProtocolUtils::key_proto_config_data(amnezia::Proto::OpenVpn)].toObject();
+    QJsonObject ovpn = m_rawConfig[ProtocolUtils::key_proto_config_data(rampage::Proto::OpenVpn)].toObject();
     QString ovpnConfig = ovpn[configKey::config].toString();
 
     QJsonObject openVPNConfig {};
@@ -554,7 +554,7 @@ bool IosController::setupOpenVPN()
 
 bool IosController::setupWireGuard()
 {
-    QJsonObject config = m_rawConfig[ProtocolUtils::key_proto_config_data(amnezia::Proto::WireGuard)].toObject();
+    QJsonObject config = m_rawConfig[ProtocolUtils::key_proto_config_data(rampage::Proto::WireGuard)].toObject();
 
     QJsonObject wgConfig {};
     wgConfig.insert(configKey::dns1, m_rawConfig[configKey::dns1]);
@@ -619,7 +619,7 @@ bool IosController::setupWireGuard()
 
 bool IosController::setupXray()
 {
-    QJsonObject config = m_rawConfig[ProtocolUtils::key_proto_config_data(amnezia::Proto::Xray)].toObject();
+    QJsonObject config = m_rawConfig[ProtocolUtils::key_proto_config_data(rampage::Proto::Xray)].toObject();
     QString xrayConfigStr = config.value(configKey::config).toString();
 
     QJsonObject finalConfig;
@@ -644,7 +644,7 @@ bool IosController::setupXray()
 
 bool IosController::setupSSXray()
 {
-    QJsonObject config = m_rawConfig[ProtocolUtils::key_proto_config_data(amnezia::Proto::SSXray)].toObject();
+    QJsonObject config = m_rawConfig[ProtocolUtils::key_proto_config_data(rampage::Proto::SSXray)].toObject();
     QString ssXrayConfigStr = config.value(configKey::config).toString();
 
     QJsonObject finalConfig;
@@ -660,7 +660,7 @@ bool IosController::setupSSXray()
 
 bool IosController::setupAwg()
 {
-    QJsonObject config = m_rawConfig[ProtocolUtils::key_proto_config_data(amnezia::Proto::Awg)].toObject();
+    QJsonObject config = m_rawConfig[ProtocolUtils::key_proto_config_data(rampage::Proto::Awg)].toObject();
 
     QJsonObject wgConfig {};
     wgConfig.insert(configKey::dns1, m_rawConfig[configKey::dns1]);

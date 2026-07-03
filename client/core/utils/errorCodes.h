@@ -123,6 +123,6 @@ namespace amnezia
     using ErrorCode = error_code_ns::ErrorCode;
 }
 
-Q_DECLARE_METATYPE(amnezia::ErrorCode)
+Q_DECLARE_METATYPE(rampage::ErrorCode)
 
 #endif // ERRORCODES_H

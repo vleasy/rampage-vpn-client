@@ -72,7 +72,7 @@ void IpSplitTunnelingUiController::toggleSplitTunneling(bool enabled)
 
 void IpSplitTunnelingUiController::setRouteMode(int routeMode)
 {
-    m_ipSplitTunnelingController->setRouteMode(static_cast<amnezia::RouteMode>(routeMode));
+    m_ipSplitTunnelingController->setRouteMode(static_cast<rampage::RouteMode>(routeMode));
     emit routeModeChanged();
 }
 

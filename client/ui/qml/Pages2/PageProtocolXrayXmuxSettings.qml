@@ -85,7 +85,7 @@ PageType {
                     Layout.topMargin: 24
                     Layout.bottomMargin: 8
                     text: qsTr("maxConcurrency")
-                    color: AmneziaStyle.color.mutedGray
+                    color: RampageStyle.color.mutedGray
                 }
                 MinMaxRowType {
                     Layout.fillWidth: true
@@ -106,7 +106,7 @@ PageType {
                     Layout.topMargin: 16
                     Layout.bottomMargin: 8
                     text: qsTr("maxConnections")
-                    color: AmneziaStyle.color.mutedGray
+                    color: RampageStyle.color.mutedGray
                 }
                 MinMaxRowType {
                     Layout.fillWidth: true
@@ -127,7 +127,7 @@ PageType {
                     Layout.topMargin: 16
                     Layout.bottomMargin: 8
                     text: qsTr("cMaxReuseTimes")
-                    color: AmneziaStyle.color.mutedGray
+                    color: RampageStyle.color.mutedGray
                 }
                 MinMaxRowType {
                     Layout.fillWidth: true
@@ -148,7 +148,7 @@ PageType {
                     Layout.topMargin: 16
                     Layout.bottomMargin: 8
                     text: qsTr("hMaxRequestTimes")
-                    color: AmneziaStyle.color.mutedGray
+                    color: RampageStyle.color.mutedGray
                 }
                 MinMaxRowType {
                     Layout.fillWidth: true
@@ -169,7 +169,7 @@ PageType {
                     Layout.topMargin: 16
                     Layout.bottomMargin: 8
                     text: qsTr("hMaxReusableSecs")
-                    color: AmneziaStyle.color.mutedGray
+                    color: RampageStyle.color.mutedGray
                 }
                 MinMaxRowType {
                     Layout.fillWidth: true

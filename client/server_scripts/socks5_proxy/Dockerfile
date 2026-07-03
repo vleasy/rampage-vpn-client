@@ -1,6 +1,6 @@
 FROM 3proxy/3proxy:0.9.5
 
-LABEL maintainer="AmneziaVPN" 
+LABEL maintainer="RampageVPN" 
 
 RUN mkdir -p /opt/amnezia
 RUN echo -e "#!/bin/bash\ntail -f /dev/null" > /opt/amnezia/start.sh

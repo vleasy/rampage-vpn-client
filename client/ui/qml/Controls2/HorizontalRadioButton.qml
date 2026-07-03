@@ -9,19 +9,19 @@ import "TextTypes"
 RadioButton {
     id: root
 
-    property string hoveredColor: AmneziaStyle.color.barelyTranslucentWhite
-    property string defaultColor: AmneziaStyle.color.transparent
-    property string checkedColor: AmneziaStyle.color.transparent
-    property string disabledColor: AmneziaStyle.color.transparent
+    property string hoveredColor: RampageStyle.color.barelyTranslucentWhite
+    property string defaultColor: RampageStyle.color.transparent
+    property string checkedColor: RampageStyle.color.transparent
+    property string disabledColor: RampageStyle.color.transparent
 
-    property string textColor: AmneziaStyle.color.paleGray
-    property string textDisabledColor: AmneziaStyle.color.mutedGray
+    property string textColor: RampageStyle.color.paleGray
+    property string textDisabledColor: RampageStyle.color.mutedGray
 
-    property string pressedBorderColor: AmneziaStyle.color.charcoalGray
-    property string checkedBorderColor: AmneziaStyle.color.goldenApricot
-    property string defaultBodredColor: AmneziaStyle.color.transparent
-    property string checkedDisabledBorderColor: AmneziaStyle.color.mutedBrown
-    property string borderFocusedColor: AmneziaStyle.color.paleGray
+    property string pressedBorderColor: RampageStyle.color.charcoalGray
+    property string checkedBorderColor: RampageStyle.color.goldenApricot
+    property string defaultBodredColor: RampageStyle.color.transparent
+    property string checkedDisabledBorderColor: RampageStyle.color.mutedBrown
+    property string borderFocusedColor: RampageStyle.color.paleGray
     property int borderWidth: 0
 
     implicitWidth: content.implicitWidth

@@ -49,7 +49,7 @@ public:
     virtual ~IosController() override = default;
 
     bool initialize();
-    bool connectVpn(amnezia::Proto proto, const QJsonObject &configuration);
+    bool connectVpn(rampage::Proto proto, const QJsonObject &configuration);
     void disconnectVpn();
 
     void vpnStatusDidChange(void *pNotification);
@@ -115,7 +115,7 @@ private:
     void sendVpnExtensionMessage(NSDictionary *message, std::function<void(NSDictionary *)> callback = nullptr);
 #endif
 
-    amnezia::Proto m_proto;
+    rampage::Proto m_proto;
     QJsonObject m_rawConfig;
     QString m_tunnelId;
     uint64_t m_txBytes = 0;

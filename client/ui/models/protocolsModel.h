@@ -37,7 +37,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 public slots:
-    void updateModel(const amnezia::ContainerConfig &containerConfig);
+    void updateModel(const rampage::ContainerConfig &containerConfig);
 
 protected:
     QHash<int, QByteArray> roleNames() const override;
@@ -49,7 +49,7 @@ private:
     QString getRawConfig() const;
     bool isClientProtocolExists() const;
 
-    amnezia::ContainerConfig m_containerConfig;
+    rampage::ContainerConfig m_containerConfig;
 };
 
 #endif // PROTOCOLS_MODEL_H

@@ -132,7 +132,7 @@ private:
     ContainersModel* m_containersModel;
     ContainersModel* m_defaultServerContainersModel;
 
-    QVector<amnezia::ServerDescription> m_orderedServerDescriptions;
+    QVector<rampage::ServerDescription> m_orderedServerDescriptions;
     
     QString m_processedServerId;
     int m_processedContainerIndex = -1;

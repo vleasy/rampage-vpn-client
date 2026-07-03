@@ -38,7 +38,7 @@ class AwgApple(ConanFile):
             )
 
     def source(self):
-        get(self, f"https://github.com/amnezia-vpn/amneziawg-apple/archive/refs/tags/v{self.version}.zip",
+        get(self, f"https://github.com/Rampage-vpn/Rampagewg-apple/archive/refs/tags/v{self.version}.zip",
             sha256="a04f49eac9f82bbf5dd9031bab188d44de2b3482efde1b6e970821de1d5a3c5d", strip_root=True
         )
 
@@ -62,5 +62,5 @@ class AwgApple(ConanFile):
         copy(self, "*.a", src=os.path.join(self.build_folder, "out"), dst=os.path.join(self.package_folder, "lib"))
 
     def package_info(self):
-        self.cpp_info.set_property("cmake_target_name", "amnezia::awg-apple")
+        self.cpp_info.set_property("cmake_target_name", "Rampage::awg-apple")
         self.cpp_info.libs = collect_libs(self)

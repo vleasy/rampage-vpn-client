@@ -8,13 +8,13 @@ Q_OBJECT
 public:
     explicit TelemtInstaller(QObject *parent = nullptr);
 
-    amnezia::ErrorCode
-    extractConfigFromContainer(amnezia::DockerContainer container, const amnezia::ServerCredentials &credentials,
-                               SshSession *sshSession, amnezia::ContainerConfig &config) override;
+    rampage::ErrorCode
+    extractConfigFromContainer(rampage::DockerContainer container, const rampage::ServerCredentials &credentials,
+                               SshSession *sshSession, rampage::ContainerConfig &config) override;
 
-    static void uploadClientSettingsSnapshot(SshSession &sshSession, const amnezia::ServerCredentials &credentials,
-                                             amnezia::DockerContainer container,
-                                             const amnezia::ContainerConfig &config);
+    static void uploadClientSettingsSnapshot(SshSession &sshSession, const rampage::ServerCredentials &credentials,
+                                             rampage::DockerContainer container,
+                                             const rampage::ContainerConfig &config);
 };
 
 #endif // TELEMTINSTALLER_H

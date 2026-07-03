@@ -9,7 +9,7 @@
 
 namespace amnezia {
 
-using namespace amnezia::ProtocolEnumNS;
+using namespace rampage::ProtocolEnumNS;
 
 void declareQmlProtocolEnum() {
     qmlRegisterUncreatableMetaObject(

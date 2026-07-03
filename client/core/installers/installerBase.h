@@ -18,12 +18,12 @@ class InstallerBase : public QObject
 public:
     explicit InstallerBase(QObject *parent = nullptr);
 
-    virtual amnezia::ContainerConfig generateConfig(amnezia::DockerContainer container, int port, amnezia::TransportProto transportProto);
+    virtual rampage::ContainerConfig generateConfig(rampage::DockerContainer container, int port, rampage::TransportProto transportProto);
 
-    virtual amnezia::ErrorCode extractConfigFromContainer(amnezia::DockerContainer container, const amnezia::ServerCredentials &credentials,
-                                                 SshSession* sshSession, amnezia::ContainerConfig &config);
+    virtual rampage::ErrorCode extractConfigFromContainer(rampage::DockerContainer container, const rampage::ServerCredentials &credentials,
+                                                 SshSession* sshSession, rampage::ContainerConfig &config);
 
-    amnezia::ContainerConfig createBaseConfig(amnezia::DockerContainer container, int port, amnezia::TransportProto transportProto);
+    rampage::ContainerConfig createBaseConfig(rampage::DockerContainer container, int port, rampage::TransportProto transportProto);
 
 protected:
 };

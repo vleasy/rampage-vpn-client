@@ -29,31 +29,31 @@ public:
         QString port;
     };
 
-    amnezia::ProtocolConfig createConfig(const amnezia::ServerCredentials &credentials, amnezia::DockerContainer container,
-                                const amnezia::ContainerConfig &containerConfig,
-                                const amnezia::DnsSettings &dnsSettings,
-                                amnezia::ErrorCode &errorCode) override;
+    rampage::ProtocolConfig createConfig(const rampage::ServerCredentials &credentials, rampage::DockerContainer container,
+                                const rampage::ContainerConfig &containerConfig,
+                                const rampage::DnsSettings &dnsSettings,
+                                rampage::ErrorCode &errorCode) override;
 
-    amnezia::ProtocolConfig processConfigWithLocalSettings(const amnezia::ConnectionSettings &settings,
-                                                           amnezia::ProtocolConfig protocolConfig) override;
-    amnezia::ProtocolConfig processConfigWithExportSettings(const amnezia::ExportSettings &settings,
-                                                            amnezia::ProtocolConfig protocolConfig) override;
+    rampage::ProtocolConfig processConfigWithLocalSettings(const rampage::ConnectionSettings &settings,
+                                                           rampage::ProtocolConfig protocolConfig) override;
+    rampage::ProtocolConfig processConfigWithExportSettings(const rampage::ExportSettings &settings,
+                                                            rampage::ProtocolConfig protocolConfig) override;
 
     static ConnectionData genClientKeys();
 
 private:
     QList<QHostAddress> getIpsFromConf(const QString &input);
-    ConnectionData prepareWireguardConfig(const amnezia::ServerCredentials &credentials, amnezia::DockerContainer container,
-                                          const amnezia::WireGuardServerConfig* serverConfig,
-                                          const amnezia::AwgServerConfig* awgServerConfig,
-                                          const amnezia::DnsSettings &dnsSettings,
-                                          amnezia::ErrorCode &errorCode);
+    ConnectionData prepareWireguardConfig(const rampage::ServerCredentials &credentials, rampage::DockerContainer container,
+                                          const rampage::WireGuardServerConfig* serverConfig,
+                                          const rampage::AwgServerConfig* awgServerConfig,
+                                          const rampage::DnsSettings &dnsSettings,
+                                          rampage::ErrorCode &errorCode);
 
     bool m_isAwg;
     QString m_serverConfigPath;
     QString m_serverPublicKeyPath;
     QString m_serverPskKeyPath;
-    amnezia::ProtocolScriptType m_configTemplate;
+    rampage::ProtocolScriptType m_configTemplate;
     QString m_protocolName;
     QString m_defaultPort;
 };

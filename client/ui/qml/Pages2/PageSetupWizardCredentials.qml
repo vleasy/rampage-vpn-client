@@ -92,9 +92,9 @@ PageType {
                 Layout.topMargin: 8
 
                 visible: title === qsTr("Password or SSH private key")
-                backGroundColor: AmneziaStyle.color.translucentWhite
+                backGroundColor: RampageStyle.color.translucentWhite
                 iconPath: "qrc:/images/controls/alert-circle.svg"
-                textString: qsTr("SSH key requirements: supported key types are ED25519 and RSA in PEM format. Paste the private key, including the BEGIN/END lines. If your key doesn’t work, generate a compatible one")
+                textString: qsTr("SSH key requirements: supported key types are ED25519 and RSA in PEM format. Paste the private key, including the BEGIN/END lines. If your key doesnвЂ™t work, generate a compatible one")
             }
         }
 
@@ -141,7 +141,7 @@ PageType {
                 Layout.rightMargin: 16
                 Layout.bottomMargin: 16
 
-                text: qsTr("All data you enter will remain strictly confidential and will not be shared or disclosed to the Amnezia or any third parties")
+                text: qsTr("All data you enter will remain strictly confidential and will not be shared or disclosed to the Rampage or any third parties")
             }
 
             CardWithIconsType {

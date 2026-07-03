@@ -22,7 +22,7 @@ XrayConfigSnapshot XrayConfigSnapshot::fromJson(const QJsonObject &json)
     s.id = json.value("id").toString();
     s.displayName = json.value("displayName").toString();
     s.createdAt = QDateTime::fromString(json.value("createdAt").toString(), Qt::ISODate);
-    s.serverConfig = amnezia::XrayServerConfig::fromJson(json.value("serverConfig").toObject());
+    s.serverConfig = rampage::XrayServerConfig::fromJson(json.value("serverConfig").toObject());
     return s;
 }
 
@@ -100,7 +100,7 @@ void XrayConfigSnapshotsModel::reload()
     endResetModel();
 }
 
-void XrayConfigSnapshotsModel::createFromCurrent(const amnezia::XrayServerConfig &serverConfig)
+void XrayConfigSnapshotsModel::createFromCurrent(const rampage::XrayServerConfig &serverConfig)
 {
     XrayConfigSnapshot snapshot;
     snapshot.id = QUuid::createUuid().toString(QUuid::WithoutBraces);
@@ -115,10 +115,10 @@ void XrayConfigSnapshotsModel::createFromCurrent(const amnezia::XrayServerConfig
     persistAll();
 }
 
-amnezia::XrayServerConfig XrayConfigSnapshotsModel::applyConfig(int index) const
+rampage::XrayServerConfig XrayConfigSnapshotsModel::applyConfig(int index) const
 {
     if (index < 0 || index >= m_configs.size()) {
-        return amnezia::XrayServerConfig {};
+        return rampage::XrayServerConfig {};
     }
 
     return m_configs.at(index).serverConfig;
@@ -171,7 +171,7 @@ bool XrayConfigSnapshotsModel::importFromJson(const QString &jsonString)
     return true;
 }
 
-QString XrayConfigSnapshotsModel::buildDisplayName(const amnezia::XrayServerConfig &cfg)
+QString XrayConfigSnapshotsModel::buildDisplayName(const rampage::XrayServerConfig &cfg)
 {
     // Build a human-readable name: "XHTTP TLS Reality", "RAW Reality", etc.
     QString transport;
@@ -208,7 +208,7 @@ void XrayConfigSnapshotsModel::applyConfigToCurrentModel(int index)
     if (!m_xrayConfigModel) {
         return;
     }
-    amnezia::XrayServerConfig cfg = applyConfig(index);
+    rampage::XrayServerConfig cfg = applyConfig(index);
     if (cfg.port.isEmpty()) {
         return; // guard against invalid index
     }

@@ -6,8 +6,8 @@ from conan.tools.gnu import Autotools, AutotoolsToolchain
 
 import os
 
-class AmneziaXrayBindings(ConanFile):
-    name = "amnezia-xray-bindings"
+class RampageXrayBindings(ConanFile):
+    name = "Rampage-xray-bindings"
     version = "1.1.0"
     settings = "os", "arch", "compiler"
 
@@ -60,13 +60,13 @@ class AmneziaXrayBindings(ConanFile):
             )
 
     def source(self):
-        get(self, "https://github.com/amnezia-vpn/amnezia-xray-bindings/archive/v1.1.0.zip",
+        get(self, "https://github.com/Rampage-vpn/Rampage-xray-bindings/archive/v1.1.0.zip",
             sha256="6ea768ec7002cedd422a39aea17704b888acaf794432aa5937cfc92fb6d80eb5", strip_root=True)
 
     def generate(self):
         tc = AutotoolsToolchain(self)
         tc.make_args = [
-            "LIB_ARC=libamnezia_xray.a"
+            "LIB_ARC=libRampage_xray.a"
         ]
         env = tc.environment()
         env.define("ARCH", self._goarch)
@@ -85,11 +85,11 @@ class AmneziaXrayBindings(ConanFile):
 
     def _rename_header(self):
         if not self._is_windows:
-            rename(self, os.path.join(self.package_folder, "include", "libamnezia_xray.h"),
-                    os.path.join(self.package_folder, "include", "amnezia_xray.h"))
+            rename(self, os.path.join(self.package_folder, "include", "libRampage_xray.h"),
+                    os.path.join(self.package_folder, "include", "Rampage_xray.h"))
 
     def _rename_libs(self):
-        # workaround of bad naming strategy in amnezia-xray-bindings
+        # workaround of bad naming strategy in Rampage-xray-bindings
         # TODO: change it and kick out the code below
         lib_dir = os.path.join(self.package_folder, "lib")
         for fname in os.listdir(lib_dir):
@@ -106,5 +106,5 @@ class AmneziaXrayBindings(ConanFile):
         self._rename_header()
 
     def package_info(self):
-        self.cpp_info.set_property("cmake_target_name", "amnezia::xray-bindings")
+        self.cpp_info.set_property("cmake_target_name", "Rampage::xray-bindings")
         self.cpp_info.libs = collect_libs(self)

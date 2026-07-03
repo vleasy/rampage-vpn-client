@@ -7,9 +7,9 @@ import org.amnezia.vpn.util.Log
 import org.amnezia.vpn.util.Prefs
 import org.qtproject.qt.android.bindings.QtApplication
 
-private const val TAG = "AmneziaApplication"
+private const val TAG = "RampageApplication"
 
-class AmneziaApplication : QtApplication(), CameraXConfig.Provider {
+class RampageApplication : QtApplication(), CameraXConfig.Provider {
 
     override fun onCreate() {
         super.onCreate()

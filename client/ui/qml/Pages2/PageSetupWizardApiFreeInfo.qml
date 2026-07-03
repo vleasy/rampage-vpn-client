@@ -72,7 +72,7 @@ PageType {
                 Layout.bottomMargin: 12
 
                 text: qsTr("Free features")
-                color: AmneziaStyle.color.mutedGray
+                color: RampageStyle.color.mutedGray
                 font.pixelSize: 13
             }
 

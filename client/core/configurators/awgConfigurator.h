@@ -11,10 +11,10 @@ class AwgConfigurator : public WireguardConfigurator
 public:
     AwgConfigurator(SshSession* sshSession, QObject *parent = nullptr);
 
-    amnezia::ProtocolConfig createConfig(const amnezia::ServerCredentials &credentials, amnezia::DockerContainer container,
-                                const amnezia::ContainerConfig &containerConfig,
-                                const amnezia::DnsSettings &dnsSettings,
-                                amnezia::ErrorCode &errorCode) override;
+    rampage::ProtocolConfig createConfig(const rampage::ServerCredentials &credentials, rampage::DockerContainer container,
+                                const rampage::ContainerConfig &containerConfig,
+                                const rampage::DnsSettings &dnsSettings,
+                                rampage::ErrorCode &errorCode) override;
 };
 
 #endif // AWGCONFIGURATOR_H

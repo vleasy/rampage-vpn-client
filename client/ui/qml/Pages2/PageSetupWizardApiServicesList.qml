@@ -49,7 +49,7 @@ PageType {
                 Layout.leftMargin: 16
                 Layout.bottomMargin: 24
 
-                headerText: qsTr("VPN by Amnezia")
+                headerText: qsTr("VPN by Rampage")
                 descriptionText: qsTr("Choose a VPN service that suits your needs.")
             }
         }
@@ -95,7 +95,7 @@ PageType {
                 onClicked: {
                     if (isServiceAvailable) {
                         ApiServicesModel.setServiceIndex(proxyApiServicesModel.mapToSource(index))
-                        if (ApiServicesModel.getSelectedServiceType() === "amnezia-premium") {
+                        if (ApiServicesModel.getSelectedServiceType() === "rampage-premium") {
                             PageController.goToPage(PageEnum.PageSetupWizardApiPremiumInfo)
                         } else {
                             PageController.goToPage(PageEnum.PageSetupWizardApiFreeInfo)

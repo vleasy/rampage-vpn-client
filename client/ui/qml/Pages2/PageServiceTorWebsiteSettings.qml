@@ -76,10 +76,10 @@ PageType {
                 descriptionText: site || ""
 
                 descriptionOnTop: true
-                textColor: AmneziaStyle.color.goldenApricot
+                textColor: RampageStyle.color.goldenApricot
 
                 rightImageSource: "qrc:/images/controls/copy.svg"
-                rightImageColor: AmneziaStyle.color.paleGray
+                rightImageColor: RampageStyle.color.paleGray
 
                 clickedFunction: function() {
                     GC.copyToClipBoard(descriptionText)

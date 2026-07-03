@@ -39,7 +39,7 @@ public:
     QVariant data(const int index, int role = Qt::DisplayRole) const;
 
 public slots:
-    void updateModel(const QVector<amnezia::ServerDescription> &descriptions,
+    void updateModel(const QVector<rampage::ServerDescription> &descriptions,
                      const QString &defaultServerId);
     void setDefaultServerId(const QString &serverId);
 
@@ -49,7 +49,7 @@ protected:
 private:
     ServerCredentials serverCredentials(int index) const;
 
-    QVector<amnezia::ServerDescription> m_descriptions;
+    QVector<rampage::ServerDescription> m_descriptions;
 
     QString m_defaultServerId;
 };

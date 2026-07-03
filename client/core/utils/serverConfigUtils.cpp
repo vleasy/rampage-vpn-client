@@ -12,16 +12,16 @@ namespace
 
 bool hasThirdPartyConfig(const QJsonObject &json)
 {
-    const QJsonArray containersArray = json.value(amnezia::configKey::containers).toArray();
+    const QJsonArray containersArray = json.value(rampage::configKey::containers).toArray();
     for (const QJsonValue &val : containersArray) {
         const QJsonObject containerObj = val.toObject();
         for (auto it = containerObj.begin(); it != containerObj.end(); ++it) {
-            if (it.key() == amnezia::configKey::container) {
+            if (it.key() == rampage::configKey::container) {
                 continue;
             }
             const QJsonObject protocolObj = it.value().toObject();
-            if (protocolObj.contains(amnezia::configKey::isThirdPartyConfig)
-                && protocolObj.value(amnezia::configKey::isThirdPartyConfig).toBool()) {
+            if (protocolObj.contains(rampage::configKey::isThirdPartyConfig)
+                && protocolObj.value(rampage::configKey::isThirdPartyConfig).toBool()) {
                 return true;
             }
         }
@@ -36,7 +36,7 @@ namespace serverConfigUtils
 
 bool isServerFromApi(const QJsonObject &serverConfigObject)
 {
-    const int configVersion = serverConfigObject.value(amnezia::configKey::configVersion).toInt();
+    const int configVersion = serverConfigObject.value(rampage::configKey::configVersion).toInt();
     switch (configVersion) {
     case ConfigSource::Telegram:
     case ConfigSource::AmneziaGateway:
@@ -48,12 +48,12 @@ bool isServerFromApi(const QJsonObject &serverConfigObject)
 
 ConfigSource getConfigSource(const QJsonObject &serverConfigObject)
 {
-    return static_cast<ConfigSource>(serverConfigObject.value(amnezia::configKey::configVersion).toInt());
+    return static_cast<ConfigSource>(serverConfigObject.value(rampage::configKey::configVersion).toInt());
 }
 
 ConfigType configTypeFromJson(const QJsonObject &serverConfigObject)
 {
-    const int configVersion = serverConfigObject.value(amnezia::configKey::configVersion).toInt();
+    const int configVersion = serverConfigObject.value(rampage::configKey::configVersion).toInt();
 
     switch (configVersion) {
     case ConfigSource::Telegram: {
@@ -97,8 +97,8 @@ ConfigType configTypeFromJson(const QJsonObject &serverConfigObject)
         return ConfigType::Native;
     }
 
-    const amnezia::SelfHostedAdminServerConfig adminProbe =
-            amnezia::SelfHostedAdminServerConfig::fromJson(serverConfigObject);
+    const rampage::SelfHostedAdminServerConfig adminProbe =
+            rampage::SelfHostedAdminServerConfig::fromJson(serverConfigObject);
     return adminProbe.hasCredentials() ? ConfigType::SelfHostedAdmin : ConfigType::SelfHostedUser;
 }
 

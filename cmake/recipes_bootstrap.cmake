@@ -13,5 +13,5 @@ foreach(RECIPE ${LOCAL_RECIPES})
 endforeach()
 
 execute_process(
-    COMMAND ${CONAN_COMMAND} remote add amnezia "https://artifactory.amnezia.org/artifactory/api/conan/client-prebuilts" --force
+    COMMAND ${CONAN_COMMAND} remote add Rampage "https://artifactory.Rampage.org/artifactory/api/conan/client-prebuilts" --force
 )

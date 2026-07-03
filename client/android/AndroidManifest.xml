@@ -29,7 +29,7 @@
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" tools:ignore="QueryAllPackagesPermission" />
 
     <application
-        android:name=".AmneziaApplication"
+        android:name=".RampageApplication"
         android:label="-- %%INSERT_APP_NAME%% --"
         android:icon="@mipmap/icon"
         android:roundIcon="@mipmap/icon_round"
@@ -41,7 +41,7 @@
         tools:targetApi="s">
 
         <activity
-            android:name=".AmneziaActivity"
+            android:name=".RampageActivity"
             android:configChanges="uiMode|screenSize|smallestScreenSize|screenLayout|orientation|density
                 |fontScale|layoutDirection|locale|keyboard|keyboardHidden|navigation|mcc|mnc"
             android:launchMode="singleInstance"
@@ -56,7 +56,7 @@
             </intent-filter>
 
             <intent-filter>
-                <action android:name="org.amnezia.vpn.IMPORT_CONFIG" />
+                <action android:name="org.Rampage.vpn.IMPORT_CONFIG" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
@@ -154,7 +154,7 @@
 
         <service
             android:name=".AwgService"
-            android:process=":amneziaAwgService"
+            android:process=":RampageAwgService"
             android:permission="android.permission.BIND_VPN_SERVICE"
             android:foregroundServiceType="systemExempted"
             android:exported="false"
@@ -167,7 +167,7 @@
 
         <service
             android:name=".OpenVpnService"
-            android:process=":amneziaOpenVpnService"
+            android:process=":RampageOpenVpnService"
             android:permission="android.permission.BIND_VPN_SERVICE"
             android:foregroundServiceType="systemExempted"
             android:exported="false"
@@ -180,7 +180,7 @@
 
         <service
             android:name=".XrayService"
-            android:process=":amneziaXrayService"
+            android:process=":RampageXrayService"
             android:permission="android.permission.BIND_VPN_SERVICE"
             android:foregroundServiceType="systemExempted"
             android:exported="false"
@@ -192,9 +192,9 @@
         </service>
 
         <service
-            android:name=".AmneziaTileService"
-            android:process=":amneziaTileService"
-            android:icon="@drawable/ic_amnezia_round"
+            android:name=".RampageTileService"
+            android:process=":RampageTileService"
+            android:icon="@drawable/ic_Rampage_round"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
             android:exported="true">
 
@@ -209,7 +209,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="org.amnezia.vpn.qtprovider"
+            android:authorities="org.Rampage.vpn.qtprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/qtprovider_paths" />

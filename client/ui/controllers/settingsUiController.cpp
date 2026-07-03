@@ -10,14 +10,14 @@
 #include "core/utils/commonStructs.h"
 #include "logger.h"
 #include "systemController.h"
-#include "amneziaApplication.h"
+#include "RampageApplication.h"
 #include "version.h"
 #ifdef Q_OS_ANDROID
     #include "platforms/android/android_controller.h"
 #endif
 
 #if defined(Q_OS_IOS) || defined(MACOS_NE)
-    #include <AmneziaVPN-Swift.h>
+    #include <RampageVPN-Swift.h>
 #endif
 
 SettingsUiController::SettingsUiController(SettingsController* settingsController,
@@ -81,7 +81,7 @@ void SettingsUiController::toggleLogging(bool enable)
 {
     m_settingsController->toggleLogging(enable);
 #if defined(Q_OS_IOS)
-    AmneziaVPN::toggleLogging(enable);
+    RampageVPN::toggleLogging(enable);
 #endif
     if (enable == true) {
         qInfo().noquote() << QString("Logging has enabled on %1 version %2 %3").arg(APPLICATION_NAME, APP_VERSION, GIT_COMMIT_HASH);
@@ -183,7 +183,7 @@ void SettingsUiController::clearSettings()
     emit changeSettingsFinished(tr("All settings have been reset to default values"));
 
 #if defined(Q_OS_IOS) || defined(MACOS_NE)
-    AmneziaVPN::clearSettings();
+    RampageVPN::clearSettings();
 #endif
 }
 

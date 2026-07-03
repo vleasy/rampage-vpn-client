@@ -16,45 +16,45 @@ class XrayConfigurator : public ConfiguratorBase
 public:
     XrayConfigurator(SshSession* sshSession, QObject *parent = nullptr);
 
-    amnezia::ProtocolConfig createConfig(const amnezia::ServerCredentials &credentials, amnezia::DockerContainer container, const amnezia::ContainerConfig &containerConfig,
-                                const amnezia::DnsSettings &dnsSettings,
-                                amnezia::ErrorCode &errorCode) override;
+    rampage::ProtocolConfig createConfig(const rampage::ServerCredentials &credentials, rampage::DockerContainer container, const rampage::ContainerConfig &containerConfig,
+                                const rampage::DnsSettings &dnsSettings,
+                                rampage::ErrorCode &errorCode) override;
 
-    amnezia::ProtocolConfig processConfigWithLocalSettings(const amnezia::ConnectionSettings &settings,
-                                                           amnezia::ProtocolConfig protocolConfig) override;
+    rampage::ProtocolConfig processConfigWithLocalSettings(const rampage::ConnectionSettings &settings,
+                                                           rampage::ProtocolConfig protocolConfig) override;
 
-    amnezia::ErrorCode applyServerSettingsToRemote(const amnezia::ServerCredentials &credentials,
-                                                   amnezia::DockerContainer container,
-                                                   amnezia::ContainerConfig &containerConfig,
-                                                   const amnezia::DnsSettings &dnsSettings,
+    rampage::ErrorCode applyServerSettingsToRemote(const rampage::ServerCredentials &credentials,
+                                                   rampage::DockerContainer container,
+                                                   rampage::ContainerConfig &containerConfig,
+                                                   const rampage::DnsSettings &dnsSettings,
                                                    bool appendNewClient,
                                                    QString *outClientId = nullptr);
 
 private:
-    QString prepareServerConfig(const amnezia::ServerCredentials &credentials, amnezia::DockerContainer container, const amnezia::ContainerConfig &containerConfig,
-                                const amnezia::DnsSettings &dnsSettings,
-                                amnezia::ErrorCode &errorCode);
+    QString prepareServerConfig(const rampage::ServerCredentials &credentials, rampage::DockerContainer container, const rampage::ContainerConfig &containerConfig,
+                                const rampage::DnsSettings &dnsSettings,
+                                rampage::ErrorCode &errorCode);
 
-    amnezia::ErrorCode uploadServerConfigJson(const amnezia::ServerCredentials &credentials, amnezia::DockerContainer container,
-                                              const amnezia::DnsSettings &dnsSettings, const QJsonObject &serverConfig) const;
+    rampage::ErrorCode uploadServerConfigJson(const rampage::ServerCredentials &credentials, rampage::DockerContainer container,
+                                              const rampage::DnsSettings &dnsSettings, const QJsonObject &serverConfig) const;
 
-    amnezia::XrayProtocolConfig buildClientProtocolConfig(const amnezia::ServerCredentials &credentials,
-                                                          amnezia::DockerContainer container,
-                                                          const amnezia::XrayServerConfig &srv,
+    rampage::XrayProtocolConfig buildClientProtocolConfig(const rampage::ServerCredentials &credentials,
+                                                          rampage::DockerContainer container,
+                                                          const rampage::XrayServerConfig &srv,
                                                           const QString &clientId,
-                                                          amnezia::ErrorCode &errorCode,
+                                                          rampage::ErrorCode &errorCode,
                                                           const QString &prefetchedRealityPublicKey = {},
                                                           const QString &prefetchedRealityShortId = {}) const;
 
-    amnezia::ErrorCode readRealityKeyFiles(amnezia::DockerContainer container,
-                                           const amnezia::ServerCredentials &credentials,
+    rampage::ErrorCode readRealityKeyFiles(rampage::DockerContainer container,
+                                           const rampage::ServerCredentials &credentials,
                                            QString &outPublicKey,
                                            QString &outShortId) const;
 
-    QJsonObject mergeStreamSettingsForServerInbound(const amnezia::XrayServerConfig &srv,
+    QJsonObject mergeStreamSettingsForServerInbound(const rampage::XrayServerConfig &srv,
                                                     const QJsonObject &existingStreamSettings) const;
 
-    QJsonObject buildStreamSettings(const amnezia::XrayServerConfig &srv,
+    QJsonObject buildStreamSettings(const rampage::XrayServerConfig &srv,
                                     const QString &clientId) const;
 };
 

@@ -16,8 +16,8 @@
 // along with the Private Internet Access Desktop Client.  If not, see
 // <https://www.gnu.org/licenses/>.
 
-// Copyright (c) 2024 AmneziaVPN
-// This file has been modified for AmneziaVPN
+// Copyright (c) 2024 RampageVPN
+// This file has been modified for RampageVPN
 //
 // This file is based on the work of the Private Internet Access Desktop Client.
 // The original code of the Private Internet Access Desktop Client is copyrighted (c) 2023 Private Internet Access, Inc. and licensed under GPL3.
@@ -284,7 +284,7 @@ void LinuxFirewall::install()
                                                         });
 
     installAnchor(Both, QStringLiteral("130.allowMarkedXray"), {
-                                                             QStringLiteral("-m mark --mark %1 -j ACCEPT").arg(amnezia::xray::xrayTrafficMark),
+                                                             QStringLiteral("-m mark --mark %1 -j ACCEPT").arg(rampage::xray::xrayTrafficMark),
                                                          });
 
     installAnchor(IPv4, QStringLiteral("120.blockNets"), {});

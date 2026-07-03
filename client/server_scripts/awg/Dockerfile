@@ -1,6 +1,6 @@
-FROM amneziavpn/amneziawg-go:latest
+FROM RampageVPN/amneziawg-go:latest
 
-LABEL maintainer="AmneziaVPN"
+LABEL maintainer="RampageVPN"
 
 #Install required packages
 RUN apk add --no-cache bash curl dumb-init

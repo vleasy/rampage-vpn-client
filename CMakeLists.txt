@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.25.0 FATAL_ERROR)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(PROJECT AmneziaVPN)
-set(AMNEZIAVPN_VERSION 4.9.0.3)
+set(PROJECT RampageVPN)
+set(RampageVPN_VERSION 4.9.0.3)
 
 set(QT_CREATOR_SKIP_PACKAGE_MANAGER_SETUP ON CACHE BOOL "" FORCE)
 set(CMAKE_PROJECT_TOP_LEVEL_INCLUDES
@@ -13,9 +13,9 @@ set(CMAKE_PROJECT_TOP_LEVEL_INCLUDES
     ${CMAKE_SOURCE_DIR}/cmake/conan_provider.cmake
     CACHE STRING "" FORCE)
 
-project(${PROJECT} VERSION ${AMNEZIAVPN_VERSION}
-        DESCRIPTION "AmneziaVPN"
-        HOMEPAGE_URL "https://amnezia.org/"
+project(${PROJECT} VERSION ${RampageVPN_VERSION}
+        DESCRIPTION "RampageVPN"
+        HOMEPAGE_URL ""
 )
 
 # trigger conan to kick off `conan install` globally

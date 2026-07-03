@@ -27,13 +27,13 @@ PageType {
     property bool isSelfHostedConfig: true
 
     property string configExtension: ".vpn"
-    property string configCaption: qsTr("Save AmneziaVPN config")
-    property string configFileName: "amnezia_config"
+    property string configCaption: qsTr("Save RampageVPN config")
+    property string configFileName: "rampage_config"
 
     // onVisibleChanged: {
     //     configExtension = ".vpn"
-    //     configCaption = qsTr("Save AmneziaVPN config")
-    //     configFileName = "amnezia_config"
+    //     configCaption = qsTr("Save RampageVPN config")
+    //     configFileName = "rampage_config"
 
     //     if (visible) {
     //         var serverName = ServersModel.getProcessedServerData("name") || ServersModel.getProcessedServerData("hostName") || "Server"
@@ -60,7 +60,7 @@ PageType {
         anchors.rightMargin: 16
 
         text: pageShareConnection.headerText
-        color: AmneziaStyle.color.paleGray
+        color: RampageStyle.color.paleGray
         font.pixelSize: 32
         font.weight: 700
         font.family: "PT Root UI VF"
@@ -120,11 +120,11 @@ PageType {
                 Layout.leftMargin: 16
                 Layout.rightMargin: 16
 
-                defaultColor: AmneziaStyle.color.transparent
-                hoveredColor: AmneziaStyle.color.translucentWhite
-                pressedColor: AmneziaStyle.color.sheerWhite
-                disabledColor: AmneziaStyle.color.mutedGray
-                textColor: AmneziaStyle.color.paleGray
+                defaultColor: RampageStyle.color.transparent
+                hoveredColor: RampageStyle.color.translucentWhite
+                pressedColor: RampageStyle.color.sheerWhite
+                disabledColor: RampageStyle.color.mutedGray
+                textColor: RampageStyle.color.paleGray
                 borderWidth: 1
 
                 text: pageShareConnection.copyButtonText
@@ -141,11 +141,11 @@ PageType {
                 Layout.leftMargin: 16
                 Layout.rightMargin: 16
                 visible: false
-                defaultColor: AmneziaStyle.color.transparent
-                hoveredColor: AmneziaStyle.color.translucentWhite
-                pressedColor: AmneziaStyle.color.sheerWhite
-                disabledColor: AmneziaStyle.color.mutedGray
-                textColor: AmneziaStyle.color.paleGray
+                defaultColor: RampageStyle.color.transparent
+                hoveredColor: RampageStyle.color.translucentWhite
+                pressedColor: RampageStyle.color.sheerWhite
+                disabledColor: RampageStyle.color.mutedGray
+                textColor: RampageStyle.color.paleGray
                 borderWidth: 1
                 text: qsTr("Copy config string")
                 leftImageSource: "qrc:/images/controls/copy.svg"
@@ -159,11 +159,11 @@ PageType {
                 Layout.leftMargin: 16
                 Layout.rightMargin: 16
                 visible: pageShareConnection.isSelfHostedConfig
-                defaultColor: AmneziaStyle.color.transparent
-                hoveredColor: AmneziaStyle.color.translucentWhite
-                pressedColor: AmneziaStyle.color.sheerWhite
-                disabledColor: AmneziaStyle.color.mutedGray
-                textColor: AmneziaStyle.color.paleGray
+                defaultColor: RampageStyle.color.transparent
+                hoveredColor: RampageStyle.color.translucentWhite
+                pressedColor: RampageStyle.color.sheerWhite
+                disabledColor: RampageStyle.color.mutedGray
+                textColor: RampageStyle.color.paleGray
                 borderWidth: 1
                 text: qsTr("Show connection settings")
                 clickedFunc: function() {
@@ -247,15 +247,15 @@ PageType {
                                 height: 24
                                 readOnly: true
                                 activeFocusOnTab: false
-                                color: AmneziaStyle.color.paleGray
-                                selectionColor:  AmneziaStyle.color.richBrown
-                                selectedTextColor: AmneziaStyle.color.paleGray
+                                color: RampageStyle.color.paleGray
+                                selectionColor:  RampageStyle.color.richBrown
+                                selectedTextColor: RampageStyle.color.paleGray
                                 font.pixelSize: 16
                                 font.weight: Font.Medium
                                 font.family: "PT Root UI VF"
                                 text: ExportController.config
                                 wrapMode: Text.Wrap
-                                background: Rectangle { color: AmneziaStyle.color.transparent }
+                                background: Rectangle { color: RampageStyle.color.transparent }
                             }
                         }
                     }
@@ -320,7 +320,7 @@ PageType {
                 Layout.rightMargin: 16
                 visible: isQrCodeVisible
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("To read the QR code in the Amnezia app, select \"Add server\" → \"I have data to connect\" → \"QR code, key or settings file\"")
+                text: qsTr("To read the QR code in the Rampage app, select \"Add server\" в†’ \"I have data to connect\" в†’ \"QR code, key or settings file\"")
             }
         }
     }

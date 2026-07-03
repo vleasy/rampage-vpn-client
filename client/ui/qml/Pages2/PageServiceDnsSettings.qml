@@ -48,7 +48,7 @@ PageType {
                 Layout.leftMargin: 16
                 Layout.bottomMargin: 24
 
-                headerText: "AmneziaDNS"
+                headerText: "RampageDNS"
                 descriptionText: qsTr("A DNS service is installed on your server, and it is only accessible via VPN.\n") +
                                  qsTr("The DNS address is the same as the address of your server. You can configure DNS in the settings, under the connections tab.")
             }
@@ -66,7 +66,7 @@ PageType {
                 Layout.rightMargin: 16
 
                 text: qsTr("Remove ") + ContainersModel.getProcessedContainerName()
-                textColor: AmneziaStyle.color.vibrantRed
+                textColor: RampageStyle.color.vibrantRed
 
                 clickedFunction: function() {
                     var headerText = qsTr("Remove %1 from server?").arg(ContainersModel.getProcessedContainerName())
@@ -75,8 +75,8 @@ PageType {
 
                     var yesButtonFunction = function() {
                         if (ServersUiController.isDefaultServerCurrentlyProcessed() && ConnectionController.isConnected
-                                && SettingsController.isAmneziaDnsEnabled()) {
-                            PageController.showNotificationMessage(qsTr("Cannot remove AmneziaDNS from running server"))
+                                && SettingsController.isRampageDnsEnabled()) {
+                            PageController.showNotificationMessage(qsTr("Cannot remove RampageDNS from running server"))
                         } else {
                             PageController.goToPage(PageEnum.PageDeinstalling)
                             InstallController.removeContainer(ServersUiController.processedServerId, ServersUiController.processedContainerIndex)

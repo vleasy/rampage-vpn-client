@@ -51,7 +51,7 @@ QVariant TorConfigModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void TorConfigModel::updateModel(amnezia::DockerContainer container, const amnezia::TorProtocolConfig &protocolConfig)
+void TorConfigModel::updateModel(rampage::DockerContainer container, const rampage::TorProtocolConfig &protocolConfig)
 {
     beginResetModel();
     m_container = container;
@@ -61,7 +61,7 @@ void TorConfigModel::updateModel(amnezia::DockerContainer container, const amnez
     endResetModel();
 }
 
-amnezia::TorProtocolConfig TorConfigModel::getProtocolConfig()
+rampage::TorProtocolConfig TorConfigModel::getProtocolConfig()
 {
     return m_protocolConfig;
 }

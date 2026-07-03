@@ -119,7 +119,7 @@
     <name>ApiPremV1MigrationDrawer</name>
     <message>
         <location filename="../ui/qml/Components/ApiPremV1MigrationDrawer.qml" line="53"/>
-        <source>Switch to the new Amnezia Premium subscription</source>
+        <source>Switch to the new Rampage Premium subscription</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -644,7 +644,7 @@ Already installed containers were found on the server. All installed containers 
     <message>
         <location filename="../ui/notificationhandler.cpp" line="57"/>
         <location filename="../ui/notificationhandler.cpp" line="64"/>
-        <source>AmneziaVPN</source>
+        <source>RampageVPN</source>
         <translation></translation>
     </message>
     <message>
@@ -659,8 +659,8 @@ Already installed containers were found on the server. All installed containers 
     </message>
     <message>
         <location filename="../ui/notificationhandler.cpp" line="88"/>
-        <source>AmneziaVPN notification</source>
-        <translation>AmneziaVPN 提示</translation>
+        <source>RampageVPN notification</source>
+        <translation>RampageVPN 提示</translation>
     </message>
     <message>
         <location filename="../ui/notificationhandler.cpp" line="89"/>
@@ -716,7 +716,7 @@ Already installed containers were found on the server. All installed containers 
     <name>PageHome</name>
     <message>
         <location filename="../ui/qml/Pages2/PageHome.qml" line="58"/>
-        <source>You&apos;ve successfully switched to the new Amnezia Premium subscription!</source>
+        <source>You&apos;ve successfully switched to the new Rampage Premium subscription!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -769,8 +769,8 @@ Thank you for staying with us!</source>
     <name>PageProtocolAwgClientSettings</name>
     <message>
         <location filename="../ui/qml/Pages2/PageProtocolAwgClientSettings.qml" line="55"/>
-        <source>AmneziaWG settings</source>
-        <translation type="unfinished">AmneziaWG 配置</translation>
+        <source>RampageWG settings</source>
+        <translation type="unfinished">RampageWG 配置</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageProtocolAwgClientSettings.qml" line="79"/>
@@ -847,8 +847,8 @@ Thank you for staying with us!</source>
     <name>PageProtocolAwgSettings</name>
     <message>
         <location filename="../ui/qml/Pages2/PageProtocolAwgSettings.qml" line="67"/>
-        <source>AmneziaWG settings</source>
-        <translation>AmneziaWG 配置</translation>
+        <source>RampageWG settings</source>
+        <translation>RampageWG 配置</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageProtocolAwgSettings.qml" line="107"/>
@@ -856,12 +856,12 @@ Thank you for staying with us!</source>
         <translation>端口</translation>
     </message>
     <message>
-        <source>Remove AmneziaWG</source>
-        <translation type="vanished">移除AmneziaWG</translation>
+        <source>Remove RampageWG</source>
+        <translation type="vanished">移除RampageWG</translation>
     </message>
     <message>
-        <source>Remove AmneziaWG from server?</source>
-        <translation type="vanished">从服务上移除AmneziaWG？</translation>
+        <source>Remove RampageWG from server?</source>
+        <translation type="vanished">从服务上移除RampageWG？</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageProtocolAwgSettings.qml" line="551"/>
@@ -1538,7 +1538,7 @@ Thank you for staying with us!</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageServiceDnsSettings.qml" line="78"/>
-        <source>Cannot remove AmneziaDNS from running server</source>
+        <source>Cannot remove RampageDNS from running server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1798,7 +1798,7 @@ Thank you for staying with us!</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettings.qml" line="177"/>
-        <source>About AmneziaVPN</source>
+        <source>About RampageVPN</source>
         <translation>关于</translation>
     </message>
     <message>
@@ -1822,13 +1822,13 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="61"/>
-        <source>Support Amnezia</source>
-        <translation>支持Amnezia</translation>
+        <source>Support Rampage</source>
+        <translation>支持Rampage</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="76"/>
-        <source>Amnezia is a free and open-source application. You can support the developers if you like it.</source>
-        <translation>Amnezia 是一款免费的开源应用程序。 如果您喜欢的话可以支持开发者。</translation>
+        <source>Rampage is a free and open-source application. You can support the developers if you like it.</source>
+        <translation>Rampage 是一款免费的开源应用程序。 如果您喜欢的话可以支持开发者。</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="86"/>
@@ -1847,7 +1847,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="193"/>
-        <source>https://t.me/amnezia_vpn_en</source>
+        <source>https://t.me/Rampage_vpn_en</source>
         <translation></translation>
     </message>
     <message>
@@ -1856,7 +1856,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="200"/>
-        <source>support@amnezia.org</source>
+        <source>support@Rampage.org</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1866,7 +1866,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="204"/>
-        <source>mailto:support@amnezia.org</source>
+        <source>mailto:support@Rampage.org</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1881,8 +1881,8 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="215"/>
-        <source>https://github.com/amnezia-vpn/amnezia-client</source>
-        <translation>https://github.com/amnezia-vpn/amnezia-client</translation>
+        <source>https://github.com/Rampage-vpn/Rampage-client</source>
+        <translation>https://github.com/Rampage-vpn/Rampage-client</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsAbout.qml" line="222"/>
@@ -2025,17 +2025,17 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApiInstructions.qml" line="23"/>
-        <source>documentation/instructions/connect-amnezia-premium#windows</source>
+        <source>documentation/instructions/connect-Rampage-premium#windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApiInstructions.qml" line="30"/>
-        <source>documentation/instructions/connect-amnezia-premium#macos</source>
+        <source>documentation/instructions/connect-Rampage-premium#macos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApiInstructions.qml" line="37"/>
-        <source>documentation/instructions/connect-amnezia-premium#android</source>
+        <source>documentation/instructions/connect-Rampage-premium#android</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2045,17 +2045,17 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApiInstructions.qml" line="51"/>
-        <source>documentation/instructions/connect-amnezia-premium#ios</source>
+        <source>documentation/instructions/connect-Rampage-premium#ios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApiInstructions.qml" line="58"/>
-        <source>documentation/instructions/connect-amnezia-premium#linux</source>
+        <source>documentation/instructions/connect-Rampage-premium#linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApiInstructions.qml" line="65"/>
-        <source>documentation/instructions/connect-amnezia-premium#routers</source>
+        <source>documentation/instructions/connect-Rampage-premium#routers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2065,7 +2065,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApiInstructions.qml" line="102"/>
-        <source>Setup guides on the Amnezia website</source>
+        <source>Setup guides on the Rampage website</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2073,7 +2073,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     <name>PageSettingsApiNativeConfigs</name>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApiNativeConfigs.qml" line="23"/>
-        <source>Save AmneziaVPN config</source>
+        <source>Save RampageVPN config</source>
         <translation type="unfinished">保存配置</translation>
     </message>
     <message>
@@ -2083,7 +2083,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApiNativeConfigs.qml" line="61"/>
-        <source>For router setup or the AmneziaWG app</source>
+        <source>For router setup or the RampageWG app</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2303,7 +2303,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApiSubscriptionKey.qml" line="113"/>
-        <source>Save AmneziaVPN config</source>
+        <source>Save RampageVPN config</source>
         <translation type="unfinished">保存配置</translation>
     </message>
     <message>
@@ -2318,7 +2318,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApiSubscriptionKey.qml" line="180"/>
-        <source>To read the QR code in the Amnezia app, tap + in the main menu → &apos;QR code&apos;</source>
+        <source>To read the QR code in the Rampage app, tap + in the main menu → &apos;QR code&apos;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2524,8 +2524,8 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="220"/>
-        <source>All settings will be reset to default. All installed AmneziaVPN services will still remain on the server.</source>
-        <translation>所有配置恢复为默认值。服务器已安装的AmneziaVPN服务将被保留。</translation>
+        <source>All settings will be reset to default. All installed RampageVPN services will still remain on the server.</source>
+        <translation>所有配置恢复为默认值。服务器已安装的RampageVPN服务将被保留。</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="221"/>
@@ -2566,8 +2566,8 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsBackup.qml" line="90"/>
-        <source>The backup will contain your passwords and private keys for all servers added to AmneziaVPN. Keep this information in a secure place.</source>
-        <translation>备份将包含您添加到 AmneziaVPN 的所有服务器的密码和私钥。请将这些信息保存在安全的地方。</translation>
+        <source>The backup will contain your passwords and private keys for all servers added to RampageVPN. Keep this information in a secure place.</source>
+        <translation>备份将包含您添加到 RampageVPN 的所有服务器的密码和私钥。请将这些信息保存在安全的地方。</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsBackup.qml" line="104"/>
@@ -2635,8 +2635,8 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsConnection.qml" line="84"/>
-        <source>When AmneziaDNS is not used or installed</source>
-        <translation>当未使用或未安装AmneziaDNS时</translation>
+        <source>When RampageDNS is not used or installed</source>
+        <translation>当未使用或未安装RampageDNS时</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsConnection.qml" line="124"/>
@@ -2654,18 +2654,18 @@ And if you don&apos;t like the app, all the more support it - the donation will 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Use AmneziaDNS if installed on the server</source>
-        <translation type="obsolete">使用AmneziaDNS，如其已安装在服务器上</translation>
+        <source>Use RampageDNS if installed on the server</source>
+        <translation type="obsolete">使用RampageDNS，如其已安装在服务器上</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsConnection.qml" line="65"/>
-        <source>Use AmneziaDNS</source>
-        <translation>使用AmneziaDNS</translation>
+        <source>Use RampageDNS</source>
+        <translation>使用RampageDNS</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsConnection.qml" line="66"/>
-        <source>If AmneziaDNS is installed on the server</source>
-        <translation>如果已在服务器安装AmneziaDNS</translation>
+        <source>If RampageDNS is installed on the server</source>
+        <translation>如果已在服务器安装RampageDNS</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsConnection.qml" line="83"/>
@@ -2673,8 +2673,8 @@ And if you don&apos;t like the app, all the more support it - the donation will 
         <translation>DNS服务器</translation>
     </message>
     <message>
-        <source>If AmneziaDNS is not used or installed</source>
-        <translation type="vanished">如果未使用或未安装AmneziaDNS</translation>
+        <source>If RampageDNS is not used or installed</source>
+        <translation type="vanished">如果未使用或未安装RampageDNS</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsConnection.qml" line="99"/>
@@ -2722,8 +2722,8 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsDns.qml" line="67"/>
-        <source>If AmneziaDNS is not used or installed</source>
-        <translation>如果未使用或未安装AmneziaDNS</translation>
+        <source>If RampageDNS is not used or installed</source>
+        <translation>如果未使用或未安装RampageDNS</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsDns.qml" line="84"/>
@@ -2994,7 +2994,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsLogging.qml" line="182"/>
-        <source>AmneziaVPN logs</source>
+        <source>RampageVPN logs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3014,7 +3014,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsLogging.qml" line="211"/>
-        <source>AmneziaVPN-service logs</source>
+        <source>RampageVPN-service logs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3044,8 +3044,8 @@ And if you don&apos;t like the app, all the more support it - the donation will 
         <translation>未发现新安装的容器</translation>
     </message>
     <message>
-        <source>Clear Amnezia cache</source>
-        <translation type="vanished">清除 Amnezia 缓存</translation>
+        <source>Clear Rampage cache</source>
+        <translation type="vanished">清除 Rampage 缓存</translation>
     </message>
     <message>
         <source>May be needed when changing other settings</source>
@@ -3062,8 +3062,8 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsServerData.qml" line="189"/>
-        <source>Do you want to clear server from Amnezia software?</source>
-        <translation>您要清除服务器上的Amnezia软件吗？</translation>
+        <source>Do you want to clear server from Rampage software?</source>
+        <translation>您要清除服务器上的Rampage软件吗？</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsServerData.qml" line="131"/>
@@ -3083,8 +3083,8 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsServerData.qml" line="111"/>
-        <source>Check the server for previously installed Amnezia services</source>
-        <translation>检查服务器上，是否存在之前安装的 Amnezia 服务</translation>
+        <source>Check the server for previously installed Rampage services</source>
+        <translation>检查服务器上，是否存在之前安装的 Rampage 服务</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsServerData.qml" line="112"/>
@@ -3128,7 +3128,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsServerData.qml" line="196"/>
-        <source>Cannot clear server from Amnezia software during active connection</source>
+        <source>Cannot clear server from Rampage software during active connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3148,7 +3148,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsServerData.qml" line="244"/>
-        <source>Switch to the new Amnezia Premium subscription</source>
+        <source>Switch to the new Rampage Premium subscription</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3157,17 +3157,17 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsServerData.qml" line="160"/>
-        <source>All installed AmneziaVPN services will still remain on the server.</source>
-        <translation>所有已安装的 AmneziaVPN 服务仍将保留在服务器上。</translation>
+        <source>All installed RampageVPN services will still remain on the server.</source>
+        <translation>所有已安装的 RampageVPN 服务仍将保留在服务器上。</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSettingsServerData.qml" line="185"/>
-        <source>Clear server from Amnezia software</source>
-        <translation>清理Amnezia中服务器信息</translation>
+        <source>Clear server from Rampage software</source>
+        <translation>清理Rampage中服务器信息</translation>
     </message>
     <message>
-        <source>Clear server from Amnezia software?</source>
-        <translation type="vanished">清理Amnezia中服务器信息</translation>
+        <source>Clear server from Rampage software?</source>
+        <translation type="vanished">清理Rampage中服务器信息</translation>
     </message>
     <message>
         <source>All containers will be deleted on the server. This means that configuration files, keys and certificates will be deleted.</source>
@@ -3482,7 +3482,7 @@ And if you don&apos;t like the app, all the more support it - the donation will 
     <name>PageSetupWizardApiServicesList</name>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardApiServicesList.qml" line="52"/>
-        <source>VPN by Amnezia</source>
+        <source>VPN by Rampage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3588,17 +3588,17 @@ It&apos;s okay as long as it&apos;s from someone you trust.</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardConfigSource.qml" line="253"/>
-        <source>Site Amnezia</source>
+        <source>Site Rampage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardConfigSource.qml" line="277"/>
-        <source>VPN by Amnezia</source>
+        <source>VPN by Rampage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardConfigSource.qml" line="278"/>
-        <source>Connect to classic paid and free VPN services from Amnezia</source>
+        <source>Connect to classic paid and free VPN services from Rampage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3608,7 +3608,7 @@ It&apos;s okay as long as it&apos;s from someone you trust.</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardConfigSource.qml" line="295"/>
-        <source>Configure Amnezia VPN on your own server</source>
+        <source>Configure Rampage VPN on your own server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3696,14 +3696,14 @@ It&apos;s okay as long as it&apos;s from someone you trust.</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardCredentials.qml" line="132"/>
-        <source>All data you enter will remain strictly confidential and will not be shared or disclosed to the Amnezia or any third parties</source>
-        <translation>您输入的所有数据将严格保密，不会与 Amnezia 或任何第三方共享或披露</translation>
+        <source>All data you enter will remain strictly confidential and will not be shared or disclosed to the Rampage or any third parties</source>
+        <translation>您输入的所有数据将严格保密，不会与 Rampage 或任何第三方共享或披露</translation>
     </message>
     <message>
         <source>All data you enter will remain strictly confidential
-and will not be shared or disclosed to the Amnezia or any third parties</source>
+and will not be shared or disclosed to the Rampage or any third parties</source>
         <translation type="vanished">您输入的所有数据将严格保密
-不会向 Amnezia 或任何第三方分享或披露</translation>
+不会向 Rampage 或任何第三方分享或披露</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardCredentials.qml" line="195"/>
@@ -3811,13 +3811,13 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardInstalling.qml" line="69"/>
-        <source>Amnezia has detected that your server is currently </source>
-        <translation>Amnezia 检测到您的服务器当前</translation>
+        <source>Rampage has detected that your server is currently </source>
+        <translation>Rampage 检测到您的服务器当前</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardInstalling.qml" line="70"/>
-        <source>busy installing other software. Amnezia installation </source>
-        <translation>正安装其他软件。Amnezia安装</translation>
+        <source>busy installing other software. Rampage installation </source>
+        <translation>正安装其他软件。Rampage安装</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardInstalling.qml" line="156"/>
@@ -3826,11 +3826,11 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <source>Amnesia has detected that your server is currently </source>
-        <translation type="vanished">Amnezia 检测到您的服务器当前</translation>
+        <translation type="vanished">Rampage 检测到您的服务器当前</translation>
     </message>
     <message>
         <source>busy installing other software. Amnesia installation </source>
-        <translation type="vanished">正安装其他软件。Amnezia安装</translation>
+        <translation type="vanished">正安装其他软件。Rampage安装</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageSetupWizardInstalling.qml" line="71"/>
@@ -4009,8 +4009,8 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageShare.qml" line="71"/>
-        <source>Save AmneziaWG config</source>
-        <translation>保存 AmneziaWG 配置</translation>
+        <source>Save RampageWG config</source>
+        <translation>保存 RampageWG 配置</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageShare.qml" line="78"/>
@@ -4029,8 +4029,8 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageShare.qml" line="120"/>
-        <source>For the AmneziaVPN app</source>
-        <translation>AmneziaVPN 应用</translation>
+        <source>For the RampageVPN app</source>
+        <translation>RampageVPN 应用</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageShare.qml" line="125"/>
@@ -4044,8 +4044,8 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageShare.qml" line="135"/>
-        <source>AmneziaWG native format</source>
-        <translation>AmneziaWG 本地格式</translation>
+        <source>RampageWG native format</source>
+        <translation>RampageWG 本地格式</translation>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageShare.qml" line="140"/>
@@ -4240,7 +4240,7 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageShare.qml" line="50"/>
-        <source>Save AmneziaVPN config</source>
+        <source>Save RampageVPN config</source>
         <translation type="unfinished">保存配置</translation>
     </message>
     <message>
@@ -4275,7 +4275,7 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageShareConnection.qml" line="30"/>
-        <source>Save AmneziaVPN config</source>
+        <source>Save RampageVPN config</source>
         <translation type="unfinished">保存配置</translation>
     </message>
     <message>
@@ -4296,8 +4296,8 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <location filename="../ui/qml/Pages2/PageShareConnection.qml" line="323"/>
-        <source>To read the QR code in the Amnezia app, select &quot;Add server&quot; → &quot;I have data to connect&quot; → &quot;QR code, key or settings file&quot;</source>
-        <translation type="unfinished">要应用二维码到 Amnezia，请底部工具栏点击“+”→“连接方式”→“二维码、授权码或配置文件”</translation>
+        <source>To read the QR code in the Rampage app, select &quot;Add server&quot; → &quot;I have data to connect&quot; → &quot;QR code, key or settings file&quot;</source>
+        <translation type="unfinished">要应用二维码到 Rampage，请底部工具栏点击“+”→“连接方式”→“二维码、授权码或配置文件”</translation>
     </message>
 </context>
 <context>
@@ -4896,7 +4896,7 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <location filename="../core/errorstrings.cpp" line="80"/>
-        <source>Your Amnezia Premium subscription has expired.
+        <source>Your Rampage Premium subscription has expired.
  Please check your email for renewal instructions.
  If you haven&apos;t received an email, please contact our support.</source>
         <translation type="unfinished"></translation>
@@ -4972,8 +4972,8 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <location filename="../core/errorstrings.cpp" line="52"/>
-        <source>Amnezia helper service error</source>
-        <translation>Amnezia 服务连接失败</translation>
+        <source>Rampage helper service error</source>
+        <translation>Rampage 服务连接失败</translation>
     </message>
     <message>
         <location filename="../core/errorstrings.cpp" line="53"/>
@@ -5022,8 +5022,8 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <location filename="../containers/containers_defs.cpp" line="111"/>
-        <source>AmneziaDNS</source>
-        <translation>AmneziaDNS</translation>
+        <source>RampageDNS</source>
+        <translation>RampageDNS</translation>
     </message>
     <message>
         <location filename="../containers/containers_defs.cpp" line="112"/>
@@ -5052,7 +5052,7 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
     </message>
     <message>
         <location filename="../containers/containers_defs.cpp" line="132"/>
-        <source>AmneziaWG is a special protocol from Amnezia based on WireGuard. It provides high connection speed and ensures stable operation even in the most challenging network conditions.</source>
+        <source>RampageWG is a special protocol from Rampage based on WireGuard. It provides high connection speed and ensures stable operation even in the most challenging network conditions.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5079,7 +5079,7 @@ and will not be shared or disclosed to the Amnezia or any third parties</source>
         <source>OpenVPN is one of the most popular and reliable VPN protocols. It uses SSL/TLS encryption, supports a wide variety of devices and operating systems, and is continuously improved by the community due to its open-source nature. It provides a good balance between speed and security but is easily recognized by DPI systems, making it susceptible to blocking.
 
 Features:
-* Available on all AmneziaVPN platforms
+* Available on all RampageVPN platforms
 * Normal battery consumption on mobile devices
 * Flexible customization for various devices and OS
 * Operates over both TCP and UDP protocols</source>
@@ -5087,10 +5087,10 @@ Features:
     </message>
     <message>
         <location filename="../containers/containers_defs.cpp" line="165"/>
-        <source>Shadowsocks is based on the SOCKS5 protocol and encrypts connections using AEAD cipher. Although designed to be discreet, it doesn&apos;t mimic a standard HTTPS connection and can be detected by some DPI systems. Due to limited support in Amnezia, we recommend using the AmneziaWG protocol.
+        <source>Shadowsocks is based on the SOCKS5 protocol and encrypts connections using AEAD cipher. Although designed to be discreet, it doesn&apos;t mimic a standard HTTPS connection and can be detected by some DPI systems. Due to limited support in Rampage, we recommend using the RampageWG protocol.
 
 Features:
-* Available in AmneziaVPN only on desktop platforms
+* Available in RampageVPN only on desktop platforms
 * Customizable encryption protocol
 * Detectable by some DPI systems
 * Operates over TCP protocol
@@ -5108,7 +5108,7 @@ The Cloak plugin further protects the connection from DPI detection. It modifies
 In regions with heavy internet censorship, we strongly recommend using OpenVPN with Cloak from your first connection.
 
 Features:
-* Available on all AmneziaVPN platforms
+* Available on all RampageVPN platforms
 * High power consumption on mobile devices
 * Flexible configuration options
 * Undetectable by DPI systems
@@ -5120,7 +5120,7 @@ Features:
         <source>WireGuard is a modern, streamlined VPN protocol offering stable connectivity and excellent performance across all devices. It uses fixed encryption settings, delivering lower latency and higher data transfer speeds compared to OpenVPN. However, WireGuard is easily identifiable by DPI systems due to its distinctive packet signatures, making it susceptible to blocking.
 
 Features:
-* Available on all AmneziaVPN platforms
+* Available on all RampageVPN platforms
 * Low power consumption on mobile devices
 * Minimal configuration required
 * Easily detected by DPI systems (susceptible to blocking)
@@ -5129,12 +5129,12 @@ Features:
     </message>
     <message>
         <location filename="../containers/containers_defs.cpp" line="197"/>
-        <source>AmneziaWG is a modern VPN protocol based on WireGuard, combining simplified architecture with high performance across all devices. It addresses WireGuard&apos;s main vulnerability (easy detection by DPI systems) through advanced obfuscation techniques, making VPN traffic indistinguishable from regular internet traffic.
+        <source>RampageWG is a modern VPN protocol based on WireGuard, combining simplified architecture with high performance across all devices. It addresses WireGuard&apos;s main vulnerability (easy detection by DPI systems) through advanced obfuscation techniques, making VPN traffic indistinguishable from regular internet traffic.
 
-AmneziaWG is an excellent choice for those seeking a fast, stealthy VPN connection.
+RampageWG is an excellent choice for those seeking a fast, stealthy VPN connection.
 
 Features:
-* Available on all AmneziaVPN platforms
+* Available on all RampageVPN platforms
 * Low battery consumption on mobile devices
 * Minimal settings required
 * Undetectable by traffic analysis systems (DPI)
@@ -5159,7 +5159,7 @@ Features:
         <source>IKEv2, combined with IPSec encryption, is a modern and reliable VPN protocol. It reconnects quickly when switching networks or devices, making it ideal for dynamic network environments. While it provides good security and speed, it&apos;s easily recognized by DPI systems and susceptible to blocking.
 
 Features:
-* Available in AmneziaVPN only on Windows
+* Available in RampageVPN only on Windows
 * Low battery consumption on mobile devices
 * Minimal configuration required
 * Detectable by DPI analysis systems(easily blocked)
@@ -5168,7 +5168,7 @@ Features:
     </message>
     <message>
         <location filename="../containers/containers_defs.cpp" line="235"/>
-        <source>After installation, Amnezia will create a
+        <source>After installation, Rampage will create a
 
  file storage on your server. You will be able to access it using
  FileZilla or other SFTP clients, as well as mount the disk on your device to access
@@ -5176,7 +5176,7 @@ Features:
 
 For more detailed information, you can
  find it in the support section under &quot;Create SFTP file storage.&quot; </source>
-        <translation>安装后，Amnezia 将创建一个
+        <translation>安装后，Rampage 将创建一个
 
  服务器上的文件存储。 您将能够使用它来访问它
  FileZilla 或其他 SFTP 客户端，以及将磁盘挂载到您的设备上进行访问
@@ -5199,7 +5199,7 @@ For more detailed information, you can
 WireGuard provides stable VPN connection and high performance on all devices. It uses hard-coded encryption settings. WireGuard compared to OpenVPN has lower latency and better data transfer throughput.
 WireGuard is very susceptible to blocking due to its distinct packet signatures. Unlike some other VPN protocols that employ obfuscation techniques, the consistent signature patterns of WireGuard packets can be more easily identified and thus blocked by advanced Deep Packet Inspection (DPI) systems and other network monitoring tools.
 
-* Available in the AmneziaVPN across all platforms
+* Available in the RampageVPN across all platforms
 * Low power consumption
 * Minimum number of settings
 * Easily recognised by DPI analysis systems, susceptible to blocking
@@ -5208,7 +5208,7 @@ WireGuard is very susceptible to blocking due to its distinct packet signatures.
 WireGuard提供稳定的VPN连接，并在所有设备上具有高性能。它使用硬编码的加密设置。与OpenVPN相比，WireGuard具有较低的延迟和更好的数据传输吞吐量。
 WireGuard非常容易被阻挡，因为其独特的数据包签名。与一些其他VPN协议不同，这些协议使用混淆技术，WireGuard数据包的一致签名模式更容易被高级深度数据包检测（DPI）系统和其他网络监控工具识别和阻挡。
 
-    在AmneziaVPN上适用于所有平台
+    在RampageVPN上适用于所有平台
     低功耗
     最少的设置
     易于被DPI分析系统识别，容易被阻挡
@@ -5227,8 +5227,8 @@ WireGuard非常容易被阻挡，因为其独特的数据包签名。与一些�
         <translation type="vanished">WireGuard - 新型流行的VPN协议，具有高性能、高速度和低功耗。建议用于审查力度较低的地区.</translation>
     </message>
     <message>
-        <source>AmneziaWG - Special protocol from Amnezia, based on WireGuard. It&apos;s fast like WireGuard, but very resistant to blockages. Recommended for regions with high levels of censorship.</source>
-        <translation type="vanished">AmneziaWG - Amnezia 的特殊协议，基于 WireGuard。它的速度像 WireGuard 一样快，但非常抗堵塞。推荐用于审查较严的地区。</translation>
+        <source>RampageWG - Special protocol from Rampage, based on WireGuard. It&apos;s fast like WireGuard, but very resistant to blockages. Recommended for regions with high levels of censorship.</source>
+        <translation type="vanished">RampageWG - Rampage 的特殊协议，基于 WireGuard。它的速度像 WireGuard 一样快，但非常抗堵塞。推荐用于审查较严的地区。</translation>
     </message>
     <message>
         <source>IKEv2/IPsec -  Modern stable protocol, a bit faster than others, restores connection after signal loss.</source>
@@ -5252,7 +5252,7 @@ WireGuard非常容易被阻挡，因为其独特的数据包签名。与一些�
         <source>OpenVPN stands as one of the most popular and time-tested VPN protocols available.
 It employs its unique security protocol, leveraging the strength of SSL/TLS for encryption and key exchange. Furthermore, OpenVPN&apos;s support for a multitude of authentication methods makes it versatile and adaptable, catering to a wide range of devices and operating systems. Due to its open-source nature, OpenVPN benefits from extensive scrutiny by the global community, which continually reinforces its security. With a strong balance of performance, security, and compatibility, OpenVPN remains a top choice for privacy-conscious individuals and businesses alike.
 
-* Available in the AmneziaVPN across all platforms
+* Available in the RampageVPN across all platforms
 * Normal power consumption on mobile devices
 * Flexible customisation to suit user needs to work with different operating systems and devices
 * Recognised by DPI analysis systems and therefore susceptible to blocking
@@ -5260,22 +5260,22 @@ It employs its unique security protocol, leveraging the strength of SSL/TLS for 
         <translation type="vanished">OpenVPN 是最流行且经过时间考验的 VPN 协议之一。
 它采用其独特的安全协议，利用 SSL/TLS 的优势进行加密和密钥交换。此外，OpenVPN 支持多种身份验证方法，使其具有多功能性和适应性，可适应各种设备和操作系统。由于其开源性质，OpenVPN 受益于全球社区的广泛审查，这不断增强了其安全性。凭借性能、安全性和兼容性的强大平衡，OpenVPN 仍然是注重隐私的个人和企业的首选。
 
-* 可在所有平台的 AmneziaVPN 中使用
+* 可在所有平台的 RampageVPN 中使用
 * 移动设备的正常功耗
 * 灵活定制，满足用户使用不同操作系统和设备的需求
 * 被DPI分析系统识别，因此容易被阻塞
 * 可以通过 TCP 和 UDP 网络协议运行.</translation>
     </message>
     <message>
-        <source>Shadowsocks, inspired by the SOCKS5 protocol, safeguards the connection using the AEAD cipher. Although Shadowsocks is designed to be discreet and challenging to identify, it isn&apos;t identical to a standard HTTPS connection.However, certain traffic analysis systems might still detect a Shadowsocks connection. Due to limited support in Amnezia, it&apos;s recommended to use AmneziaWG protocol.
+        <source>Shadowsocks, inspired by the SOCKS5 protocol, safeguards the connection using the AEAD cipher. Although Shadowsocks is designed to be discreet and challenging to identify, it isn&apos;t identical to a standard HTTPS connection.However, certain traffic analysis systems might still detect a Shadowsocks connection. Due to limited support in Rampage, it&apos;s recommended to use RampageWG protocol.
 
-* Available in the AmneziaVPN only on desktop platforms
+* Available in the RampageVPN only on desktop platforms
 * Configurable encryption protocol
 * Detectable by some DPI systems
 * Works over TCP network protocol.</source>
-        <translation type="vanished">Shadowsocks 受到 SOCKS5 协议的启发，使用 AEAD 密码保护连接。尽管 Shadowsocks 设计得谨慎且难以识别，但它与标准 HTTPS 连接并不相同。但是，某些流量分析系统可能仍会检测到 Shadowsocks 连接。由于Amnezia支持有限，建议使用AmneziaWG协议。
+        <translation type="vanished">Shadowsocks 受到 SOCKS5 协议的启发，使用 AEAD 密码保护连接。尽管 Shadowsocks 设计得谨慎且难以识别，但它与标准 HTTPS 连接并不相同。但是，某些流量分析系统可能仍会检测到 Shadowsocks 连接。由于Rampage支持有限，建议使用RampageWG协议。
 
-* 仅在桌面平台上的 AmneziaVPN 中可用
+* 仅在桌面平台上的 RampageVPN 中可用
 * 可配置的加密协议
 * 可以被某些 DPI 系统检测到
 * 通过 TCP 网络协议工作。</translation>
@@ -5293,7 +5293,7 @@ Immediately after receiving the first data packet, Cloak authenticates the incom
 
 If there is a extreme level of Internet censorship in your region, we advise you to use only OpenVPN over Cloak from the first connection
 
-* Available in the AmneziaVPN across all platforms
+* Available in the RampageVPN across all platforms
 * High power consumption on mobile devices
 * Flexible settings
 * Not recognised by DPI analysis systems
@@ -5311,7 +5311,7 @@ Cloak 可以修改数据包元数据，以便将 VPN 流量完全屏蔽为正常
 
 如果您所在地区的互联网审查非常严格，我们建议您在第一次连接时仅使用 OpenVPN over Cloak
 
-* 可在所有平台的 AmneziaVPN 中使用
+* 可在所有平台的 RampageVPN 中使用
 * 移动设备功耗高
 * 配置灵活
 * 不被 DPI 分析系统识别
@@ -5322,7 +5322,7 @@ Cloak 可以修改数据包元数据，以便将 VPN 流量完全屏蔽为正常
 Provides stable VPN connection, high performance on all devices. Uses hard-coded encryption settings. WireGuard compared to OpenVPN has lower latency and better data transfer throughput.
 WireGuard is very susceptible to blocking due to its distinct packet signatures. Unlike some other VPN protocols that employ obfuscation techniques, the consistent signature patterns of WireGuard packets can be more easily identified and thus blocked by advanced Deep Packet Inspection (DPI) systems and other network monitoring tools.
 
-* Available in the AmneziaVPN across all platforms
+* Available in the RampageVPN across all platforms
 * Low power consumption
 * Minimum number of settings
 * Easily recognised by DPI analysis systems, susceptible to blocking
@@ -5331,27 +5331,27 @@ WireGuard is very susceptible to blocking due to its distinct packet signatures.
 在所有设备上提供稳定的 VPN 连接和高性能。使用硬编码的加密设置。 WireGuard 与 OpenVPN 相比具有更低的延迟和更好的数据传输吞吐量。
 由于其独特的数据包签名，WireGuard 非常容易受到阻塞。与其他一些采用混淆技术的 VPN 协议不同，WireGuard 数据包的一致签名模式可以更容易地被高级深度数据包检测 (DPI) 系统和其他网络监控工具识别并阻止。
 
-* 可在所有平台的 AmneziaVPN 中使用
+* 可在所有平台的 RampageVPN 中使用
 * 低功耗
 * 配置简单
 * 容易被DPI分析系统识别，容易被阻塞
 * 通过 UDP 网络协议工作。</translation>
     </message>
     <message>
-        <source>A modern iteration of the popular VPN protocol, AmneziaWG builds upon the foundation set by WireGuard, retaining its simplified architecture and high-performance capabilities across devices.
-While WireGuard is known for its efficiency, it had issues with being easily detected due to its distinct packet signatures. AmneziaWG solves this problem by using better obfuscation methods, making its traffic blend in with regular internet traffic.
-This means that AmneziaWG keeps the fast performance of the original while adding an extra layer of stealth, making it a great choice for those wanting a fast and discreet VPN connection.
+        <source>A modern iteration of the popular VPN protocol, RampageWG builds upon the foundation set by WireGuard, retaining its simplified architecture and high-performance capabilities across devices.
+While WireGuard is known for its efficiency, it had issues with being easily detected due to its distinct packet signatures. RampageWG solves this problem by using better obfuscation methods, making its traffic blend in with regular internet traffic.
+This means that RampageWG keeps the fast performance of the original while adding an extra layer of stealth, making it a great choice for those wanting a fast and discreet VPN connection.
 
-* Available in the AmneziaVPN across all platforms
+* Available in the RampageVPN across all platforms
 * Low power consumption
 * Minimum number of settings
 * Not recognised by DPI analysis systems, resistant to blocking
 * Works over UDP network protocol.</source>
-        <translation type="vanished">AmneziaWG 是流行 VPN 协议的现代迭代，它建立在 WireGuard 的基础上，保留了其简化的架构和跨设备的高性能功能。
-虽然 WireGuard 以其高效而闻名，但由于其独特的数据包签名，它存在容易被检测到的问题。 AmneziaWG 通过使用更好的混淆方法解决了这个问题，使其流量与常规互联网流量融合在一起。
-这意味着 AmneziaWG 保留了原始版本的快速性能，同时添加了额外的隐秘层，使其成为那些想要快速且谨慎的 VPN 连接的人的绝佳选择。
+        <translation type="vanished">RampageWG 是流行 VPN 协议的现代迭代，它建立在 WireGuard 的基础上，保留了其简化的架构和跨设备的高性能功能。
+虽然 WireGuard 以其高效而闻名，但由于其独特的数据包签名，它存在容易被检测到的问题。 RampageWG 通过使用更好的混淆方法解决了这个问题，使其流量与常规互联网流量融合在一起。
+这意味着 RampageWG 保留了原始版本的快速性能，同时添加了额外的隐秘层，使其成为那些想要快速且谨慎的 VPN 连接的人的绝佳选择。
 
-* 可在所有平台的 AmneziaVPN 中使用
+* 可在所有平台的 RampageVPN 中使用
 * 低功耗
 * 配置简单
 * 不被DPI分析系统识别，抗阻塞
@@ -5362,7 +5362,7 @@ This means that AmneziaWG keeps the fast performance of the original while addin
 One of its distinguishing features is its ability to swiftly switch between networks and devices, making it particularly adaptive in dynamic network environments. 
 While it offers a blend of security, stability, and speed, it&apos;s essential to note that IKEv2 can be easily detected and is susceptible to blocking.
 
-* Available in the AmneziaVPN only on Windows
+* Available in the RampageVPN only on Windows
 * Low power consumption, on mobile devices
 * Minimal configuration
 * Recognised by DPI analysis systems
@@ -5371,7 +5371,7 @@ While it offers a blend of security, stability, and speed, it&apos;s essential t
 其显着特征之一是能够在网络和设备之间快速切换，使其特别适应动态网络环境。
 虽然 IKEv2 兼具安全性、稳定性和速度，但必须注意的是，IKEv2 很容易被检测到，并且容易受到阻止。
 
-* 仅在 Windows 上的 AmneziaVPN 中可用
+* 仅在 Windows 上的 RampageVPN 中可用
 * 低功耗，在移动设备上
 * 最低配置
 * 获得DPI分析系统认可
@@ -5595,7 +5595,7 @@ While it offers a blend of security, stability, and speed, it&apos;s essential t
     <message>
         <location filename="../ui/models/containers_model.cpp" line="34"/>
         <location filename="../containers/containers_defs.cpp" line="130"/>
-        <source>AmneziaWG Legacy is a outdated version of AmneziaWG protocol. To upgrade, install AmneziaWG and recreate users.</source>
+        <source>RampageWG Legacy is a outdated version of RampageWG protocol. To upgrade, install RampageWG and recreate users.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5662,7 +5662,7 @@ While it offers a blend of security, stability, and speed, it&apos;s essential t
 <context>
     <name>ShareConnectionDrawer</name>
     <message>
-        <source>Save AmneziaVPN config</source>
+        <source>Save RampageVPN config</source>
         <translation type="vanished">保存配置</translation>
     </message>
     <message>
@@ -5690,8 +5690,8 @@ While it offers a blend of security, stability, and speed, it&apos;s essential t
         <translation type="obsolete">展示内容</translation>
     </message>
     <message>
-        <source>To read the QR code in the Amnezia app, select &quot;Add server&quot; → &quot;I have data to connect&quot; → &quot;QR code, key or settings file&quot;</source>
-        <translation type="vanished">要应用二维码到 Amnezia，请底部工具栏点击“+”→“连接方式”→“二维码、授权码或配置文件”</translation>
+        <source>To read the QR code in the Rampage app, select &quot;Add server&quot; → &quot;I have data to connect&quot; → &quot;QR code, key or settings file&quot;</source>
+        <translation type="vanished">要应用二维码到 Rampage，请底部工具栏点击“+”→“连接方式”→“二维码、授权码或配置文件”</translation>
     </message>
 </context>
 <context>
@@ -5870,7 +5870,7 @@ While it offers a blend of security, stability, and speed, it&apos;s essential t
     </message>
 </context>
 <context>
-    <name>amnezia::ContainerProps</name>
+    <name>rampage::ContainerProps</name>
     <message>
         <source>Low</source>
         <translation type="vanished">低</translation>
@@ -5918,7 +5918,7 @@ While it offers a blend of security, stability, and speed, it&apos;s essential t
     </message>
     <message>
         <location filename="../containers/containers_defs.cpp" line="372"/>
-        <source>AmneziaWG protocol will be installed. It provides high connection speed and ensures stable operation even in the most challenging network conditions.</source>
+        <source>RampageWG protocol will be installed. It provides high connection speed and ensures stable operation even in the most challenging network conditions.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

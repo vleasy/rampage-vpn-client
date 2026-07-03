@@ -53,7 +53,7 @@ QVariant SftpConfigModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void SftpConfigModel::updateModel(amnezia::DockerContainer container, const amnezia::SftpProtocolConfig &protocolConfig)
+void SftpConfigModel::updateModel(rampage::DockerContainer container, const rampage::SftpProtocolConfig &protocolConfig)
 {
     beginResetModel();
     m_container = container;
@@ -62,12 +62,12 @@ void SftpConfigModel::updateModel(amnezia::DockerContainer container, const amne
     endResetModel();
 }
 
-amnezia::SftpProtocolConfig SftpConfigModel::getProtocolConfig()
+rampage::SftpProtocolConfig SftpConfigModel::getProtocolConfig()
 {
     return m_protocolConfig;
 }
 
-void SftpConfigModel::applyDefaults(amnezia::SftpProtocolConfig& config)
+void SftpConfigModel::applyDefaults(rampage::SftpProtocolConfig& config)
 {
     if (config.userName.isEmpty()) {
         config.userName = protocols::sftp::defaultUserName;

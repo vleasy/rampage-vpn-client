@@ -90,7 +90,7 @@ ErrorCode UsersController::wgShow(const DockerContainer container, const ServerC
                        : QStringLiteral("wg");
     const QString command = QString("sudo docker exec -i $CONTAINER_NAME bash -c '%1 show all'").arg(showBin);
 
-    QString script = sshSession->replaceVars(command, amnezia::genBaseVars(credentials, container, QString(), QString()));
+    QString script = sshSession->replaceVars(command, rampage::genBaseVars(credentials, container, QString(), QString()));
     error = sshSession->runScript(credentials, script, cbReadStdOut);
     if (error != ErrorCode::NoError) {
         logger.error() << QString("Failed to execute %1 show command").arg(showBin);
@@ -153,7 +153,7 @@ ErrorCode UsersController::getOpenVpnClients(const DockerContainer container, co
     };
 
     const QString getOpenVpnClientsList = "sudo docker exec -i $CONTAINER_NAME bash -c 'ls /opt/amnezia/openvpn/pki/issued'";
-    QString script = sshSession->replaceVars(getOpenVpnClientsList, amnezia::genBaseVars(credentials, container, QString(), QString()));
+    QString script = sshSession->replaceVars(getOpenVpnClientsList, rampage::genBaseVars(credentials, container, QString(), QString()));
     error = sshSession->runScript(credentials, script, cbReadStdOut);
     if (error != ErrorCode::NoError) {
         logger.error() << "Failed to retrieve the list of issued certificates on the server";
@@ -233,7 +233,7 @@ ErrorCode UsersController::getXrayClients(const DockerContainer container, const
 {
     ErrorCode error = ErrorCode::NoError;
 
-    const QString serverConfigPath = amnezia::protocols::xray::serverConfigPath;
+    const QString serverConfigPath = rampage::protocols::xray::serverConfigPath;
     const QString configString = sshSession->getTextFileFromContainer(container, credentials, serverConfigPath, error);
     if (error != ErrorCode::NoError) {
         logger.error() << "Failed to get the xray server config file from the server";
@@ -272,7 +272,7 @@ ErrorCode UsersController::getXrayClients(const DockerContainer container, const
         }
         QString clientId = clientObj[protocols::xray::id].toString();
         
-        QString xrayDefaultUuid = sshSession->getTextFileFromContainer(container, credentials, amnezia::protocols::xray::uuidPath, error);
+        QString xrayDefaultUuid = sshSession->getTextFileFromContainer(container, credentials, rampage::protocols::xray::uuidPath, error);
         xrayDefaultUuid.replace("\n", "");
 
         if (!isClientExists(clientId, clientsTable) && clientId != xrayDefaultUuid) {
@@ -507,7 +507,7 @@ ErrorCode UsersController::revokeOpenVpn(const int row, const DockerContainer co
                                                "cp pki/crl.pem .'")
                                                .arg(clientId);
 
-    const QString script = sshSession->replaceVars(getOpenVpnCertData, amnezia::genBaseVars(credentials, container, QString(), QString()));
+    const QString script = sshSession->replaceVars(getOpenVpnCertData, rampage::genBaseVars(credentials, container, QString(), QString()));
     ErrorCode error = sshSession->runScript(credentials, script);
     if (error != ErrorCode::NoError) {
         logger.error() << "Failed to revoke the certificate";
@@ -594,7 +594,7 @@ ErrorCode UsersController::revokeWireGuard(const int row, const DockerContainer 
     ).arg(command, iface, configPath);
     error = sshSession->runScript(
         credentials,
-        sshSession->replaceVars(script, amnezia::genBaseVars(credentials, container, QString(), QString()))
+        sshSession->replaceVars(script, rampage::genBaseVars(credentials, container, QString(), QString()))
     );
     if (error != ErrorCode::NoError) {
         logger.error() << QString("Failed to execute command '%1 syncconf %2' on the server").arg(command, iface);
@@ -615,7 +615,7 @@ ErrorCode UsersController::revokeXray(const int row,
 
     ErrorCode error = ErrorCode::NoError;
 
-    const QString serverConfigPath = amnezia::protocols::xray::serverConfigPath;
+    const QString serverConfigPath = rampage::protocols::xray::serverConfigPath;
     const QString configString = sshSession->getTextFileFromContainer(container, credentials, serverConfigPath, error);
     if (error != ErrorCode::NoError) {
         logger.error() << "Failed to get the xray server config file";
@@ -699,7 +699,7 @@ ErrorCode UsersController::revokeXray(const int row,
     QString restartScript = QString("sudo docker restart $CONTAINER_NAME");
     error = sshSession->runScript(
         credentials,
-        sshSession->replaceVars(restartScript, amnezia::genBaseVars(credentials, container, QString(), QString()))
+        sshSession->replaceVars(restartScript, rampage::genBaseVars(credentials, container, QString(), QString()))
     );
     if (error != ErrorCode::NoError) {
         logger.error() << "Failed to restart xray container";

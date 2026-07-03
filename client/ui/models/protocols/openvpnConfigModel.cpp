@@ -36,7 +36,7 @@ bool OpenVpnConfigModel::setData(const QModelIndex &index, const QVariant &value
     case Roles::TlsAuthRole: m_protocolConfig.serverConfig.tlsAuth = boolValue; break;
     case Roles::BlockDnsRole: {
         if (!m_protocolConfig.clientConfig.has_value()) {
-            m_protocolConfig.clientConfig = amnezia::OpenVpnClientConfig{};
+            m_protocolConfig.clientConfig = rampage::OpenVpnClientConfig{};
         }
         m_protocolConfig.clientConfig->blockOutsideDns = boolValue;
         break;
@@ -80,7 +80,7 @@ QVariant OpenVpnConfigModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void OpenVpnConfigModel::updateModel(amnezia::DockerContainer container, const amnezia::OpenVpnProtocolConfig &protocolConfig)
+void OpenVpnConfigModel::updateModel(rampage::DockerContainer container, const rampage::OpenVpnProtocolConfig &protocolConfig)
 {
     beginResetModel();
     m_container = container;
@@ -90,7 +90,7 @@ void OpenVpnConfigModel::updateModel(amnezia::DockerContainer container, const a
     applyDefaultsToServerConfig(m_protocolConfig.serverConfig);
     
     if (!m_protocolConfig.clientConfig.has_value()) {
-        m_protocolConfig.clientConfig = amnezia::OpenVpnClientConfig{};
+        m_protocolConfig.clientConfig = rampage::OpenVpnClientConfig{};
     }
     applyDefaultsToClientConfig(m_protocolConfig.clientConfig.value());
     
@@ -99,7 +99,7 @@ void OpenVpnConfigModel::updateModel(amnezia::DockerContainer container, const a
     endResetModel();
 }
 
-void OpenVpnConfigModel::applyDefaultsToServerConfig(amnezia::OpenVpnServerConfig& config)
+void OpenVpnConfigModel::applyDefaultsToServerConfig(rampage::OpenVpnServerConfig& config)
 {
     if (config.subnetAddress.isEmpty()) {
         config.subnetAddress = protocols::openvpn::defaultSubnetAddress;
@@ -122,14 +122,14 @@ void OpenVpnConfigModel::applyDefaultsToServerConfig(amnezia::OpenVpnServerConfi
     }
 }
 
-void OpenVpnConfigModel::applyDefaultsToClientConfig(amnezia::OpenVpnClientConfig& config)
+void OpenVpnConfigModel::applyDefaultsToClientConfig(rampage::OpenVpnClientConfig& config)
 {
     if (!config.blockOutsideDns && !m_protocolConfig.serverConfig.additionalClientConfig.isEmpty()) {
         config.blockOutsideDns = protocols::openvpn::defaultBlockOutsideDns;
     }
 }
 
-amnezia::OpenVpnProtocolConfig OpenVpnConfigModel::getProtocolConfig()
+rampage::OpenVpnProtocolConfig OpenVpnConfigModel::getProtocolConfig()
 {
     bool serverSettingsChanged = !m_protocolConfig.serverConfig.hasEqualServerSettings(m_originalProtocolConfig.serverConfig);
     

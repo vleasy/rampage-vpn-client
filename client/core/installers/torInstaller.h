@@ -9,8 +9,8 @@ class TorInstaller : public InstallerBase
 public:
     explicit TorInstaller(QObject *parent = nullptr);
 
-    amnezia::ErrorCode extractConfigFromContainer(amnezia::DockerContainer container, const amnezia::ServerCredentials &credentials,
-                                         SshSession* serverController, amnezia::ContainerConfig &config) override;
+    rampage::ErrorCode extractConfigFromContainer(rampage::DockerContainer container, const rampage::ServerCredentials &credentials,
+                                         SshSession* serverController, rampage::ContainerConfig &config) override;
 };
 
 #endif // TORINSTALLER_H

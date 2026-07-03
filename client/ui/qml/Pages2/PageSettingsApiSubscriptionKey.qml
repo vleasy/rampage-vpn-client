@@ -80,7 +80,7 @@ PageType {
                 text: qsTr(root.processedServer.name + "\nsubscription key")
                 font.pixelSize: 32
                 font.bold: true
-                color: AmneziaStyle.color.paleGray
+                color: RampageStyle.color.paleGray
                 wrapMode: Text.Wrap
             }
 
@@ -106,9 +106,9 @@ PageType {
                 Layout.rightMargin: 16
 
                 defaultColor: "transparent"
-                hoveredColor: AmneziaStyle.color.translucentWhite
-                pressedColor: AmneziaStyle.color.sheerWhite
-                textColor: AmneziaStyle.color.paleGray
+                hoveredColor: RampageStyle.color.translucentWhite
+                pressedColor: RampageStyle.color.sheerWhite
+                textColor: RampageStyle.color.paleGray
                 borderWidth: 1
 
                 text: qsTr("Save key as a file")
@@ -118,7 +118,7 @@ PageType {
                     var fileName = GC.isMobile()
                         ? root.processedServer.name.toLowerCase().replace(/\s+/g, "_") + "_key.vpn"
                         : SystemController.getFileName(
-                            qsTr("Save AmneziaVPN config"),
+                            qsTr("Save RampageVPN config"),
                             qsTr("Config files (*.vpn)"),
                             StandardPaths.standardLocations(StandardPaths.DocumentsLocation) + "/" + root.processedServer.name.toLowerCase().replace(/\s+/g, "_") + "_key",
                             true,
@@ -142,9 +142,9 @@ PageType {
                 Layout.leftMargin: 16
                 Layout.rightMargin: 16
                 defaultColor: "transparent"
-                hoveredColor: AmneziaStyle.color.translucentWhite
-                pressedColor: AmneziaStyle.color.sheerWhite
-                textColor: AmneziaStyle.color.paleGray
+                hoveredColor: RampageStyle.color.translucentWhite
+                pressedColor: RampageStyle.color.sheerWhite
+                textColor: RampageStyle.color.paleGray
                 borderWidth: 1
 
                 text: qsTr("Show key text")
@@ -188,7 +188,7 @@ PageType {
                 Layout.rightMargin: 16
                 visible: SubscriptionUiController.qrCodesCount > 0
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("To read the QR code in the Amnezia app, tap + in the main menu → 'QR code'")
+                text: qsTr("To read the QR code in the Rampage app, tap + in the main menu в†’ 'QR code'")
             }
         }
     }
@@ -224,15 +224,15 @@ PageType {
                     Layout.fillWidth: true
                     Layout.topMargin: 16
                     readOnly: true
-                    color: AmneziaStyle.color.paleGray
-                    selectionColor: AmneziaStyle.color.richBrown
-                    selectedTextColor: AmneziaStyle.color.paleGray
+                    color: RampageStyle.color.paleGray
+                    selectionColor: RampageStyle.color.richBrown
+                    selectedTextColor: RampageStyle.color.paleGray
                     font.pixelSize: 16
                     font.weight: Font.Medium
                     font.family: "PT Root UI VF"
                     text: SubscriptionUiController.vpnKey
                     wrapMode: Text.Wrap
-                    background: Rectangle { color: AmneziaStyle.color.transparent }
+                    background: Rectangle { color: RampageStyle.color.transparent }
                 }
             }
         }

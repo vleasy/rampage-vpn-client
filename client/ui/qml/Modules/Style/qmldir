@@ -1,3 +1,3 @@
 module Style
 
-singleton AmneziaStyle 1.0 AmneziaStyle.qml
+singleton RampageStyle 1.0 RampageStyle.qml

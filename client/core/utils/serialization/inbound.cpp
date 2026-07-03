@@ -10,7 +10,7 @@
 #include "transfer.h"
 #include "serialization.h"
 
-namespace amnezia::serialization::inbounds
+namespace rampage::serialization::inbounds
 {
 
 //"inbounds": [
@@ -139,5 +139,5 @@ InboundCredentials EnsureInboundAuth(QJsonObject &xrayConfig)
     return creds;
 }
 
-} // namespace amnezia::serialization::inbounds
+} // namespace rampage::serialization::inbounds
 

@@ -44,13 +44,13 @@ public:
 
 public slots:
 
-    void updateModel(amnezia::DockerContainer container, const amnezia::TelemtProtocolConfig &protocolConfig);
+    void updateModel(rampage::DockerContainer container, const rampage::TelemtProtocolConfig &protocolConfig);
 
     void updateModel(const QJsonObject &config);
 
     QJsonObject getConfig();
 
-    amnezia::TelemtProtocolConfig getProtocolConfig();
+    rampage::TelemtProtocolConfig getProtocolConfig();
 
     Q_INVOKABLE void generateSecret();
 
@@ -120,11 +120,11 @@ protected:
     QHash<int, QByteArray> roleNames() const override;
 
 private:
-    static void applyDefaults(amnezia::TelemtProtocolConfig &c);
+    static void applyDefaults(rampage::TelemtProtocolConfig &c);
 
-    amnezia::DockerContainer m_container = amnezia::DockerContainer::None;
+    rampage::DockerContainer m_container = rampage::DockerContainer::None;
     QJsonObject m_fullConfig;
-    amnezia::TelemtProtocolConfig m_protocolConfig;
+    rampage::TelemtProtocolConfig m_protocolConfig;
 };
 
 #endif // TELEMTCONFIGMODEL_H

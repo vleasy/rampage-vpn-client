@@ -4,7 +4,7 @@
 #include <QJsonObject>
 #include "transfer.h"
 
-namespace amnezia::serialization
+namespace rampage::serialization
 {
     namespace vmess
     {

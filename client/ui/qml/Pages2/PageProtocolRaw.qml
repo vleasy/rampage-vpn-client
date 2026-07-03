@@ -141,9 +141,9 @@ PageType {
                                 padding: 0
                                 height: 24
 
-                                color: AmneziaStyle.color.paleGray
-                                selectionColor: AmneziaStyle.color.richBrown
-                                selectedTextColor: AmneziaStyle.color.paleGray
+                                color: RampageStyle.color.paleGray
+                                selectionColor: RampageStyle.color.richBrown
+                                selectedTextColor: RampageStyle.color.paleGray
 
                                 font.pixelSize: 16
                                 font.weight: Font.Medium
@@ -154,7 +154,7 @@ PageType {
                                 wrapMode: Text.Wrap
 
                                 background: Rectangle {
-                                    color: AmneziaStyle.color.transparent
+                                    color: RampageStyle.color.transparent
                                 }
                             }
                         }
@@ -174,7 +174,7 @@ PageType {
                 visible: ServersUiController.isProcessedServerHasWriteAccess()
 
                 text: qsTr("Remove ") + ContainersModel.getProcessedContainerName()
-                textColor: AmneziaStyle.color.vibrantRed
+                textColor: RampageStyle.color.vibrantRed
 
                 clickedFunction: function() {
                     var headerText = qsTr("Remove %1 from server?").arg(ContainersModel.getProcessedContainerName())

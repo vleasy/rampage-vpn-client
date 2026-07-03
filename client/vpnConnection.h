@@ -15,7 +15,7 @@
 #include "core/repositories/secureServersRepository.h"
 #include "core/repositories/secureAppSettingsRepository.h"
 
-#ifdef AMNEZIA_DESKTOP
+#ifdef RAMPAGE_DESKTOP
 #include "core/utils/ipcClient.h"
 #endif
 
@@ -23,7 +23,7 @@
 #include "core/protocols/androidVpnProtocol.h"
 #endif
 
-using namespace amnezia;
+using namespace Rampage;
 
 class VpnConnection : public QObject
 {
@@ -41,7 +41,7 @@ public:
     QSharedPointer<VpnProtocol> vpnProtocol() const;
 
     const QString &remoteAddress() const;
-    void addSitesRoutes(const QString &gw, amnezia::RouteMode mode);
+    void addSitesRoutes(const QString &gw, rampage::RouteMode mode);
 
 #ifdef Q_OS_ANDROID
     void restoreConnection();
@@ -61,7 +61,7 @@ public slots:
 signals:
     void bytesChanged(quint64 receivedBytes, quint64 sentBytes);
     void connectionStateChanged(Vpn::ConnectionState state);
-    void vpnProtocolError(amnezia::ErrorCode error);
+    void vpnProtocolError(rampage::ErrorCode error);
 
     void serviceIsNotReady();
 

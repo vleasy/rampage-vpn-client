@@ -62,7 +62,7 @@ namespace {
     {
         QString t = p.trimmed();
         if (t.isEmpty())
-            return QString::fromLatin1(amnezia::protocols::xray::defaultXPaddingPlacement).toLower();
+            return QString::fromLatin1(rampage::protocols::xray::defaultXPaddingPlacement).toLower();
         if (t.compare(QLatin1String("Body"), Qt::CaseInsensitive) == 0)
             return QStringLiteral("queryInHeader");
         if (t.contains(QLatin1String("queryInHeader"), Qt::CaseInsensitive)
@@ -101,7 +101,7 @@ namespace {
     }
 
     // Desktop applies this in XrayProtocol::start(); iOS/Android pass JSON straight to libxray — same fixes here.
-    void sanitizeXrayNativeConfig(amnezia::ProtocolConfig &pc)
+    void sanitizeXrayNativeConfig(rampage::ProtocolConfig &pc)
     {
         QString c = pc.nativeConfig();
         if (c.isEmpty()) {
@@ -109,12 +109,12 @@ namespace {
         }
         bool changed = false;
         if (c.contains(QLatin1String("Mozilla/5.0"), Qt::CaseInsensitive)) {
-            c.replace(QLatin1String("Mozilla/5.0"), QString::fromLatin1(amnezia::protocols::xray::defaultFingerprint),
+            c.replace(QLatin1String("Mozilla/5.0"), QString::fromLatin1(rampage::protocols::xray::defaultFingerprint),
                       Qt::CaseInsensitive);
             changed = true;
         }
-        const QString legacyListen = QString::fromLatin1(amnezia::protocols::xray::defaultLocalAddr);
-        const QString listenOk = QString::fromLatin1(amnezia::protocols::xray::defaultLocalListenAddr);
+        const QString legacyListen = QString::fromLatin1(rampage::protocols::xray::defaultLocalAddr);
+        const QString listenOk = QString::fromLatin1(rampage::protocols::xray::defaultLocalListenAddr);
         if (c.contains(legacyListen)) {
             c.replace(legacyListen, listenOk);
             changed = true;
@@ -130,8 +130,8 @@ XrayConfigurator::XrayConfigurator(SshSession* sshSession, QObject *parent)
 {
 }
 
-amnezia::ProtocolConfig XrayConfigurator::processConfigWithLocalSettings(const amnezia::ConnectionSettings &settings,
-                                                                         amnezia::ProtocolConfig protocolConfig)
+rampage::ProtocolConfig XrayConfigurator::processConfigWithLocalSettings(const rampage::ConnectionSettings &settings,
+                                                                         rampage::ProtocolConfig protocolConfig)
 {
     applyDnsToNativeConfig(settings.dns, protocolConfig);
     sanitizeXrayNativeConfig(protocolConfig);
@@ -143,7 +143,7 @@ ErrorCode XrayConfigurator::uploadServerConfigJson(const ServerCredentials &cred
 {
     const QString updatedConfig = QJsonDocument(serverConfig).toJson();
     ErrorCode errorCode = m_sshSession->uploadTextFileToContainer(
-            container, credentials, updatedConfig, amnezia::protocols::xray::serverConfigPath,
+            container, credentials, updatedConfig, rampage::protocols::xray::serverConfigPath,
             libssh::ScpOverwriteMode::ScpOverwriteExisting);
     if (errorCode != ErrorCode::NoError) {
         logger.error() << "Failed to upload updated config";
@@ -154,7 +154,7 @@ ErrorCode XrayConfigurator::uploadServerConfigJson(const ServerCredentials &cred
     errorCode = m_sshSession->runScript(
             credentials,
             m_sshSession->replaceVars(restartScript,
-                                      amnezia::genBaseVars(credentials, container, dnsSettings.primaryDns,
+                                      rampage::genBaseVars(credentials, container, dnsSettings.primaryDns,
                                                            dnsSettings.secondaryDns)));
     if (errorCode != ErrorCode::NoError) {
         logger.error() << "Failed to restart container";
@@ -185,11 +185,11 @@ ErrorCode XrayConfigurator::readRealityKeyFiles(const DockerContainer container,
         return ErrorCode::XrayRealityKeysReadFailed;
     };
 
-    ErrorCode errorCode = readKeyFile(QString::fromLatin1(amnezia::protocols::xray::PublicKeyPath), outPublicKey);
+    ErrorCode errorCode = readKeyFile(QString::fromLatin1(rampage::protocols::xray::PublicKeyPath), outPublicKey);
     if (errorCode != ErrorCode::NoError) {
         return errorCode;
     }
-    return readKeyFile(QString::fromLatin1(amnezia::protocols::xray::shortidPath), outShortId);
+    return readKeyFile(QString::fromLatin1(rampage::protocols::xray::shortidPath), outShortId);
 }
 
 QJsonObject XrayConfigurator::mergeStreamSettingsForServerInbound(const XrayServerConfig &srv,
@@ -201,22 +201,22 @@ QJsonObject XrayConfigurator::mergeStreamSettingsForServerInbound(const XrayServ
         return streamSettings;
     }
 
-    const QJsonObject newRs = streamSettings[amnezia::protocols::xray::realitySettings].toObject();
-    QJsonObject oldRs = existingStreamSettings[amnezia::protocols::xray::realitySettings].toObject();
+    const QJsonObject newRs = streamSettings[rampage::protocols::xray::realitySettings].toObject();
+    QJsonObject oldRs = existingStreamSettings[rampage::protocols::xray::realitySettings].toObject();
     QJsonObject merged = oldRs.isEmpty() ? newRs : oldRs;
 
-    const QString siteEff = srv.site.isEmpty() ? QString::fromLatin1(amnezia::protocols::xray::defaultSite) : srv.site;
+    const QString siteEff = srv.site.isEmpty() ? QString::fromLatin1(rampage::protocols::xray::defaultSite) : srv.site;
     const QString sniEff = srv.sni.isEmpty() ? siteEff : srv.sni;
 
-    if (newRs.contains(amnezia::protocols::xray::fingerprint)) {
-        merged[amnezia::protocols::xray::fingerprint] = newRs[amnezia::protocols::xray::fingerprint];
+    if (newRs.contains(rampage::protocols::xray::fingerprint)) {
+        merged[rampage::protocols::xray::fingerprint] = newRs[rampage::protocols::xray::fingerprint];
     }
-    merged[amnezia::protocols::xray::serverNames] = QJsonArray { sniEff };
+    merged[rampage::protocols::xray::serverNames] = QJsonArray { sniEff };
     if (!merged.contains(QStringLiteral("dest"))) {
         merged[QStringLiteral("dest")] = siteEff + QStringLiteral(":443");
     }
 
-    streamSettings[amnezia::protocols::xray::realitySettings] = merged;
+    streamSettings[rampage::protocols::xray::realitySettings] = merged;
     return streamSettings;
 }
 
@@ -257,10 +257,10 @@ ErrorCode XrayConfigurator::applyServerSettingsToRemote(const ServerCredentials 
     }
 
     QString currentConfig = m_sshSession->getTextFileFromContainer(
-            container, credentials, amnezia::protocols::xray::serverConfigPath, errorCode);
+            container, credentials, rampage::protocols::xray::serverConfigPath, errorCode);
     if (errorCode != ErrorCode::NoError) {
         logger.error() << "Xray applyServerSettings: getTextFileFromContainer failed, error="
-                       << static_cast<int>(errorCode) << "path=" << amnezia::protocols::xray::serverConfigPath;
+                       << static_cast<int>(errorCode) << "path=" << rampage::protocols::xray::serverConfigPath;
         return errorCode;
     }
     logger.info() << "Xray applyServerSettings: read server config, bytes=" << currentConfig.size();
@@ -272,44 +272,44 @@ ErrorCode XrayConfigurator::applyServerSettingsToRemote(const ServerCredentials 
     }
 
     QJsonObject serverConfig = doc.object();
-    if (!serverConfig.contains(amnezia::protocols::xray::inbounds)) {
+    if (!serverConfig.contains(rampage::protocols::xray::inbounds)) {
         logger.error() << "Server config missing 'inbounds' field";
         return ErrorCode::XrayServerConfigInvalid;
     }
 
-    QJsonArray inbounds = serverConfig[amnezia::protocols::xray::inbounds].toArray();
+    QJsonArray inbounds = serverConfig[rampage::protocols::xray::inbounds].toArray();
     if (inbounds.isEmpty()) {
         logger.error() << "Server config has empty 'inbounds' array";
         return ErrorCode::XrayServerConfigInvalid;
     }
 
     QJsonObject inbound = inbounds[0].toObject();
-    if (!inbound.contains(amnezia::protocols::xray::settings)) {
+    if (!inbound.contains(rampage::protocols::xray::settings)) {
         logger.error() << "Inbound missing 'settings' field";
         return ErrorCode::XrayServerConfigInvalid;
     }
 
-    const QJsonObject existingStream = inbound[amnezia::protocols::xray::streamSettings].toObject();
-    inbound[amnezia::protocols::xray::streamSettings] = mergeStreamSettingsForServerInbound(srv, existingStream);
+    const QJsonObject existingStream = inbound[rampage::protocols::xray::streamSettings].toObject();
+    inbound[rampage::protocols::xray::streamSettings] = mergeStreamSettingsForServerInbound(srv, existingStream);
 
     if (!srv.port.isEmpty()) {
-        inbound[amnezia::protocols::xray::port] = srv.port.toInt();
+        inbound[rampage::protocols::xray::port] = srv.port.toInt();
     }
 
-    QJsonObject settings = inbound[amnezia::protocols::xray::settings].toObject();
-    if (!settings.contains(amnezia::protocols::xray::clients)) {
-        settings[amnezia::protocols::xray::clients] = QJsonArray {};
+    QJsonObject settings = inbound[rampage::protocols::xray::settings].toObject();
+    if (!settings.contains(rampage::protocols::xray::clients)) {
+        settings[rampage::protocols::xray::clients] = QJsonArray {};
     }
 
-    QJsonArray clients = settings[amnezia::protocols::xray::clients].toArray();
+    QJsonArray clients = settings[rampage::protocols::xray::clients].toArray();
     QString clientId;
 
     if (appendNewClient) {
         clientId = QUuid::createUuid().toString(QUuid::WithoutBraces);
         QJsonObject clientEntry;
-        clientEntry[amnezia::protocols::xray::id] = clientId;
+        clientEntry[rampage::protocols::xray::id] = clientId;
         if (!flowValue.isEmpty()) {
-            clientEntry[amnezia::protocols::xray::flow] = flowValue;
+            clientEntry[rampage::protocols::xray::flow] = flowValue;
         }
         clients.append(clientEntry);
     } else {
@@ -317,7 +317,7 @@ ErrorCode XrayConfigurator::applyServerSettingsToRemote(const ServerCredentials 
             logger.error() << "Server config has no VLESS clients";
             return ErrorCode::XrayServerNoVlessClients;
         }
-        clientId = clients[0].toObject()[amnezia::protocols::xray::id].toString();
+        clientId = clients[0].toObject()[rampage::protocols::xray::id].toString();
         if (clientId.isEmpty()) {
             logger.error() << "Server config VLESS client has empty id";
             return ErrorCode::XrayServerNoVlessClients;
@@ -326,19 +326,19 @@ ErrorCode XrayConfigurator::applyServerSettingsToRemote(const ServerCredentials 
         for (const QJsonValue &v : clients) {
             QJsonObject c = v.toObject();
             if (flowValue.isEmpty()) {
-                c.remove(amnezia::protocols::xray::flow);
+                c.remove(rampage::protocols::xray::flow);
             } else {
-                c[amnezia::protocols::xray::flow] = flowValue;
+                c[rampage::protocols::xray::flow] = flowValue;
             }
             updatedClients.append(c);
         }
         clients = updatedClients;
     }
 
-    settings[amnezia::protocols::xray::clients] = clients;
-    inbound[amnezia::protocols::xray::settings] = settings;
+    settings[rampage::protocols::xray::clients] = clients;
+    inbound[rampage::protocols::xray::settings] = settings;
     inbounds[0] = inbound;
-    serverConfig[amnezia::protocols::xray::inbounds] = inbounds;
+    serverConfig[rampage::protocols::xray::inbounds] = inbounds;
 
     errorCode = uploadServerConfigJson(credentials, container, dnsSettings, serverConfig);
     if (errorCode != ErrorCode::NoError) {
@@ -399,46 +399,46 @@ XrayProtocolConfig XrayConfigurator::buildClientProtocolConfig(const ServerCrede
     }
 
     QJsonObject userObj;
-    userObj[amnezia::protocols::xray::id] = clientId;
-    userObj[amnezia::protocols::xray::encryption] = QStringLiteral("none");
+    userObj[rampage::protocols::xray::id] = clientId;
+    userObj[rampage::protocols::xray::encryption] = QStringLiteral("none");
     if (!srv.flow.isEmpty()) {
-        userObj[amnezia::protocols::xray::flow] = srv.flow;
+        userObj[rampage::protocols::xray::flow] = srv.flow;
     }
 
     QJsonObject vnextEntry;
-    vnextEntry[amnezia::protocols::xray::address] = credentials.hostName;
-    vnextEntry[amnezia::protocols::xray::port] =
-            srv.port.isEmpty() ? QString(amnezia::protocols::xray::defaultPort).toInt() : srv.port.toInt();
-    vnextEntry[amnezia::protocols::xray::users] = QJsonArray { userObj };
+    vnextEntry[rampage::protocols::xray::address] = credentials.hostName;
+    vnextEntry[rampage::protocols::xray::port] =
+            srv.port.isEmpty() ? QString(rampage::protocols::xray::defaultPort).toInt() : srv.port.toInt();
+    vnextEntry[rampage::protocols::xray::users] = QJsonArray { userObj };
 
     QJsonObject outboundSettings;
-    outboundSettings[amnezia::protocols::xray::vnext] = QJsonArray { vnextEntry };
+    outboundSettings[rampage::protocols::xray::vnext] = QJsonArray { vnextEntry };
 
     QJsonObject outbound;
     outbound[QStringLiteral("protocol")] = QStringLiteral("vless");
-    outbound[amnezia::protocols::xray::settings] = outboundSettings;
+    outbound[rampage::protocols::xray::settings] = outboundSettings;
 
     QJsonObject streamObj = buildStreamSettings(srv, clientId);
     if (srv.security == QLatin1String("reality")) {
-        QJsonObject rs = streamObj[amnezia::protocols::xray::realitySettings].toObject();
-        rs[amnezia::protocols::xray::publicKey] = xrayPublicKey;
-        rs[amnezia::protocols::xray::shortId] = xrayShortId;
-        rs[amnezia::protocols::xray::spiderX] = QString();
-        streamObj[amnezia::protocols::xray::realitySettings] = rs;
+        QJsonObject rs = streamObj[rampage::protocols::xray::realitySettings].toObject();
+        rs[rampage::protocols::xray::publicKey] = xrayPublicKey;
+        rs[rampage::protocols::xray::shortId] = xrayShortId;
+        rs[rampage::protocols::xray::spiderX] = QString();
+        streamObj[rampage::protocols::xray::realitySettings] = rs;
     }
 
-    outbound[amnezia::protocols::xray::streamSettings] = streamObj;
+    outbound[rampage::protocols::xray::streamSettings] = streamObj;
 
     QJsonObject inboundObj;
-    inboundObj[QStringLiteral("listen")] = amnezia::protocols::xray::defaultLocalListenAddr;
-    inboundObj[amnezia::protocols::xray::port] = amnezia::protocols::xray::defaultLocalProxyPort;
+    inboundObj[QStringLiteral("listen")] = rampage::protocols::xray::defaultLocalListenAddr;
+    inboundObj[rampage::protocols::xray::port] = rampage::protocols::xray::defaultLocalProxyPort;
     inboundObj[QStringLiteral("protocol")] = QStringLiteral("socks");
-    inboundObj[amnezia::protocols::xray::settings] = QJsonObject { { QStringLiteral("udp"), true } };
+    inboundObj[rampage::protocols::xray::settings] = QJsonObject { { QStringLiteral("udp"), true } };
 
     QJsonObject clientJson;
     clientJson[QStringLiteral("log")] = QJsonObject { { QStringLiteral("loglevel"), QStringLiteral("error") } };
-    clientJson[amnezia::protocols::xray::inbounds] = QJsonArray { inboundObj };
-    clientJson[amnezia::protocols::xray::outbounds] = QJsonArray { outbound };
+    clientJson[rampage::protocols::xray::inbounds] = QJsonArray { inboundObj };
+    clientJson[rampage::protocols::xray::outbounds] = QJsonArray { outbound };
 
     const QString config = QString::fromUtf8(QJsonDocument(clientJson).toJson(QJsonDocument::Compact));
 
@@ -447,7 +447,7 @@ XrayProtocolConfig XrayConfigurator::buildClientProtocolConfig(const ServerCrede
 
     XrayClientConfig clientConfig;
     clientConfig.nativeConfig = config;
-    clientConfig.localPort = QString(amnezia::protocols::xray::defaultLocalProxyPort);
+    clientConfig.localPort = QString(rampage::protocols::xray::defaultLocalProxyPort);
     clientConfig.id = clientId;
     protocolConfig.setClientConfig(clientConfig);
 
@@ -459,7 +459,7 @@ QJsonObject XrayConfigurator::buildStreamSettings(const XrayServerConfig &srv, c
     QJsonObject streamSettings;
     const auto &xhttp = srv.xhttp;
     const auto &mkcp = srv.mkcp;
-    namespace px = amnezia::protocols::xray;
+    namespace px = rampage::protocols::xray;
 
     QString networkValue = QStringLiteral("tcp");
     if (srv.transport == QLatin1String("xhttp"))

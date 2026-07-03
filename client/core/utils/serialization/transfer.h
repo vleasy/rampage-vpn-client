@@ -9,7 +9,7 @@
 
 constexpr auto VMESS_USER_ALTERID_DEFAULT = 0;
 
-namespace amnezia::serialization {
+namespace rampage::serialization {
 
 struct ShadowSocksServerObject
 {

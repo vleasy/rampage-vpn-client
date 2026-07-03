@@ -202,11 +202,11 @@ bool KillSwitch::enablePeerTraffic(const QJsonObject &configStr) {
 #ifdef Q_OS_WIN
     InterfaceConfig config;
 
-    config.m_primaryDnsServer = configStr.value(amnezia::configKey::dns1).toString();
+    config.m_primaryDnsServer = configStr.value(Rampage::configKey::dns1).toString();
 
-    // We don't use secondary DNS if primary DNS is AmneziaDNS
-    if (!config.m_primaryDnsServer.contains(amnezia::protocols::dns::amneziaDnsIp)) {
-        config.m_secondaryDnsServer = configStr.value(amnezia::configKey::dns2).toString();
+    // We don't use secondary DNS if primary DNS is RampageDNS
+    if (!config.m_primaryDnsServer.contains(Rampage::protocols::dns::RampageDnsIp)) {
+        config.m_secondaryDnsServer = configStr.value(Rampage::configKey::dns2).toString();
     }
 
     config.m_serverPublicKey = "openvpn";
@@ -244,14 +244,14 @@ bool KillSwitch::enablePeerTraffic(const QJsonObject &configStr) {
         }
     }
 
-    for (const QJsonValue &i : configStr.value(amnezia::configKey::splitTunnelApps).toArray()) {
+    for (const QJsonValue &i : configStr.value(Rampage::configKey::splitTunnelApps).toArray()) {
         if (!i.isString()) {
             break;
         }
         config.m_vpnDisabledApps.append(i.toString());
     }
 
-    for (auto dns : configStr.value(amnezia::configKey::allowedDnsServers).toArray()) {
+    for (auto dns : configStr.value(Rampage::configKey::allowedDnsServers).toArray()) {
         if (!dns.isString()) {
             break;
         }
@@ -259,7 +259,7 @@ bool KillSwitch::enablePeerTraffic(const QJsonObject &configStr) {
     }
 
     // killSwitch toggle
-    if (QVariant(configStr.value(amnezia::configKey::killSwitchOption).toString()).toBool()) {
+    if (QVariant(configStr.value(Rampage::configKey::killSwitchOption).toString()).toBool()) {
         WindowsFirewall::create(this)->enablePeerTraffic(config);
     }
 
@@ -328,17 +328,17 @@ bool KillSwitch::enableKillSwitch(const QJsonObject &configStr, int vpnAdapterIn
     LinuxFirewall::setAnchorEnabled(LinuxFirewall::IPv4, QStringLiteral("310.blockDNS"), true);
     QStringList dnsServers;
 
-    dnsServers.append(configStr.value(amnezia::configKey::dns1).toString());
+    dnsServers.append(configStr.value(Rampage::configKey::dns1).toString());
 
-    // We don't use secondary DNS if primary DNS is AmneziaDNS
-    if (!configStr.value(amnezia::configKey::dns1).toString().contains(amnezia::protocols::dns::amneziaDnsIp)) {
-        dnsServers.append(configStr.value(amnezia::configKey::dns2).toString());
+    // We don't use secondary DNS if primary DNS is RampageDNS
+    if (!configStr.value(Rampage::configKey::dns1).toString().contains(Rampage::protocols::dns::RampageDnsIp)) {
+        dnsServers.append(configStr.value(Rampage::configKey::dns2).toString());
     }
 
     dnsServers.append("127.0.0.1");
     dnsServers.append("127.0.0.53");
     
-    for (auto dns : configStr.value(amnezia::configKey::allowedDnsServers).toArray()) {
+    for (auto dns : configStr.value(Rampage::configKey::allowedDnsServers).toArray()) {
         if (!dns.isString()) {
             break;
         }
@@ -370,14 +370,14 @@ bool KillSwitch::enableKillSwitch(const QJsonObject &configStr, int vpnAdapterIn
     MacOSFirewall::setAnchorEnabled(QStringLiteral("300.allowLAN"), true);
 
     QStringList dnsServers;
-    dnsServers.append(configStr.value(amnezia::configKey::dns1).toString());
+    dnsServers.append(configStr.value(Rampage::configKey::dns1).toString());
 
-    // We don't use secondary DNS if primary DNS is AmneziaDNS
-    if (!configStr.value(amnezia::configKey::dns1).toString().contains(amnezia::protocols::dns::amneziaDnsIp)) {
-        dnsServers.append(configStr.value(amnezia::configKey::dns2).toString());
+    // We don't use secondary DNS if primary DNS is RampageDNS
+    if (!configStr.value(Rampage::configKey::dns1).toString().contains(Rampage::protocols::dns::RampageDnsIp)) {
+        dnsServers.append(configStr.value(Rampage::configKey::dns2).toString());
     }
     
-    for (auto dns : configStr.value(amnezia::configKey::allowedDnsServers).toArray()) {
+    for (auto dns : configStr.value(Rampage::configKey::allowedDnsServers).toArray()) {
         if (!dns.isString()) {
             break;
         }

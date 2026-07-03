@@ -52,7 +52,7 @@ QVariant Socks5ProxyConfigModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void Socks5ProxyConfigModel::updateModel(amnezia::DockerContainer container, const amnezia::Socks5ProxyProtocolConfig &protocolConfig)
+void Socks5ProxyConfigModel::updateModel(rampage::DockerContainer container, const rampage::Socks5ProxyProtocolConfig &protocolConfig)
 {
     beginResetModel();
     m_container = container;
@@ -60,7 +60,7 @@ void Socks5ProxyConfigModel::updateModel(amnezia::DockerContainer container, con
     endResetModel();
 }
 
-amnezia::Socks5ProxyProtocolConfig Socks5ProxyConfigModel::getProtocolConfig()
+rampage::Socks5ProxyProtocolConfig Socks5ProxyConfigModel::getProtocolConfig()
 {
     return m_protocolConfig;
 }

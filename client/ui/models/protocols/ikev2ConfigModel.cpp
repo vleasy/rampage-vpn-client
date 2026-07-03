@@ -55,7 +55,7 @@ QVariant Ikev2ConfigModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void Ikev2ConfigModel::updateModel(amnezia::DockerContainer container, const amnezia::Ikev2ProtocolConfig &protocolConfig)
+void Ikev2ConfigModel::updateModel(rampage::DockerContainer container, const rampage::Ikev2ProtocolConfig &protocolConfig)
 {
     beginResetModel();
     m_container = container;
@@ -65,7 +65,7 @@ void Ikev2ConfigModel::updateModel(amnezia::DockerContainer container, const amn
     endResetModel();
 }
 
-amnezia::Ikev2ProtocolConfig Ikev2ConfigModel::getProtocolConfig()
+rampage::Ikev2ProtocolConfig Ikev2ConfigModel::getProtocolConfig()
 {
     return m_protocolConfig;
 }

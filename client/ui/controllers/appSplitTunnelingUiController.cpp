@@ -18,7 +18,7 @@ AppSplitTunnelingUiController::AppSplitTunnelingUiController(AppSplitTunnelingCo
 
 void AppSplitTunnelingUiController::addApp(const QString &appPath)
 {
-    amnezia::InstalledAppInfo appInfo { "", "", appPath };
+    rampage::InstalledAppInfo appInfo { "", "", appPath };
     if (!appPath.isEmpty()) {
         QFileInfo fileInfo(appPath);
         appInfo.appName = fileInfo.fileName();
@@ -34,7 +34,7 @@ void AppSplitTunnelingUiController::addApp(const QString &appPath)
 void AppSplitTunnelingUiController::addApps(QVector<QPair<QString, QString>> apps)
 {
     for (const auto &app : apps) {
-        amnezia::InstalledAppInfo appInfo { app.first, app.second, "" };
+        rampage::InstalledAppInfo appInfo { app.first, app.second, "" };
         m_appSplitTunnelingController->addApp(appInfo);
     }
     emit finished(tr("The selected applications have been added"));
@@ -58,7 +58,7 @@ void AppSplitTunnelingUiController::toggleSplitTunneling(bool enabled)
 
 void AppSplitTunnelingUiController::setRouteMode(int routeMode)
 {
-    m_appSplitTunnelingController->setRouteMode(static_cast<amnezia::AppsRouteMode>(routeMode));
+    m_appSplitTunnelingController->setRouteMode(static_cast<rampage::AppsRouteMode>(routeMode));
     emit routeModeChanged();
 }
 

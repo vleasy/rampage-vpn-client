@@ -19,9 +19,9 @@ Rectangle {
 
     implicitHeight: cardLayout.implicitHeight + 28
     radius: 16
-    color: AmneziaStyle.color.transparent
+    color: RampageStyle.color.transparent
     border.width: selected ? 2 : 1
-    border.color: selected ? AmneziaStyle.color.goldenApricot : AmneziaStyle.color.charcoalGray
+    border.color: selected ? RampageStyle.color.goldenApricot : RampageStyle.color.charcoalGray
 
     ColumnLayout {
         id: cardLayout
@@ -41,7 +41,7 @@ Rectangle {
             LabelTextType {
                 Layout.fillWidth: true
                 text: root.billingPeriod
-                color: root.selected ? AmneziaStyle.color.goldenApricot : AmneziaStyle.color.paleGray
+                color: root.selected ? RampageStyle.color.goldenApricot : RampageStyle.color.paleGray
                 font.pixelSize: 17
                 font.weight: Font.DemiBold
                 wrapMode: Text.Wrap
@@ -49,7 +49,7 @@ Rectangle {
 
             LabelTextType {
                 text: root.priceLabel
-                color: root.selected ? AmneziaStyle.color.goldenApricot : AmneziaStyle.color.paleGray
+                color: root.selected ? RampageStyle.color.goldenApricot : RampageStyle.color.paleGray
                 font.pixelSize: 17
                 font.weight: Font.DemiBold
             }
@@ -62,7 +62,7 @@ Rectangle {
             LabelTextType {
                 Layout.fillWidth: true
                 text: root.subtitle
-                color: AmneziaStyle.color.mutedGray
+                color: RampageStyle.color.mutedGray
                 font.pixelSize: 13
                 wrapMode: Text.Wrap
             }
@@ -71,7 +71,7 @@ Rectangle {
                 visible: root.showRecommendedBadge
                 Layout.alignment: Qt.AlignVCenter
                 radius: 10
-                color: AmneziaStyle.color.softViolet
+                color: RampageStyle.color.softViolet
                 implicitHeight: recLabel.implicitHeight + 8
                 implicitWidth: recLabel.implicitWidth + 16
 
@@ -80,7 +80,7 @@ Rectangle {
 
                     anchors.centerIn: parent
                     text: root.recommendedText
-                    color: AmneziaStyle.color.midnightBlack
+                    color: RampageStyle.color.midnightBlack
                     font.pixelSize: 11
                     font.weight: Font.Medium
                 }

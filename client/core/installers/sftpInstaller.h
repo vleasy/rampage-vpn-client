@@ -9,9 +9,9 @@ class SftpInstaller : public InstallerBase
 public:
     explicit SftpInstaller(QObject *parent = nullptr);
 
-    amnezia::ContainerConfig generateConfig(amnezia::DockerContainer container, int port, amnezia::TransportProto transportProto) override;
-    amnezia::ErrorCode extractConfigFromContainer(amnezia::DockerContainer container, const amnezia::ServerCredentials &credentials,
-                                         SshSession* serverController, amnezia::ContainerConfig &config) override;
+    rampage::ContainerConfig generateConfig(rampage::DockerContainer container, int port, rampage::TransportProto transportProto) override;
+    rampage::ErrorCode extractConfigFromContainer(rampage::DockerContainer container, const rampage::ServerCredentials &credentials,
+                                         SshSession* serverController, rampage::ContainerConfig &config) override;
 };
 
 #endif // SFTPINSTALLER_H

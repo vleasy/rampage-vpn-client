@@ -280,7 +280,7 @@ ExportController::ExportResult ExportController::generateXrayConfig(const QStrin
 
     // Parse the Xray data to extract VLESS parameters and generate string
     QJsonObject xrayConfig = nativeResult.jsonNativeConfig;
-    QJsonArray outbounds = xrayConfig.value(amnezia::protocols::xray::outbounds).toArray();
+    QJsonArray outbounds = xrayConfig.value(rampage::protocols::xray::outbounds).toArray();
 
     if (outbounds.isEmpty()) {
         result.errorCode = ErrorCode::InternalError;
@@ -288,17 +288,17 @@ ExportController::ExportResult ExportController::generateXrayConfig(const QStrin
     }
 
     QJsonObject outbound = outbounds[0].toObject();
-    QJsonObject settings = outbound.value(amnezia::protocols::xray::settings).toObject();
-    QJsonObject streamSettings = outbound.value(amnezia::protocols::xray::streamSettings).toObject();
+    QJsonObject settings = outbound.value(rampage::protocols::xray::settings).toObject();
+    QJsonObject streamSettings = outbound.value(rampage::protocols::xray::streamSettings).toObject();
 
-    QJsonArray vnext = settings.value(amnezia::protocols::xray::vnext).toArray();
+    QJsonArray vnext = settings.value(rampage::protocols::xray::vnext).toArray();
     if (vnext.isEmpty()) {
         result.errorCode = ErrorCode::InternalError;
         return result;
     }
 
     QJsonObject server = vnext[0].toObject();
-    QJsonArray users = server.value(amnezia::protocols::xray::users).toArray();
+    QJsonArray users = server.value(rampage::protocols::xray::users).toArray();
     if (users.isEmpty()) {
         result.errorCode = ErrorCode::InternalError;
         return result;
@@ -306,27 +306,27 @@ ExportController::ExportResult ExportController::generateXrayConfig(const QStrin
 
     QJsonObject user = users[0].toObject();
 
-    amnezia::serialization::VlessServerObject vlessServer;
-    vlessServer.address = server.value(amnezia::protocols::xray::address).toString();
-    vlessServer.port = server.value(amnezia::protocols::xray::port).toInt();
-    vlessServer.id = user.value(amnezia::protocols::xray::id).toString();
-    vlessServer.flow = user.value(amnezia::protocols::xray::flow).toString("xtls-rprx-vision");
-    vlessServer.encryption = user.value(amnezia::protocols::xray::encryption).toString("none");
+    rampage::serialization::VlessServerObject vlessServer;
+    vlessServer.address = server.value(rampage::protocols::xray::address).toString();
+    vlessServer.port = server.value(rampage::protocols::xray::port).toInt();
+    vlessServer.id = user.value(rampage::protocols::xray::id).toString();
+    vlessServer.flow = user.value(rampage::protocols::xray::flow).toString("xtls-rprx-vision");
+    vlessServer.encryption = user.value(rampage::protocols::xray::encryption).toString("none");
 
-    vlessServer.network = streamSettings.value(amnezia::protocols::xray::network).toString("tcp");
-    vlessServer.security = streamSettings.value(amnezia::protocols::xray::security).toString("reality");
+    vlessServer.network = streamSettings.value(rampage::protocols::xray::network).toString("tcp");
+    vlessServer.security = streamSettings.value(rampage::protocols::xray::security).toString("reality");
 
     if (vlessServer.security == "reality") {
-        QJsonObject realitySettings = streamSettings.value(amnezia::protocols::xray::realitySettings).toObject();
-        vlessServer.serverName = realitySettings.value(amnezia::protocols::xray::serverName).toString();
-        vlessServer.publicKey = realitySettings.value(amnezia::protocols::xray::publicKey).toString();
-        vlessServer.shortId = realitySettings.value(amnezia::protocols::xray::shortId).toString();
-        vlessServer.fingerprint = realitySettings.value(amnezia::protocols::xray::fingerprint).toString("chrome");
-        vlessServer.spiderX = realitySettings.value(amnezia::protocols::xray::spiderX).toString("");
+        QJsonObject realitySettings = streamSettings.value(rampage::protocols::xray::realitySettings).toObject();
+        vlessServer.serverName = realitySettings.value(rampage::protocols::xray::serverName).toString();
+        vlessServer.publicKey = realitySettings.value(rampage::protocols::xray::publicKey).toString();
+        vlessServer.shortId = realitySettings.value(rampage::protocols::xray::shortId).toString();
+        vlessServer.fingerprint = realitySettings.value(rampage::protocols::xray::fingerprint).toString("chrome");
+        vlessServer.spiderX = realitySettings.value(rampage::protocols::xray::spiderX).toString("");
     } else if (vlessServer.security == "tls") {
         QJsonObject tlsSettings = streamSettings.value("tlsSettings").toObject();
-        vlessServer.serverName = tlsSettings.value(amnezia::protocols::xray::serverName).toString();
-        vlessServer.fingerprint = tlsSettings.value(amnezia::protocols::xray::fingerprint).toString();
+        vlessServer.serverName = tlsSettings.value(rampage::protocols::xray::serverName).toString();
+        vlessServer.fingerprint = tlsSettings.value(rampage::protocols::xray::fingerprint).toString();
         // alpn: serialize array back to comma-separated for VLESS URI
         QJsonArray alpnArr = tlsSettings.value("alpn").toArray();
         QStringList alpnList;
@@ -337,7 +337,7 @@ ExportController::ExportResult ExportController::generateXrayConfig(const QStrin
         // VlessServerObject doesn't have alpn field, so we embed in serverName if needed
     }
 
-    result.nativeConfigString = amnezia::serialization::vless::Serialize(vlessServer, "AmneziaVPN");
+    result.nativeConfigString = rampage::serialization::vless::Serialize(vlessServer, "RampageVPN");
 
     return result;
 }

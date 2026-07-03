@@ -15,7 +15,7 @@ set(BUILD_WITH_QT6 ON)
 add_subdirectory(${CLIENT_ROOT_DIR}/3rd/qtkeychain EXCLUDE_FROM_ALL)
 
 if(ANDROID)
-    # Use qtgamepad from amnezia-vpn/qtgamepad repository
+    # Use qtgamepad from Rampage-vpn/qtgamepad repository
     # Only if Qt6CorePrivate is available (required by qtgamepad)
     find_package(Qt6CorePrivate CONFIG QUIET)
     if(Qt6CorePrivate_FOUND)

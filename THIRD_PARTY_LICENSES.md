@@ -54,19 +54,19 @@ Each component is distributed under its own license as linked below.
 
 ---
 
-## AmneziaWG Apple (WireGuard)
+## RampageWG Apple (WireGuard)
 
-- Source: https://github.com/amnezia-vpn/amneziawg-apple
+- Source: https://github.com/Rampage-vpn/Rampagewg-apple
 - License: MIT License
-- License Text: https://github.com/amnezia-vpn/amneziawg-apple/blob/master/COPYING
+- License Text: https://github.com/Rampage-vpn/Rampagewg-apple/blob/master/COPYING
 
 ---
 
-## AmneziaWG Android
+## RampageWG Android
 
-- Source: https://github.com/amnezia-vpn/amneziawg-go
+- Source: https://github.com/Rampage-vpn/Rampagewg-go
 - License: MIT License
-- License Text: https://github.com/amnezia-vpn/amneziawg-go/blob/master/LICENSE
+- License Text: https://github.com/Rampage-vpn/Rampagewg-go/blob/master/LICENSE
 
 ---
 

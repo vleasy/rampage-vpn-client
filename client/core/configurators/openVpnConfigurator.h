@@ -26,24 +26,24 @@ public:
         QString host;       // host ip
     };
 
-    amnezia::ProtocolConfig createConfig(const amnezia::ServerCredentials &credentials, amnezia::DockerContainer container,
-                               const amnezia::ContainerConfig &containerConfig,
-                               const amnezia::DnsSettings &dnsSettings,
-                               amnezia::ErrorCode &errorCode) override;
+    rampage::ProtocolConfig createConfig(const rampage::ServerCredentials &credentials, rampage::DockerContainer container,
+                               const rampage::ContainerConfig &containerConfig,
+                               const rampage::DnsSettings &dnsSettings,
+                               rampage::ErrorCode &errorCode) override;
 
-    amnezia::ProtocolConfig processConfigWithLocalSettings(const amnezia::ConnectionSettings &settings,
-                                                           amnezia::ProtocolConfig protocolConfig) override;
-    amnezia::ProtocolConfig processConfigWithExportSettings(const amnezia::ExportSettings &settings,
-                                                            amnezia::ProtocolConfig protocolConfig) override;
+    rampage::ProtocolConfig processConfigWithLocalSettings(const rampage::ConnectionSettings &settings,
+                                                           rampage::ProtocolConfig protocolConfig) override;
+    rampage::ProtocolConfig processConfigWithExportSettings(const rampage::ExportSettings &settings,
+                                                            rampage::ProtocolConfig protocolConfig) override;
 
     static ConnectionData createCertRequest();
 
 private:
-    ConnectionData prepareOpenVpnConfig(const amnezia::ServerCredentials &credentials, amnezia::DockerContainer container,
-                                       const amnezia::DnsSettings &dnsSettings,
-                                       amnezia::ErrorCode &errorCode);
-    amnezia::ErrorCode signCert(amnezia::DockerContainer container, const amnezia::ServerCredentials &credentials, 
-                      const amnezia::DnsSettings &dnsSettings, QString clientId);
+    ConnectionData prepareOpenVpnConfig(const rampage::ServerCredentials &credentials, rampage::DockerContainer container,
+                                       const rampage::DnsSettings &dnsSettings,
+                                       rampage::ErrorCode &errorCode);
+    rampage::ErrorCode signCert(rampage::DockerContainer container, const rampage::ServerCredentials &credentials, 
+                      const rampage::DnsSettings &dnsSettings, QString clientId);
 };
 
 #endif // OPENVPN_CONFIGURATOR_H

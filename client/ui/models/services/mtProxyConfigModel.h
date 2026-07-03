@@ -42,13 +42,13 @@ public:
 
 public slots:
 
-    void updateModel(amnezia::DockerContainer container, const amnezia::MtProxyProtocolConfig &protocolConfig);
+    void updateModel(rampage::DockerContainer container, const rampage::MtProxyProtocolConfig &protocolConfig);
 
     void updateModel(const QJsonObject &config);
 
     QJsonObject getConfig();
 
-    amnezia::MtProxyProtocolConfig getProtocolConfig();
+    rampage::MtProxyProtocolConfig getProtocolConfig();
 
     Q_INVOKABLE void generateSecret();
 
@@ -148,9 +148,9 @@ protected:
     QHash<int, QByteArray> roleNames() const override;
 
 private:
-    amnezia::DockerContainer m_container;
+    rampage::DockerContainer m_container;
     QJsonObject m_fullConfig;
-    amnezia::MtProxyProtocolConfig m_protocolConfig;
+    rampage::MtProxyProtocolConfig m_protocolConfig;
 };
 
 #endif // MTPROXYCONFIGMODEL_H

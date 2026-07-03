@@ -1,7 +1,7 @@
 #ifndef XRAY_DEFS_H
 #define XRAY_DEFS_H
 
-namespace amnezia
+namespace Rampage
 {
     namespace xray
     {

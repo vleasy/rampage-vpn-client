@@ -61,7 +61,7 @@ Window  {
     maximumWidth: 600
     maximumHeight: 800
 
-    color: AmneziaStyle.color.midnightBlack
+    color: RampageStyle.color.midnightBlack
 
     onClosing: function(close) {
         close.accepted = false
@@ -73,7 +73,7 @@ Window  {
         console.warn("Scene graph error:", error, message)
     }
 
-    title: "AmneziaVPN"
+    title: "RampageVPN"
 
     Item { // This item is needed for focus handling
         id: defaultFocusItem
@@ -290,11 +290,11 @@ Window  {
 
                     Layout.fillWidth: true
 
-                    defaultColor: AmneziaStyle.color.transparent
-                    hoveredColor: AmneziaStyle.color.translucentWhite
-                    pressedColor: AmneziaStyle.color.sheerWhite
-                    disabledColor: AmneziaStyle.color.mutedGray
-                    textColor: AmneziaStyle.color.paleGray
+                    defaultColor: RampageStyle.color.transparent
+                    hoveredColor: RampageStyle.color.translucentWhite
+                    pressedColor: RampageStyle.color.sheerWhite
+                    disabledColor: RampageStyle.color.mutedGray
+                    textColor: RampageStyle.color.paleGray
                     borderWidth: 1
 
                     text: qsTr("Save")
@@ -392,7 +392,7 @@ Window  {
 
     function showUnsupportedConnectDrawer() {
         let headerText = qsTr("This subscription format is no longer supported")
-        let descriptionText = qsTr("This legacy Amnezia subscription type can no longer be used to connect in this application version.\nRemove the server from the app to continue.")
+        let descriptionText = qsTr("This legacy Rampage subscription type can no longer be used to connect in this application version.\nRemove the server from the app to continue.")
         let yesButtonText = qsTr("Continue")
         let noButtonText = qsTr("Cancel")
 

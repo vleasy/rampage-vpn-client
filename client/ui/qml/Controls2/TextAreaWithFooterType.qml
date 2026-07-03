@@ -15,9 +15,9 @@ Rectangle {
     property alias textArea: textArea
     property alias textAreaText: textArea.text
 
-    property string borderHoveredColor: AmneziaStyle.color.charcoalGray
-    property string borderNormalColor: AmneziaStyle.color.slateGray
-    property string borderFocusedColor: AmneziaStyle.color.paleGray
+    property string borderHoveredColor: RampageStyle.color.charcoalGray
+    property string borderNormalColor: RampageStyle.color.slateGray
+    property string borderFocusedColor: RampageStyle.color.paleGray
 
     property string firstButtonImage
     property string secondButtonImage
@@ -26,7 +26,7 @@ Rectangle {
     property var secondButtonClickedFunc
 
     height: 148
-    color: AmneziaStyle.color.onyxBlack
+    color: RampageStyle.color.onyxBlack
     border.width: 1
     border.color: getBorderColor(borderNormalColor)
     radius: 16
@@ -57,10 +57,10 @@ Rectangle {
                 leftPadding: 0
                 Layout.bottomMargin: 16
 
-                color: AmneziaStyle.color.paleGray
-                selectionColor:  AmneziaStyle.color.richBrown
-                selectedTextColor: AmneziaStyle.color.paleGray
-                placeholderTextColor: AmneziaStyle.color.mutedGray
+                color: RampageStyle.color.paleGray
+                selectionColor:  RampageStyle.color.richBrown
+                selectedTextColor: RampageStyle.color.paleGray
+                placeholderTextColor: RampageStyle.color.mutedGray
 
                 font.pixelSize: 16
                 font.weight: Font.Medium
@@ -97,7 +97,7 @@ Rectangle {
                     id: firstButton
                     visible: root.firstButtonImage !== ""
 
-                    imageColor: AmneziaStyle.color.paleGray
+                    imageColor: RampageStyle.color.paleGray
 
                     image: root.firstButtonImage
                     onClicked: function() {
@@ -111,7 +111,7 @@ Rectangle {
                     id: secondButton
                     visible: root.secondButtonImage !== ""
 
-                    imageColor: AmneziaStyle.color.paleGray
+                    imageColor: RampageStyle.color.paleGray
 
                     image: root.secondButtonImage
                     onClicked: function() {
@@ -127,7 +127,7 @@ Rectangle {
 
                 ImageButtonType {
                     id: resetButton
-                    imageColor: AmneziaStyle.color.paleGray
+                    imageColor: RampageStyle.color.paleGray
 
                     visible: root.textAreaText !== ""
                     image: "qrc:/images/controls/close.svg"

@@ -42,7 +42,7 @@ ErrorCode XrayInstaller::extractConfigFromContainer(DockerContainer container, c
     ErrorCode errorCode = ErrorCode::NoError;
     
     QString currentConfig = sshSession->getTextFileFromContainer(
-            container, credentials, amnezia::protocols::xray::serverConfigPath, errorCode);
+            container, credentials, rampage::protocols::xray::serverConfigPath, errorCode);
 
     if (errorCode != ErrorCode::NoError) {
         return errorCode;

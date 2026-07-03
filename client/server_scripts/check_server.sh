@@ -397,24 +397,24 @@ if [ "$CHECK_CONTAINERS" = "1" ] && [ "$USER_GOOD" != "0" ]; then
   log_and_display ""
   total_cont=$($SUD docker ps -aq 2>/dev/null | wc -l || echo "0")
   active_cont=$($SUD docker ps -q 2>/dev/null | wc -l || echo "0")
-  amnezia_cont=$($SUD docker ps -a 2>/dev/null | grep -c amnezia || echo "0")
+  Rampage_cont=$($SUD docker ps -a 2>/dev/null | grep -c Rampage || echo "0")
 
-  log_and_display "Containers check: Total $total_cont / Active $active_cont / Amnezia $amnezia_cont"
-  $SUD docker ps -a --format "{{.Names}} ({{.Image}}) ({{.Status}}) ({{.Ports}})" 2>/dev/null | grep amnezia || true
+  log_and_display "Containers check: Total $total_cont / Active $active_cont / Rampage $Rampage_cont"
+  $SUD docker ps -a --format "{{.Names}} ({{.Image}}) ({{.Status}}) ({{.Ports}})" 2>/dev/null | grep Rampage || true
   
   # Peers check
-  if $SUD docker ps 2>/dev/null | grep -qE '\<(amnezia-awg|amnezia-wireguard)\>'; then
+  if $SUD docker ps 2>/dev/null | grep -qE '\<(Rampage-awg|Rampage-wireguard)\>'; then
     log_and_display ""
     log_and_display "Peers check (beta):"
-    if $SUD docker ps 2>/dev/null | grep -q amnezia-awg; then
-      AMNEZIA_WG_CONTAINER=$($SUD docker ps 2>/dev/null | grep amnezia-awg | awk '{print $1}' | head -1)
-      if [ -n "$AMNEZIA_WG_CONTAINER" ]; then
-        WG_PEERS=$($SUD docker exec -it "$AMNEZIA_WG_CONTAINER" wg show 2>/dev/null | grep -c 'peer' || echo "0")
-        log_and_display "AmneziaWG peers: $WG_PEERS"
+    if $SUD docker ps 2>/dev/null | grep -q Rampage-awg; then
+      Rampage_WG_CONTAINER=$($SUD docker ps 2>/dev/null | grep Rampage-awg | awk '{print $1}' | head -1)
+      if [ -n "$Rampage_WG_CONTAINER" ]; then
+        WG_PEERS=$($SUD docker exec -it "$Rampage_WG_CONTAINER" wg show 2>/dev/null | grep -c 'peer' || echo "0")
+        log_and_display "RampageWG peers: $WG_PEERS"
       fi
     fi
-    if $SUD docker ps 2>/dev/null | grep -q amnezia-wireguard; then
-      WIREGUARD_CONTAINER=$($SUD docker ps 2>/dev/null | grep amnezia-wireguard | awk '{print $1}' | head -1)
+    if $SUD docker ps 2>/dev/null | grep -q Rampage-wireguard; then
+      WIREGUARD_CONTAINER=$($SUD docker ps 2>/dev/null | grep Rampage-wireguard | awk '{print $1}' | head -1)
       if [ -n "$WIREGUARD_CONTAINER" ]; then
         WG_PEERS=$($SUD docker exec -it "$WIREGUARD_CONTAINER" wg show 2>/dev/null | grep -c 'peer' || echo "0")
         log_and_display "WireGuard peers: $WG_PEERS"

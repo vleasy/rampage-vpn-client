@@ -57,13 +57,13 @@ void AwgInstaller::generateAwgParameters(AwgServerConfig &serverConfig, bool isA
     QSet<int> usedValues;
     usedValues.insert(s1);
 
-    while (usedValues.contains(s2) || s1 + amnezia::AwgConstant::messageInitiationSize == s2 + amnezia::AwgConstant::messageResponseSize) {
+    while (usedValues.contains(s2) || s1 + rampage::AwgConstant::messageInitiationSize == s2 + rampage::AwgConstant::messageResponseSize) {
         s2 = QRandomGenerator::global()->bounded(15, 150);
     }
     usedValues.insert(s2);
 
-    while (usedValues.contains(s3) || s1 + amnezia::AwgConstant::messageInitiationSize == s3 + amnezia::AwgConstant::messageCookieReplySize
-           || s2 + amnezia::AwgConstant::messageResponseSize == s3 + amnezia::AwgConstant::messageCookieReplySize) {
+    while (usedValues.contains(s3) || s1 + rampage::AwgConstant::messageInitiationSize == s3 + rampage::AwgConstant::messageCookieReplySize
+           || s2 + rampage::AwgConstant::messageResponseSize == s3 + rampage::AwgConstant::messageCookieReplySize) {
         s3 = QRandomGenerator::global()->bounded(0, 64);
     }
     usedValues.insert(s3);

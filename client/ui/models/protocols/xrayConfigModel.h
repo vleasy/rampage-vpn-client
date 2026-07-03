@@ -124,12 +124,12 @@ public:
     Q_INVOKABLE QStringList validationErrors() const;
 
 public slots:
-    void updateModel(amnezia::DockerContainer container, const amnezia::XrayProtocolConfig& protocolConfig);
-    amnezia::XrayProtocolConfig getProtocolConfig();
+    void updateModel(rampage::DockerContainer container, const rampage::XrayProtocolConfig& protocolConfig);
+    rampage::XrayProtocolConfig getProtocolConfig();
     bool isServerSettingsEqual() const;
     bool hasUnsavedChanges() const;
     void resetToDefaults();
-    void applyServerConfig(const amnezia::XrayServerConfig &serverConfig);
+    void applyServerConfig(const rampage::XrayServerConfig &serverConfig);
 
 signals:
     void hasUnsavedChangesChanged();
@@ -138,11 +138,11 @@ protected:
     QHash<int, QByteArray> roleNames() const override;
 
 private:
-    amnezia::DockerContainer m_container;
-    amnezia::XrayProtocolConfig m_protocolConfig;
-    amnezia::XrayProtocolConfig m_originalProtocolConfig;
+    rampage::DockerContainer m_container;
+    rampage::XrayProtocolConfig m_protocolConfig;
+    rampage::XrayProtocolConfig m_originalProtocolConfig;
 
-    void applyDefaultsToServerConfig(amnezia::XrayServerConfig& config, bool fillFlowDefault = true);
+    void applyDefaultsToServerConfig(rampage::XrayServerConfig& config, bool fillFlowDefault = true);
 };
 
 #endif // XRAYCONFIGMODEL_H

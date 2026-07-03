@@ -57,18 +57,18 @@ PageType {
             width: listView.width
 
             SwitcherType {
-                id: amneziaDnsSwitch
+                id: rampageDnsSwitch
 
                 Layout.fillWidth: true
                 Layout.margins: 16
 
-                text: qsTr("Use AmneziaDNS")
-                descriptionText: qsTr("If AmneziaDNS is installed on the server")
+                text: qsTr("Use RampageDNS")
+                descriptionText: qsTr("If RampageDNS is installed on the server")
 
-                checked: SettingsController.isAmneziaDnsEnabled()
+                checked: SettingsController.isRampageDnsEnabled()
                 onToggled: function() {
-                    if (checked !== SettingsController.isAmneziaDnsEnabled()) {
-                        SettingsController.toggleAmneziaDns(checked)
+                    if (checked !== SettingsController.isRampageDnsEnabled()) {
+                        SettingsController.toggleRampageDns(checked)
                     }
                 }
             }
@@ -81,7 +81,7 @@ PageType {
                 Layout.fillWidth: true
 
                 text: qsTr("DNS servers")
-                descriptionText: qsTr("When AmneziaDNS is not used or installed")
+                descriptionText: qsTr("When RampageDNS is not used or installed")
                 rightImageSource: "qrc:/images/controls/chevron-right.svg"
 
                 clickedFunction: function() {

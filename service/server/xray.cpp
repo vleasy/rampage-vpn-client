@@ -7,7 +7,7 @@
 #include <QDebug>
 #include <QNetworkInterface>
 #include <QCoreApplication>
-#include <amnezia_xray.h>
+#include <Rampage_xray.h>
 #include <qdebug.h>
 
 #ifdef Q_OS_DARWIN
@@ -57,24 +57,24 @@ bool Xray::startXray(const QString &cfg)
     }
 #endif
 
-    if (auto err = amnezia_xray_setsockcallback(ctxSockCallback, this); err != nullptr) {
+    if (auto err = Rampage_xray_setsockcallback(ctxSockCallback, this); err != nullptr) {
         qDebug() << "[xray] sockopt failed: " << err;
-        amnezia_xray_free(err);
+        Rampage_xray_free(err);
         return false;
     }
 
-    amnezia_xray_setloghandler(ctxLogHandler, this);
+    Rampage_xray_setloghandler(ctxLogHandler, this);
 
     QByteArray bytes = cfg.toUtf8();
-    if (auto err = amnezia_xray_configure(bytes.data()); err != nullptr) {
+    if (auto err = Rampage_xray_configure(bytes.data()); err != nullptr) {
         qDebug() << "[xray] configuration failed: " << err;
-        amnezia_xray_free(err);
+        Rampage_xray_free(err);
         return false;
     }
 
-    if (auto err = amnezia_xray_start(); err != nullptr) {
+    if (auto err = Rampage_xray_start(); err != nullptr) {
         qDebug() << "[xray] failed to start: " << err;
-        amnezia_xray_free(err);
+        Rampage_xray_free(err);
         return false;
     }
 
@@ -85,9 +85,9 @@ bool Xray::stopXray()
 {
     qDebug() << "Xray::stopXray()";
     bool success = true;
-    if (auto err = amnezia_xray_stop(); err != nullptr) {
+    if (auto err = Rampage_xray_stop(); err != nullptr) {
         qDebug() << "[xray] failed to stop: " << err;
-        amnezia_xray_free(err);
+        Rampage_xray_free(err);
         success = false;
     }
 
@@ -127,7 +127,7 @@ void Xray::sockCallback(uintptr_t fd)
 #ifdef Q_OS_LINUX
     if (!m_defaultIfaceName.isEmpty()) {
         setsockopt(fd, SOL_SOCKET, SO_BINDTODEVICE, m_defaultIfaceName.data(), m_defaultIfaceName.size());
-        setsockopt(fd, SOL_SOCKET, SO_MARK, &amnezia::xray::xrayTrafficMark, sizeof(amnezia::xray::xrayTrafficMark));
+        setsockopt(fd, SOL_SOCKET, SO_MARK, &Rampage::xray::xrayTrafficMark, sizeof(Rampage::xray::xrayTrafficMark));
     }
 #endif
 }

@@ -26,7 +26,7 @@ private:
     ErrorCode startTun2Socks();
 
     QJsonObject m_xrayConfig;
-    amnezia::RouteMode m_routeMode;
+    rampage::RouteMode m_routeMode;
     QList<QHostAddress> m_dnsServers;
     QString m_remoteAddress;
 

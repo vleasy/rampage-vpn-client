@@ -20,7 +20,7 @@ PageType {
     id: root
 
     property string configExtension: ".conf"
-    property string configCaption: qsTr("Save AmneziaVPN config")
+    property string configCaption: qsTr("Save RampageVPN config")
 
     BackButtonType {
         id: backButton
@@ -58,7 +58,7 @@ PageType {
                 Layout.leftMargin: 16
 
                 headerText: qsTr("Configuration Files")
-                descriptionText: qsTr("For router setup or the AmneziaWG app")
+                descriptionText: qsTr("For router setup or the RampageWG app")
             }
         }
 
@@ -72,7 +72,7 @@ PageType {
                 text: countryName
                 descriptionText: isWorkerExpired ? qsTr("The configuration needs to be reissued") : ""
                 hideDescription: isWorkerExpired ? false : true
-                descriptionColor: AmneziaStyle.color.vibrantRed
+                descriptionColor: RampageStyle.color.vibrantRed
 
                 leftImageSource: "qrc:/countriesFlags/images/flagKit/" + countryImageCode + ".svg"
                 rightImageSource: isIssued ? "qrc:/images/controls/more-vertical.svg" : "qrc:/images/controls/download.svg"

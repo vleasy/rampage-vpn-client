@@ -1,5 +1,5 @@
-#ifndef AMNEZIA_APPLICATION_H
-#define AMNEZIA_APPLICATION_H
+#ifndef Rampage_APPLICATION_H
+#define Rampage_APPLICATION_H
 
 #include <QCommandLineParser>
 #include <QNetworkAccessManager>
@@ -19,20 +19,20 @@
 #include "ui/models/containerProps.h"
 #include "ui/models/protocolProps.h"
 
-#define amnApp (static_cast<AmneziaApplication *>(QCoreApplication::instance()))
+#define amnApp (static_cast<RampageApplication *>(QCoreApplication::instance()))
 
 #if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
-  #define AMNEZIA_BASE_CLASS QGuiApplication
+  #define Rampage_BASE_CLASS QGuiApplication
 #else
-  #define AMNEZIA_BASE_CLASS QApplication
+  #define Rampage_BASE_CLASS QApplication
 #endif
 
-class AmneziaApplication : public AMNEZIA_BASE_CLASS
+class RampageApplication : public Rampage_BASE_CLASS
 {
     Q_OBJECT
 public:
-    AmneziaApplication(int &argc, char *argv[]);
-    virtual ~AmneziaApplication();
+    RampageApplication(int &argc, char *argv[]);
+    virtual ~RampageApplication();
 
     void init();
     void registerTypes();
@@ -75,4 +75,4 @@ protected:
     bool eventFilter(QObject *watched, QEvent *event) override;
 };
 
-#endif // AMNEZIA_APPLICATION_H
+#endif // Rampage_APPLICATION_H

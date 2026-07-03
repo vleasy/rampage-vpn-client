@@ -9,18 +9,18 @@ Button {
 
     property string image
 
-    property string hoveredColor: AmneziaStyle.color.translucentWhite
-    property string defaultColor: AmneziaStyle.color.transparent
-    property string pressedColor: AmneziaStyle.color.sheerWhite
-    property string disableColor: AmneziaStyle.color.slateGray
+    property string hoveredColor: RampageStyle.color.translucentWhite
+    property string defaultColor: RampageStyle.color.transparent
+    property string pressedColor: RampageStyle.color.sheerWhite
+    property string disableColor: RampageStyle.color.slateGray
 
-    property string imageColor: AmneziaStyle.color.mutedGray
-    property string disableImageColor: AmneziaStyle.color.slateGray
+    property string imageColor: RampageStyle.color.mutedGray
+    property string disableImageColor: RampageStyle.color.slateGray
 
     property alias backgroundColor: background.color
     property alias backgroundRadius: background.radius
 
-    property string borderFocusedColor: AmneziaStyle.color.paleGray
+    property string borderFocusedColor: RampageStyle.color.paleGray
     property int borderFocusedWidth: 1
 
     hoverEnabled: true
@@ -65,7 +65,7 @@ Button {
         id: background
 
         anchors.fill: parent
-        border.color: root.activeFocus ? root.borderFocusedColor : AmneziaStyle.color.transparent
+        border.color: root.activeFocus ? root.borderFocusedColor : RampageStyle.color.transparent
         border.width: root.activeFocus ? root.borderFocusedWidth : 0
 
         color: {

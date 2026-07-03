@@ -51,7 +51,7 @@ OpenVpnConfigurator::ConnectionData OpenVpnConfigurator::prepareOpenVpnConfig(co
         return connData;
     }
 
-    QString reqFileName = QString("%1/%2.req").arg(amnezia::protocols::openvpn::clientsDirPath).arg(connData.clientId);
+    QString reqFileName = QString("%1/%2.req").arg(rampage::protocols::openvpn::clientsDirPath).arg(connData.clientId);
 
     errorCode = m_sshSession->uploadTextFileToContainer(container, credentials, connData.request, reqFileName);
     if (errorCode != ErrorCode::NoError) {
@@ -64,15 +64,15 @@ OpenVpnConfigurator::ConnectionData OpenVpnConfigurator::prepareOpenVpnConfig(co
     }
 
     connData.caCert =
-            m_sshSession->getTextFileFromContainer(container, credentials, amnezia::protocols::openvpn::caCertPath, errorCode);
+            m_sshSession->getTextFileFromContainer(container, credentials, rampage::protocols::openvpn::caCertPath, errorCode);
     connData.clientCert = m_sshSession->getTextFileFromContainer(
-            container, credentials, QString("%1/%2.crt").arg(amnezia::protocols::openvpn::clientCertPath).arg(connData.clientId), errorCode);
+            container, credentials, QString("%1/%2.crt").arg(rampage::protocols::openvpn::clientCertPath).arg(connData.clientId), errorCode);
 
     if (errorCode != ErrorCode::NoError) {
         return connData;
     }
 
-    connData.taKey = m_sshSession->getTextFileFromContainer(container, credentials, amnezia::protocols::openvpn::taKeyPath, errorCode);
+    connData.taKey = m_sshSession->getTextFileFromContainer(container, credentials, rampage::protocols::openvpn::taKeyPath, errorCode);
 
     if (connData.caCert.isEmpty() || connData.clientCert.isEmpty() || connData.taKey.isEmpty()) {
         errorCode = ErrorCode::SshScpFailureError;
@@ -91,9 +91,9 @@ ProtocolConfig OpenVpnConfigurator::createConfig(const ServerCredentials &creden
         serverConfig = &openVpnProtocolConfig->serverConfig;
     }
     
-    amnezia::ScriptVars vars = amnezia::genBaseVars(credentials, container, dnsSettings.primaryDns, dnsSettings.secondaryDns);
-    vars.append(amnezia::genProtocolVarsForContainer(container, containerConfig));
-    QString config = m_sshSession->replaceVars(amnezia::scriptData(ProtocolScriptType::openvpn_template, container), vars);
+    rampage::ScriptVars vars = rampage::genBaseVars(credentials, container, dnsSettings.primaryDns, dnsSettings.secondaryDns);
+    vars.append(rampage::genProtocolVarsForContainer(container, containerConfig));
+    QString config = m_sshSession->replaceVars(rampage::scriptData(ProtocolScriptType::openvpn_template, container), vars);
 
     ConnectionData connData = prepareOpenVpnConfig(credentials, container, dnsSettings, errorCode);
     if (errorCode != ErrorCode::NoError) {
@@ -221,7 +221,7 @@ ErrorCode OpenVpnConfigurator::signCert(DockerContainer container, const ServerC
     QString script_import = QString("sudo docker exec -i %1 bash -c \"cd /opt/amnezia/openvpn && "
                                     "easyrsa import-req %2/%3.req %3\"")
                                     .arg(ContainerUtils::containerToString(container))
-                                    .arg(amnezia::protocols::openvpn::clientsDirPath)
+                                    .arg(rampage::protocols::openvpn::clientsDirPath)
                                     .arg(clientId);
 
     QString script_sign = QString("sudo docker exec -i %1 bash -c \"export EASYRSA_BATCH=1; cd /opt/amnezia/openvpn && "
@@ -230,7 +230,7 @@ ErrorCode OpenVpnConfigurator::signCert(DockerContainer container, const ServerC
                                   .arg(clientId);
 
     QStringList scriptList { script_import, script_sign };
-    QString script = m_sshSession->replaceVars(scriptList.join("\n"), amnezia::genBaseVars(credentials, container, dnsSettings.primaryDns, dnsSettings.secondaryDns));
+    QString script = m_sshSession->replaceVars(scriptList.join("\n"), rampage::genBaseVars(credentials, container, dnsSettings.primaryDns, dnsSettings.secondaryDns));
 
     return m_sshSession->runScript(credentials, script);
 }

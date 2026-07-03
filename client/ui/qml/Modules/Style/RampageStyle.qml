@@ -34,6 +34,12 @@ QtObject {
         readonly property color translucentSlateGray: Qt.rgba(85/255, 86/255, 92/255, 0.13)
         readonly property color translucentOnyxBlack: Qt.rgba(28/255, 29/255, 33/255, 0.13)
 
+        readonly property color bloodDark: '#2A0000'
+        readonly property color bloodRed: '#5C0000'
+        readonly property color bloodGlow: '#7A0000'
+        readonly property color bloodDrop: '#3D0000'
+        readonly property color bloodDropLight: '#5A0000'
+
         readonly property string goldenApricotString: '#FBB26A'
     }
 }

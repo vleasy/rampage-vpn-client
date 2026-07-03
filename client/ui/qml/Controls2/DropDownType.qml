@@ -11,31 +11,31 @@ Item {
     id: root
 
     property string text
-    property string textColor: AmneziaStyle.color.paleGray
-    property string textDisabledColor: AmneziaStyle.color.mutedGray
+    property string textColor: RampageStyle.color.paleGray
+    property string textDisabledColor: RampageStyle.color.mutedGray
     property int textMaximumLineCount: 2
     property int textElide: Qt.ElideRight
 
     property string descriptionText
-    property string descriptionTextColor: AmneziaStyle.color.mutedGray
-    property string descriptionTextDisabledColor: AmneziaStyle.color.charcoalGray
+    property string descriptionTextColor: RampageStyle.color.mutedGray
+    property string descriptionTextDisabledColor: RampageStyle.color.charcoalGray
 
     property string headerText
     property string headerBackButtonImage
 
     property var rootButtonClickedFunction
     property string rootButtonImage: "qrc:/images/controls/chevron-down.svg"
-    property string rootButtonImageColor: AmneziaStyle.color.paleGray
-    property string rootButtonBackgroundColor: AmneziaStyle.color.onyxBlack
-    property string rootButtonBackgroundHoveredColor: AmneziaStyle.color.onyxBlack
-    property string rootButtonBackgroundPressedColor: AmneziaStyle.color.onyxBlack
+    property string rootButtonImageColor: RampageStyle.color.paleGray
+    property string rootButtonBackgroundColor: RampageStyle.color.onyxBlack
+    property string rootButtonBackgroundHoveredColor: RampageStyle.color.onyxBlack
+    property string rootButtonBackgroundPressedColor: RampageStyle.color.onyxBlack
 
-    property string borderFocusedColor: AmneziaStyle.color.paleGray
+    property string borderFocusedColor: RampageStyle.color.paleGray
     property int borderFocusedWidth: 1
 
-    property string rootButtonHoveredBorderColor: AmneziaStyle.color.charcoalGray
-    property string rootButtonDefaultBorderColor: AmneziaStyle.color.slateGray
-    property string rootButtonPressedBorderColor: AmneziaStyle.color.paleGray
+    property string rootButtonHoveredBorderColor: RampageStyle.color.charcoalGray
+    property string rootButtonDefaultBorderColor: RampageStyle.color.slateGray
+    property string rootButtonPressedBorderColor: RampageStyle.color.paleGray
 
     property int rootButtonTextLeftMargins: 16
     property int rootButtonTextTopMargin: 16
@@ -113,8 +113,8 @@ Item {
     Rectangle {
         id: focusBorder
 
-        color: AmneziaStyle.color.transparent
-        border.color: root.activeFocus ? root.borderFocusedColor : AmneziaStyle.color.transparent
+        color: RampageStyle.color.transparent
+        border.color: root.activeFocus ? root.borderFocusedColor : RampageStyle.color.transparent
         border.width: root.activeFocus ? root.borderFocusedWidth : 0
         anchors.fill: rootButtonContent
         radius: 16
@@ -134,7 +134,7 @@ Item {
                     }
                     return root.hovered ? root.rootButtonBackgroundHoveredColor : root.rootButtonBackgroundColor
                 } else {
-                    return AmneziaStyle.color.transparent
+                    return RampageStyle.color.transparent
                 }
             }
 

@@ -26,13 +26,13 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 public slots:
-    void updateModel(const QVector<amnezia::InstalledAppInfo> &apps);
+    void updateModel(const QVector<rampage::InstalledAppInfo> &apps);
 
 protected:
     QHash<int, QByteArray> roleNames() const override;
 
 private:
-    QVector<amnezia::InstalledAppInfo> m_apps;
+    QVector<rampage::InstalledAppInfo> m_apps;
 };
 
 #endif // APPSPLITTUNNELINGMODEL_H

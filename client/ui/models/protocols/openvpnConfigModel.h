@@ -39,19 +39,19 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 public slots:
-    void updateModel(amnezia::DockerContainer container, const amnezia::OpenVpnProtocolConfig &protocolConfig);
-    amnezia::OpenVpnProtocolConfig getProtocolConfig();
+    void updateModel(rampage::DockerContainer container, const rampage::OpenVpnProtocolConfig &protocolConfig);
+    rampage::OpenVpnProtocolConfig getProtocolConfig();
 
 protected:
     QHash<int, QByteArray> roleNames() const override;
 
 private:
-    amnezia::DockerContainer m_container;
-    amnezia::OpenVpnProtocolConfig m_protocolConfig;
-    amnezia::OpenVpnProtocolConfig m_originalProtocolConfig;
+    rampage::DockerContainer m_container;
+    rampage::OpenVpnProtocolConfig m_protocolConfig;
+    rampage::OpenVpnProtocolConfig m_originalProtocolConfig;
     
-    void applyDefaultsToServerConfig(amnezia::OpenVpnServerConfig& config);
-    void applyDefaultsToClientConfig(amnezia::OpenVpnClientConfig& config);
+    void applyDefaultsToServerConfig(rampage::OpenVpnServerConfig& config);
+    void applyDefaultsToClientConfig(rampage::OpenVpnClientConfig& config);
 };
 
 #endif // OPENVPNCONFIGMODEL_H

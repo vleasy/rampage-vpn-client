@@ -3,7 +3,7 @@ set(CLIENT_ROOT_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
 set(HEADERS ${HEADERS}
     ${CLIENT_ROOT_DIR}/core/utils/migrations.h
     ${CLIENT_ROOT_DIR}/../ipc/ipc.h
-    ${CLIENT_ROOT_DIR}/amneziaApplication.h
+    ${CLIENT_ROOT_DIR}/RampageApplication.h
     ${CLIENT_ROOT_DIR}/core/utils/errorCodes.h
     ${CLIENT_ROOT_DIR}/core/utils/routeModes.h
     ${CLIENT_ROOT_DIR}/core/utils/commonStructs.h
@@ -89,7 +89,7 @@ endif()
 
 set(SOURCES ${SOURCES}
     ${CLIENT_ROOT_DIR}/core/utils/migrations.cpp
-    ${CLIENT_ROOT_DIR}/amneziaApplication.cpp
+    ${CLIENT_ROOT_DIR}/RampageApplication.cpp
     ${CLIENT_ROOT_DIR}/core/utils/errorStrings.cpp
     ${CLIENT_ROOT_DIR}/core/utils/containers/containerUtils.cpp
     ${CLIENT_ROOT_DIR}/core/protocols/protocolUtils.cpp
@@ -181,13 +181,13 @@ if(NOT ANDROID)
 endif()
 
 set(COMMON_FILES_H
-    ${CLIENT_ROOT_DIR}/amneziaApplication.h
+    ${CLIENT_ROOT_DIR}/RampageApplication.h
     ${CLIENT_ROOT_DIR}/secureQSettings.h
     ${CLIENT_ROOT_DIR}/vpnConnection.h
 )
 
 set(COMMON_FILES_CPP
-    ${CLIENT_ROOT_DIR}/amneziaApplication.cpp
+    ${CLIENT_ROOT_DIR}/RampageApplication.cpp
     ${CLIENT_ROOT_DIR}/secureQSettings.cpp
     ${CLIENT_ROOT_DIR}/vpnConnection.cpp
 )
@@ -256,13 +256,13 @@ if(WIN32)
     )
 
     set(RESOURCES ${RESOURCES}
-        ${CMAKE_CURRENT_BINARY_DIR}/amneziavpn.rc
+        ${CMAKE_CURRENT_BINARY_DIR}/RampageVPN.rc
     )
 endif()
 
 if(WIN32 OR (APPLE AND NOT IOS AND NOT MACOS_NE) OR (LINUX AND NOT ANDROID))
     message("Client desktop build")
-    add_compile_definitions(AMNEZIA_DESKTOP)
+    add_compile_definitions(RAMPAGE_DESKTOP)
 
     set(HEADERS ${HEADERS}
         ${CLIENT_ROOT_DIR}/core/utils/ipcClient.h

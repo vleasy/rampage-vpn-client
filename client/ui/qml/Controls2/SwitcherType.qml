@@ -10,30 +10,30 @@ Switch {
     id: root
 
     property alias descriptionText: description.text
-    property string descriptionTextColor: AmneziaStyle.color.mutedGray
-    property string descriptionTextDisabledColor: AmneziaStyle.color.charcoalGray
+    property string descriptionTextColor: RampageStyle.color.mutedGray
+    property string descriptionTextDisabledColor: RampageStyle.color.charcoalGray
 
-    property string textColor: AmneziaStyle.color.paleGray
-    property string textDisabledColor: AmneziaStyle.color.mutedGray
+    property string textColor: RampageStyle.color.paleGray
+    property string textDisabledColor: RampageStyle.color.mutedGray
 
-    property string checkedIndicatorColor: AmneziaStyle.color.richBrown
-    property string defaultIndicatorColor: AmneziaStyle.color.transparent
-    property string checkedDisabledIndicatorColor: AmneziaStyle.color.deepBrown
+    property string checkedIndicatorColor: RampageStyle.color.richBrown
+    property string defaultIndicatorColor: RampageStyle.color.transparent
+    property string checkedDisabledIndicatorColor: RampageStyle.color.deepBrown
 
-    property string borderFocusedColor: AmneziaStyle.color.paleGray
+    property string borderFocusedColor: RampageStyle.color.paleGray
     property int borderFocusedWidth: 1
 
-    property string checkedIndicatorBorderColor: AmneziaStyle.color.richBrown
-    property string defaultIndicatorBorderColor: AmneziaStyle.color.charcoalGray
-    property string checkedDisabledIndicatorBorderColor: AmneziaStyle.color.deepBrown
+    property string checkedIndicatorBorderColor: RampageStyle.color.richBrown
+    property string defaultIndicatorBorderColor: RampageStyle.color.charcoalGray
+    property string checkedDisabledIndicatorBorderColor: RampageStyle.color.deepBrown
 
-    property string checkedInnerCircleColor: AmneziaStyle.color.goldenApricot
-    property string defaultInnerCircleColor: AmneziaStyle.color.paleGray
-    property string checkedDisabledInnerCircleColor: AmneziaStyle.color.mutedBrown
-    property string defaultDisabledInnerCircleColor: AmneziaStyle.color.charcoalGray
+    property string checkedInnerCircleColor: RampageStyle.color.goldenApricot
+    property string defaultInnerCircleColor: RampageStyle.color.paleGray
+    property string checkedDisabledInnerCircleColor: RampageStyle.color.mutedBrown
+    property string defaultDisabledInnerCircleColor: RampageStyle.color.charcoalGray
 
-    property string hoveredIndicatorBackgroundColor: AmneziaStyle.color.translucentWhite
-    property string defaultIndicatorBackgroundColor: AmneziaStyle.color.transparent
+    property string hoveredIndicatorBackgroundColor: RampageStyle.color.translucentWhite
+    property string defaultIndicatorBackgroundColor: RampageStyle.color.transparent
 
     property bool isFocusable: true
 

@@ -1,4 +1,4 @@
-FROM amneziavpn/mtproxy:latest
+FROM RampageVPN/mtproxy:latest
 
 RUN mkdir -p /opt/amnezia /data
 RUN printf '#!/bin/sh\ntail -f /dev/null\n' > /opt/amnezia/start.sh && \

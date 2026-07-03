@@ -41,7 +41,7 @@ class AwgGo(ConanFile):
             )
 
     def source(self):
-        get(self, f"https://github.com/amnezia-vpn/amneziawg-go/archive/refs/tags/v{self.version}.zip",
+        get(self, f"https://github.com/Rampage-vpn/Rampagewg-go/archive/refs/tags/v{self.version}.zip",
             sha256="58eefbd012e79bd1525f0e02d748979e9480acc1a339df8ceb3b9ffafcedb1ba", strip_root=True
         )
 
@@ -59,9 +59,9 @@ class AwgGo(ConanFile):
         at.make()
 
     def package(self):
-        copy(self, "amneziawg-go", src=self.build_folder, dst=self.package_folder)
+        copy(self, "Rampagewg-go", src=self.build_folder, dst=self.package_folder)
 
     def package_info(self):
         self.cpp_info.exe = True
-        self.cpp_info.location = os.path.join(self.package_folder, "amneziawg-go")
-        self.cpp_info.set_property("cmake_target_name", "amnezia::awg-go")
+        self.cpp_info.location = os.path.join(self.package_folder, "Rampagewg-go")
+        self.cpp_info.set_property("cmake_target_name", "Rampage::awg-go")

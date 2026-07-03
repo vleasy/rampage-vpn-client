@@ -8,7 +8,7 @@
 #include <QSysInfo>
 #include <QTimer>
 
-#include "amneziaApplication.h"
+#include "RampageApplication.h"
 #include "logger.h"
 #include "version.h"
 #include "core/controllers/gatewayController.h"
@@ -20,14 +20,14 @@ namespace
     Logger logger("UpdateController");
 
 #if defined(Q_OS_WINDOWS)
-    const QLatin1String kInstallerRemoteFileNamePattern("AmneziaVPN_%1_windows_x64.exe");
-    const QString kInstallerLocalPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/AmneziaVPN_installer.exe";
+    const QLatin1String kInstallerRemoteFileNamePattern("RampageVPN_%1_windows_x64.exe");
+    const QString kInstallerLocalPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/RampageVPN_installer.exe";
 #elif defined(Q_OS_MACOS) && !defined(MACOS_NE)
-    const QLatin1String kInstallerRemoteFileNamePattern("AmneziaVPN_%1_macos_x64.pkg");
-    const QString kInstallerLocalPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/AmneziaVPN.pkg";
+    const QLatin1String kInstallerRemoteFileNamePattern("RampageVPN_%1_macos_x64.pkg");
+    const QString kInstallerLocalPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/RampageVPN.pkg";
 #elif defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
-    const QLatin1String kInstallerRemoteFileNamePattern("AmneziaVPN_%1_linux_x64.run");
-    const QString kInstallerLocalPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/AmneziaVPN.run";
+    const QLatin1String kInstallerRemoteFileNamePattern("RampageVPN_%1_linux_x64.run");
+    const QString kInstallerLocalPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/RampageVPN.run";
 #endif
 }
 
@@ -296,7 +296,7 @@ int UpdateController::runMacInstaller(const QString &installerPath)
     }
 
     // Get script content from registry
-    QString scriptContent = amnezia::scriptData(amnezia::ClientScriptType::mac_installer);
+    QString scriptContent = rampage::scriptData(rampage::ClientScriptType::mac_installer);
     if (scriptContent.isEmpty()) {
         logger.error() << "macOS installer script content is empty";
         scriptFile.close();

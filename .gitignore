@@ -1,9 +1,9 @@
 # User settings
 *.user
 macOSPackage/
-AmneziaVPN.dmg
-AmneziaVPN.exe
-AmneziaVPN_*.exe
+RampageVPN.dmg
+RampageVPN.exe
+RampageVPN_*.exe
 deploy/build/*
 deploy/build_32/*
 deploy/build_64/*
@@ -49,10 +49,10 @@ client/ui_*.cpp
 client/Makefile*
 client/fastlane/build/
 client/*build-*
-client/AmneziaVPN.xcodeproj
+client/RampageVPN.xcodeproj
 client/Debug-iphonesimulator/
-client/amneziavpn_plugin_import.cpp
-client/amneziavpn_qml_plugin_import.cpp
+client/RampageVPN_plugin_import.cpp
+client/RampageVPN_qml_plugin_import.cpp
 client/qmlcache_loader.cpp
 client/rep_ipc_interface_replica.h
 client/resources_qmlcache.qrc
@@ -73,7 +73,7 @@ CMakeLists.txt.user*
 *.7z
 deploy/AppDir
 deploy/Tools
-deploy/AmneziaVPN*Installer*
+deploy/RampageVPN*Installer*
 
 # MACOS files
 .DS_Store

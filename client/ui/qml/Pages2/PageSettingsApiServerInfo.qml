@@ -159,8 +159,8 @@ PageType {
                     : qsTr("Subscription expiring soon")
 
                 color: root.isSubscriptionExpired
-                    ? AmneziaStyle.color.vibrantRed
-                    : AmneziaStyle.color.goldenApricot
+                    ? RampageStyle.color.vibrantRed
+                    : RampageStyle.color.goldenApricot
             }
 
             ParagraphTextType {
@@ -173,7 +173,7 @@ PageType {
                 Layout.bottomMargin: root.isSubscriptionExpired || root.isSubscriptionExpiringSoon ? 0 : 10
 
                 text: ApiAccountInfoModel.data("serviceDescription")
-                color: AmneziaStyle.color.mutedGray
+                color: RampageStyle.color.mutedGray
             }
 
             BasicButtonType {
@@ -188,10 +188,10 @@ PageType {
 
                 text: qsTr("Renew subscription")
 
-                defaultColor: AmneziaStyle.color.paleGray
-                hoveredColor: AmneziaStyle.color.lightGray
-                pressedColor: AmneziaStyle.color.mutedGray
-                textColor: AmneziaStyle.color.midnightBlack
+                defaultColor: RampageStyle.color.paleGray
+                hoveredColor: RampageStyle.color.lightGray
+                pressedColor: RampageStyle.color.mutedGray
+                textColor: RampageStyle.color.midnightBlack
 
                 clickedFunc: function() {
                     SubscriptionUiController.getRenewalLink(ServersUiController.processedServerId)
@@ -232,7 +232,7 @@ PageType {
             width: listView.width
             spacing: 0
 
-            readonly property bool isVisibleForAmneziaFree: ApiAccountInfoModel.data("isComponentVisible")
+            readonly property bool isVisibleForRampageFree: ApiAccountInfoModel.data("isComponentVisible")
 
             BasicButtonType {
                 visible: !root.isSubscriptionExpired && !root.isSubscriptionExpiringSoon
@@ -244,12 +244,12 @@ PageType {
 
                 implicitHeight: 25
 
-                defaultColor: AmneziaStyle.color.transparent
-                hoveredColor: AmneziaStyle.color.translucentWhite
-                pressedColor: AmneziaStyle.color.sheerWhite
-                textColor: AmneziaStyle.color.goldenApricot
+                defaultColor: RampageStyle.color.transparent
+                hoveredColor: RampageStyle.color.translucentWhite
+                pressedColor: RampageStyle.color.sheerWhite
+                textColor: RampageStyle.color.goldenApricot
                 leftImageSource: "qrc:/images/controls/refresh-cw.svg"
-                leftImageColor: AmneziaStyle.color.goldenApricot
+                leftImageColor: RampageStyle.color.goldenApricot
 
                 text: qsTr("Renew subscription")
 
@@ -293,7 +293,7 @@ PageType {
             }
 
             DividerType {
-                visible: footer.isVisibleForAmneziaFree
+                visible: footer.isVisibleForRampageFree
             }
 
             WarningType {
@@ -304,7 +304,7 @@ PageType {
                 Layout.leftMargin: 16
                 Layout.fillWidth: true
 
-                backGroundColor: AmneziaStyle.color.translucentRichBrown
+                backGroundColor: RampageStyle.color.translucentRichBrown
 
                 textString: qsTr("Configurations have been updated for some countries. Download and install the updated configuration files")
 
@@ -325,7 +325,7 @@ PageType {
                 Layout.fillWidth: true
                 Layout.topMargin: warning.visible ? 16 : 0
 
-                visible: footer.isVisibleForAmneziaFree
+                visible: footer.isVisibleForRampageFree
 
                 text: qsTr("Subscription Key")
                 rightImageSource: "qrc:/images/controls/chevron-right.svg"
@@ -341,13 +341,13 @@ PageType {
             }
 
             DividerType {
-                visible: footer.isVisibleForAmneziaFree
+                visible: footer.isVisibleForRampageFree
             }
 
             LabelWithButtonType {
                 Layout.fillWidth: true
 
-                visible: footer.isVisibleForAmneziaFree
+                visible: footer.isVisibleForRampageFree
 
                 text: qsTr("Configuration Files")
 
@@ -361,13 +361,13 @@ PageType {
             }
 
             DividerType {
-                visible: footer.isVisibleForAmneziaFree
+                visible: footer.isVisibleForRampageFree
             }
 
             LabelWithButtonType {
                 Layout.fillWidth: true
 
-                visible: footer.isVisibleForAmneziaFree
+                visible: footer.isVisibleForRampageFree
 
                 text: qsTr("Active Devices")
 
@@ -381,12 +381,12 @@ PageType {
             }
 
             DividerType {
-                visible: footer.isVisibleForAmneziaFree
+                visible: footer.isVisibleForRampageFree
             }
 
             LabelWithButtonType {
                 Layout.fillWidth: true
-                Layout.topMargin: footer.isVisibleForAmneziaFree ? 0 : 32
+                Layout.topMargin: footer.isVisibleForRampageFree ? 0 : 32
 
                 text: qsTr("Support")
                 rightImageSource: "qrc:/images/controls/chevron-right.svg"
@@ -401,7 +401,7 @@ PageType {
             LabelWithButtonType {
                 Layout.fillWidth: true
 
-                visible: footer.isVisibleForAmneziaFree
+                visible: footer.isVisibleForRampageFree
 
                 text: qsTr("How to connect on another device")
                 rightImageSource: "qrc:/images/controls/chevron-right.svg"
@@ -412,7 +412,7 @@ PageType {
             }
 
             DividerType {
-                visible: footer.isVisibleForAmneziaFree
+                visible: footer.isVisibleForRampageFree
             }
 
             BasicButtonType {
@@ -424,9 +424,9 @@ PageType {
                 implicitHeight: 32
 
                 defaultColor: "transparent"
-                hoveredColor: AmneziaStyle.color.translucentWhite
-                pressedColor: AmneziaStyle.color.sheerWhite
-                textColor: AmneziaStyle.color.vibrantRed
+                hoveredColor: RampageStyle.color.translucentWhite
+                pressedColor: RampageStyle.color.sheerWhite
+                textColor: RampageStyle.color.vibrantRed
 
                 text: qsTr("Reload API config")
 
@@ -458,18 +458,18 @@ PageType {
                 Layout.leftMargin: 8
                 implicitHeight: 32
 
-                visible: footer.isVisibleForAmneziaFree
+                visible: footer.isVisibleForRampageFree
 
                 defaultColor: "transparent"
-                hoveredColor: AmneziaStyle.color.translucentWhite
-                pressedColor: AmneziaStyle.color.sheerWhite
-                textColor: AmneziaStyle.color.vibrantRed
+                hoveredColor: RampageStyle.color.translucentWhite
+                pressedColor: RampageStyle.color.sheerWhite
+                textColor: RampageStyle.color.vibrantRed
 
                 text: qsTr("Unlink this device")
 
                 clickedFunc: function() {
                     var headerText = qsTr("Are you sure you want to unlink this device?")
-                    var descriptionText = qsTr("This will unlink the device from your subscription. You can reconnect it anytime by pressing \"Reload API config\" in subscription settings on device.")
+                    var descriptionText = qsTr("This will unlink the device from your subscription. You can reconnect it anytime by pressingВ \"Reload API config\" in subscription settings on device.")
                     var yesButtonText = qsTr("Continue")
                     var noButtonText = qsTr("Cancel")
 
@@ -499,9 +499,9 @@ PageType {
                 implicitHeight: 32
 
                 defaultColor: "transparent"
-                hoveredColor: AmneziaStyle.color.translucentWhite
-                pressedColor: AmneziaStyle.color.sheerWhite
-                textColor: AmneziaStyle.color.vibrantRed
+                hoveredColor: RampageStyle.color.translucentWhite
+                pressedColor: RampageStyle.color.sheerWhite
+                textColor: RampageStyle.color.vibrantRed
 
                 text: qsTr("Remove from application")
 

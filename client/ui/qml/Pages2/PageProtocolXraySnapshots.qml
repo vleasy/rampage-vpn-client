@@ -21,16 +21,16 @@ PageType {
     // Reload the list every time we open this page
     Component.onCompleted: XrayConfigSnapshotsModel.reload()
 
-    // ── Save xray config snapshot to file ────────────────────────────
+    // в”Ђв”Ђ Save xray config snapshot to file в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
     function saveConfigToFile(json) {
         var fileName = ""
         if (GC.isMobile()) {
-            fileName = "amnezia_xray_config.json"
+            fileName = "rampage_xray_config.json"
         } else {
             fileName = SystemController.getFileName(
                 qsTr("Save XRay configuration"),
                 qsTr("JSON files (*.json)"),
-                StandardPaths.standardLocations(StandardPaths.DocumentsLocation) + "/amnezia_xray_config",
+                StandardPaths.standardLocations(StandardPaths.DocumentsLocation) + "/rampage_xray_config",
                 true,
                 ".json")
         }
@@ -73,7 +73,7 @@ PageType {
                 headerText: qsTr("XRay Configurations")
             }
 
-            // ── Create from current settings ──────────────────────────
+            // в”Ђв”Ђ Create from current settings в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
             LabelWithButtonType {
                 Layout.fillWidth: true
                 text: qsTr("Create configuration based on current settings")
@@ -87,7 +87,7 @@ PageType {
             DividerType {
             }
 
-            // ── Export ────────────────────────────────────────────────
+            // в”Ђв”Ђ Export в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
             LabelWithButtonType {
                 Layout.fillWidth: true
                 text: qsTr("Export settings")
@@ -104,7 +104,7 @@ PageType {
             DividerType {
             }
 
-            // ── Import ────────────────────────────────────────────────
+            // в”Ђв”Ђ Import в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
             LabelWithButtonType {
                 Layout.fillWidth: true
                 text: qsTr("Import settings")
@@ -130,7 +130,7 @@ PageType {
             DividerType {
             }
 
-            // ── Section label ─────────────────────────────────────────
+            // в”Ђв”Ђ Section label в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
             CaptionTextType {
                 Layout.fillWidth: true
                 Layout.leftMargin: 16
@@ -138,12 +138,12 @@ PageType {
                 Layout.topMargin: 24
                 Layout.bottomMargin: 8
                 text: qsTr("Configurations")
-                color: AmneziaStyle.color.mutedGray
+                color: RampageStyle.color.mutedGray
                 visible: listView.count > 0
             }
         }
 
-        // ── Empty state ───────────────────────────────────────────────
+        // в”Ђв”Ђ Empty state в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
         footer: ColumnLayout {
             width: listView.width
             visible: listView.count === 0
@@ -158,13 +158,13 @@ PageType {
                 Layout.leftMargin: 16
                 Layout.rightMargin: 16
                 text: qsTr("No saved configurations yet.\nCreate one from the current settings.")
-                color: AmneziaStyle.color.mutedGray
+                color: RampageStyle.color.mutedGray
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.WordWrap
             }
         }
 
-        // ── Config list items ─────────────────────────────────────────
+        // в”Ђв”Ђ Config list items в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
         delegate: ColumnLayout {
             width: listView.width
             spacing: 0
@@ -186,7 +186,7 @@ PageType {
         }
     }
 
-    // ── Import result handler ─────────────────────────────────────────
+    // в”Ђв”Ђ Import result handler в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
     Connections {
         target: XrayConfigSnapshotsModel
 
@@ -195,7 +195,7 @@ PageType {
         }
     }
 
-    // ── Per-config actions drawer ─────────────────────────────────────
+    // в”Ђв”Ђ Per-config actions drawer в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
     DrawerType2 {
         id: configActionsDrawer
         parent: root
@@ -264,7 +264,7 @@ PageType {
             LabelWithButtonType {
                 Layout.fillWidth: true
                 text: qsTr("Delete configuration")
-                textColor: AmneziaStyle.color.vibrantRed
+                textColor: RampageStyle.color.vibrantRed
                 clickedFunction: function () {
                     configActionsDrawer.closeTriggered()
                     var yesButtonFunction = function () {

@@ -1,3 +1,3 @@
-FROM amneziavpn/torpress:latest
+FROM RampageVPN/torpress:latest
 
-LABEL maintainer="AmneziaVPN"
+LABEL maintainer="RampageVPN"
