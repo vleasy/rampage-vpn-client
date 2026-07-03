@@ -12,6 +12,3 @@ foreach(RECIPE ${LOCAL_RECIPES})
     )
 endforeach()
 
-execute_process(
-    COMMAND ${CONAN_COMMAND} remote add Rampage "https://artifactory.Rampage.org/artifactory/api/conan/client-prebuilts" --force
-)

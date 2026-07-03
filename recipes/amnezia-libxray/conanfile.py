@@ -10,7 +10,7 @@ import stat
 from pathlib import Path
 
 class RampageLibxray(ConanFile):
-    name = "Rampage-libxray"
+    name = "rampage-libxray"
     version = "1.0.0"
     settings = "os", "arch", "compiler"
 

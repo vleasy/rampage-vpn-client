@@ -7,7 +7,7 @@ from conan.tools.gnu import Autotools, AutotoolsToolchain
 import os
 
 class RampageXrayBindings(ConanFile):
-    name = "Rampage-xray-bindings"
+    name = "rampage-xray-bindings"
     version = "1.1.0"
     settings = "os", "arch", "compiler"
 
