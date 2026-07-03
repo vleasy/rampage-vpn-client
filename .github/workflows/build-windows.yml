@@ -8,6 +8,14 @@ on:
 
 env:
   QT_MIRROR: https://mirrors.ocf.berkeley.edu/qt/
+  PROD_AGW_PUBLIC_KEY: ""
+  PROD_S3_ENDPOINT: ""
+  FALLBACK_S3_ENDPOINT: ""
+  DEV_AGW_PUBLIC_KEY: ""
+  DEV_AGW_ENDPOINT: ""
+  DEV_S3_ENDPOINT: ""
+  FREE_V2_ENDPOINT: ""
+  PREM_V1_ENDPOINT: ""
 
 jobs:
   Build-Windows:
@@ -46,6 +54,18 @@ jobs:
 
     - name: Install conan
       run: pip install "conan==2.28.0"
+
+    - name: Export local recipes
+      shell: pwsh
+      run: |
+        Get-ChildItem -Path recipes -Recurse -Filter conanfile.py | ForEach-Object {
+          $dir = $_.DirectoryName
+          conan export $dir
+        }
+
+    - name: Remove private Conan remote
+      shell: pwsh
+      run: conan remote remove Rampage 2>$null; conan remote list
 
     - name: Configure CMake
       shell: cmd
